@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+.estilo{
+	width:500px;
+	height:100px;
+	background-color:orange;
+	
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#ocultar').click(ocu);
+	$('#mostrar').click(ver);
+	function ver(){
+		$('#capaefectos').show(3000);
+		}
+	function ocu(){
+		$('#capaefectos').hide(3000);
+		}
+	
+	});
+</script>
+
+</head>
+<body>
+<div id="capaefectos" style="background-color: #cc7700; color:fff; padding:10px;">
+Esto es una capa que nos servirá para hacer efectos!
+</div>
+
+<p>
+<a href="#" id="ocultar">Ocultar la capa</a> | 
+<a href="#" id="mostrar">Mostrar la capa</a> 
+</p>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+body{
+	margin:0;
+	padding:0;
+	background-color:black;
+	}
+html, body{
+	height:100%;
+	width:100%;
+	
+	}	
+.fondo{
+	/*background-color:black;*/
+	width:100%;
+	height:100%;
+	min-height:800px;
+	/*min-width:1024px;*/
+	}
+.fondo1{
+	background-image:url(a.jpg);
+	background-repeat:no-repeat;
+	
+	}
+.fondo2{
+	background-image:url(b.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}
+.fondo3{
+	background-image:url(c.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}
+.fondo4{
+	background-image:url(d.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}	
+.fondo0{
+	background-image:url(d.jpg);
+	background-repeat:no-repeat;
+	}	
+.cicle{
+	}	
+#cont{
+	width:100%;
+	height:760px;
+	position:absolute;
+	top:1px;
+	left:1px;
+	z-index:10;
+	}	
+#tex{
+	width:800px;
+	height:650px;
+	margin:100px auto;
+	background-color:black;
+	color:white;
+	}
+h1{
+color:blue;	
+	}	
+</style>
+   
+    
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="../cycle.js"></script>
+<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#cicle').cycle();
+	$('#cicle2').cycle();
+	$('a').lightBox();
+	$('h1').click(function(){
+		$('h1').animate({
+		'color':'red',
+		'background-color':'orange'
+		})
+		
+		})
+	
+	})
+</script>
+</head>
+<body>
+<div id="cicle">
+<div class="fondo1 fondo">
+</div>
+<div class="fondo2 fondo">
+</div> 
+<div class="fondo3 fondo">
+ </div>    
+<div class="fondo4 fondo">
+</div> 
+</div>   
+<div id="cont">
+	<div id="tex">
+    
+      <p><h1>ENLACE</h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips
+        
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal </p>
+      <p>
+<div class=""><a href="min (1).jpg" ><img src="min (1).jpg" width="150px" height="80px" /></a>
+</div>
+<div class=""><a href="min (2).jpg"  ><img src="min (2).jpg" width="150px" height="80px" /></a>
+</div>
+distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+<div id="cicle2">
+<div class="minc"><img src="min (1).jpg" />
+</div>
+<div class="minc"><img src="min (2).jpg" />
+</div> 
+<div class="minc"><img src="min (3).jpg" />
+ </div>    
+<div class="minc"><img src="min (4).jpg" />
+</div> 
+<div class="minc"><img src="min (5).jpg" />
+</div> 
+</div>
+        
+        
+      Contrary to</p>
+      <p> <h3>popular belief, Lorem Ipsum is not simply random text.</h3> It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 B</p>
+      <p>C. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 
+      </p>
+	</div>
+</div>
+</body>
+</html>

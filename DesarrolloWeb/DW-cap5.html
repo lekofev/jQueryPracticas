@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</head>
+<style>
+.estilo{
+	width:500px;
+	height:100px;
+	background-color:orange;
+	
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#edad').click(ver);
+	
+	function ver(){
+		if($('#edad').attr('checked')){
+		$('#formulario').show();
+		}else{
+		$('#formulario').hide();				
+			}
+		}
+	
+	});
+</script>	
+<body>
+<form>
+Nombre: <input type="text" name="nombre">
+<br>
+<input type="checkbox" name="mayor_edad" value="1" id="edad"> ssSoy mayor de edad
+<br>
+<div id="formulario" style="display: none;">
+Dato para mayores de edad:
+<input type="text" name="mayores_edad">
+</div>
+</form>
+</body>
+</html>

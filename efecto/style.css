@@ -1,0 +1,38 @@
+/* CSS Document */
+
+body,html{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	}
+
+#cont{
+	height:100%;
+	width:450px;
+	background-color:orange;
+	position:relative;
+	}
+.btn{
+	width:20px;
+	background-color:yellow;
+	height:100%;
+
+	float:right;
+	cursor:pointer;
+	
+	}
+.area{
+	background-color:#FFCC99;
+	width:30px;
+	position:relative;
+	height:100%;
+	margin:0 1px 0 1px;	
+	}	
+.cont-img{
+	display:none;
+	background-color:green;
+	width:400px;
+	float:left;
+	
+	}

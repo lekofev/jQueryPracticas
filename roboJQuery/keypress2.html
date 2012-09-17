@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:100px;
+	height:100px;
+	background-color:orange;
+	position:absolute;
+	top:300px;
+	}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function tecla(e){
+		e.preventDefault();
+		$('#loescrito').html($('#loescrito').html()+' '+e.type +' : '+e.which+' : '+ String.fromCharCode(e.which));
+		$('#latecla').html('la tecla pulsada es '+e.type+' su valor numerico es'+e.which+' y el teclado es'+String.fromCharCode(e.which))
+	
+			mover(e);
+	}
+	
+	var x=$('#caja').css('left');
+	$('#caja').html(x)
+	
+	
+	
+	$(document).keypress(tecla);
+	$(document).keydown(tecla);
+	$(document).keyup(tecla);	
+});
+
+</script>
+</head>
+<div id="tex"></div>
+<body>
+<h1>preciona una tecla</h1>
+      <b>Tecla pulsada:</b>
+      <div id="loescrito"></div>
+      <div id="latecla"></div>
+      <div id="caja"></div>
+      
+
+</body>
+</html>

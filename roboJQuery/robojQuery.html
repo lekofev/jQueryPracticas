@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+body{
+	margin:0;
+	padding:0;
+	}
+#marco{
+	width:100%;
+	height:700px;
+	background-color:#FFFFCC;
+	position:relative;
+	}
+.rotar{
+	width:62px;
+	height:62px;
+	position:absolute;
+	background-image:url(robo-02.png);
+	background-repeat:no-repeat;	
+	}
+#rueda{
+    top: 64px;
+	
+	}
+#cuerpo{
+	width:57px;
+	height:105px;
+	position:absolute;
+	background-image:url(robo-r.png);
+	background-repeat:no-repeat;
+	left:10px;	
+	}
+#cajarobot{
+	position:absolute;
+	width:68px;
+	height:126px;
+	top:250px;
+	left:800px;		
+	}	
+#info{
+	height:20px;
+	background-color:orange;
+	
+	}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).keypress(mover);
+	$(document).keydown(mover);
+	$(document).keyup(mover);	//llamo a la funcion mover al apretar un tecla
+		
+		var leftPosition=parseInt($('#cajarobot').css('left'));//Posicion de izquierda	
+		var topPosition=parseInt($('#cajarobot').css('top'));//posicion de derecha	
+		var anguloR=5;//declaro el varlo del angulo en 0		
+		var anguloL=5;//declaro el varlo del angulo en 0		
+	function mover(e){
+		e.preventDefault()//prenvengo la accion por defecto del evento teclado
+
+		
+		var teclaApretada=e.which;//datos para informacion		
+		$('#info').html('La tecla apretada es: '+teclaApretada)// Escribo la informacion
+		
+			switch(teclaApretada){
+				case 37:
+				$('#cuerpo').css({'background-image':'url(robo-l.png)','left':'-4px'});				
+				leftPosition=leftPosition-5;
+				$('#cajarobot').css({
+					'left':leftPosition+'px'
+					})
+						rotarL();//llamo la funcion rotar
+							function rotarL(){
+								$('#rueda').rotate(anguloL);
+								return anguloL=anguloL-5;							
+								}				
+				break;
+
+				case 38:
+				topPosition=topPosition-5;
+				$('#cajarobot').css({
+					'top':topPosition+'px'
+					})
+				break;
+				
+				case 39:
+				$('#cuerpo').css({'background-image':'url(robo-r.png)','left':'10px'});	//imagen derecha			
+				leftPosition=leftPosition+5;// agrego 5 a la variable
+				$('#cajarobot').css({
+					'left':leftPosition+'px'
+					})
+						rotarR();//llamo la funcion rotar
+							function rotarR(){
+								$('#rueda').rotate(anguloR);
+								return anguloR=anguloR+5;							
+								}
+
+				break;
+				
+				case 40:
+				topPosition=topPosition+5;
+				$('#cajarobot').css({
+					'top':topPosition+'px'
+					})
+				break;								
+			
+			}	
+					
+		}
+
+
+	
+	
+	
+	var angulo=0;
+	setInterval(girando,10);//llamo ala funcion girar
+	
+	//function girando(){//hago girar la rueda
+	///	angulo +=3;
+	//	$('#rueda').rotate(angulo);		
+	//	}
+	
+			
+    
+});
+
+</script>
+
+</head>
+<body>
+<div id="marco">
+<!--<div id="rueda" class="rotar"></div>-->
+<div id="cajarobot">
+<div id="cuerpo"></div>
+<div id="rueda" class="rotar"></div>
+</div>
+</div>
+<div id="info"></div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#link1').addClass('activo');
+	$('#caja1').show();	
+	$('#caja2').hide();	
+	$('#caja3').hide();			
+$('#link1').click(function(){
+	$(this).addClass('activo');
+	$('.nose a').not(this).removeClass('activo');	
+	$('#caja1').show();	
+	$('#caja2').hide();	
+	$('#caja3').hide();		
+	})
+
+$('#link2').click(function(){
+	$(this).addClass('activo');
+	$('.nose a').not(this).removeClass('activo');
+	$('#caja1').hide();	
+	$('#caja2').show();	
+	$('#caja3').hide();		
+	})
+
+$('#link3').click(function(){
+	$(this).addClass('activo');
+	$('.nose a').not(this).removeClass('activo');
+	$('#caja1').hide();	
+	$('#caja2').hide();	
+	$('#caja3').show();		
+	})
+
+		 
+
+});
+</script>
+
+
+<style>
+.activo{
+	color:green;
+	}
+.caja{
+	width:200px;
+
+	background-color:blue;
+	border:1px solid green;
+	color:yellow;
+	}
+.link{
+	cursor:pointer;
+	
+	}	
+</style>
+</head>
+
+<body>
+<div class="nose">
+<a id="link1" class="link" >link1</a><br />
+<a id="link2" class="link" >link2</a><br />
+<a id="link3" class="link" >link3</a><br />
+<!--<div id="h1" class="cajaz">gdfgg</div>
+<div id="h2" class="cajaz">546453454fsdfsd</div>
+<div id="h3" class="cajaz">54g6fg4fd56g4df4gfd</div>
+</div>-->
+
+<div id="caja1" class="caja">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis enim sapien, ac tempor mi. Sed quis magna sed dolor convallis ullamcorper vitae eu lectus. Donec convallis nunc eget ipsum vehicula suscipit non eu orci. Etiam vitae nulla mauris, quis pharetra mauris. Morbi sit amet neque non ligula vulputate pellentesque. Maecenas euismod tincidunt enim, in lobortis sem commodo eget. Maecenas eu nisl turpis. Aenean tempus semper luctus. Phasellus tempus tortor et massa mattis ornare.</div>
+<div id="caja2" class="caja">Cras vehicula dui bibendum augue pulvinar dapibus. Fusce aliquet gravida metus eget lobortis. Cras a varius turpis. Cras consectetur pharetra ante eget blandit. Morbi ornare nunc ac dolor laoreet egestas. Nullam dictum orci sit amet odio consequat adipiscing ut ac quam. Etiam semper lorem dignissim arcu laoreet sed malesuada tellus imperdiet. Nulla ligula lorem, egestas vitae mattis et, adipiscing et nunc. Nunc quis est sit amet libero ornare consequat eu sit amet ligula. Donec non libero quam, at gravida nunc. Integer velit risus, sodales nec porta quis, tempus quis ipsum. Cras consectetur imperdiet purus et aliquet. Morbi lectus est, bibendum eget feugiat laoreet, mattis nec nulla. Nam tempus pharetra ante sit amet egestas. Curabitur eu tincidunt ligula. Phasellus leo neque, pharetra sit amet tincidunt in, hendrerit nec eros.</div>
+<div id="caja3" class="caja">Sed ultricies convallis sollicitudin. In hac habitasse platea dictumst. Aenean vel purus metus, ut pulvinar quam. Suspendisse potenti. Vestibulum ultrices nibh sit amet diam luctus pulvinar. Vivamus tincidunt laoreet enim, non venenatis mi viverra id. Nulla erat enim, elementum quis elementum in, vestibulum sit amet nulla. Morbi id urna dui, sed pharetra tortor. Duis hendrerit, magna at tincidunt ullamcorper, mauris velit ullamcorper augue, nec tincidunt turpis arcu quis dolor.</div>
+</div>
+
+</body>
+</html>

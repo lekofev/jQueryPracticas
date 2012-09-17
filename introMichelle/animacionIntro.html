@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="../cycle.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+/*--------------------animacion -------------*/
+	jQuery('#chicas').cycle();
+	jQuery('#time img').fadeIn(1200, function(){
+		jQuery('#line').animate({
+		width:'422px'	
+		},2000);
+		});
+		
+	jQuery('#mask-mb').slideUp(1500,function(){
+		jQuery('#mb').fadeIn(1200);
+		});	
+
+});
+</script>
+<style>
+/*---------------------Animacion-----------------*/
+.absoluto{
+	position:absolute;
+	
+	}	
+
+#mask1{
+	width:75px;
+	height:35px;
+	background-color:#FFFF66;
+	position:absolute;
+	top:243px;
+	left:84px;
+	}	
+	
+#mask2{
+	width:75px;
+	height:35px;
+	background-color:#FFFF66;
+	position:absolute;
+	top:243px;
+	left:302px;
+	}	
+
+#ani{
+    margin-left: 115px;
+	background:white;
+	height:504px;
+	width:768px;
+	position:relative;
+
+	}
+
+#time{
+	top:70px;
+	left:20px;
+	
+	}
+#time img{
+	display:none;
+	
+	}	
+	
+#line{
+	top:134px;
+	left:20px;
+	overflow:hidden;
+	width:1px;
+	height:13px;
+	
+	}
+#mask-mb{
+	top:173px;
+	left:84px;
+	width:292px;
+	height:237px;
+	background-color:white;
+	position:absolute;	
+	}
+#borde-mb{
+	top:173px;
+	left:84px;	
+	}
+
+#mb{
+	top:240px;
+	left:165px;
+	display:none;
+	}
+	
+#chicas{
+	left:470px;
+	
+	}	
+	
+.pixel{
+	width:5px;
+	height:5px;
+	background-color:orange;
+	float:left;
+	
+	}
+	
+</style>
+
+
+</head>
+
+<body>
+
+
+<div id="ani">
+
+<div class="absoluto" id="time">
+<img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/time.jpg">
+</div>
+<div class="absoluto" id="line">
+<img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/line.jpg">
+</div>
+<div class="absoluto" id="borde-mb">
+<img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/borde-mb.jpg">
+</div>
+<div class="absoluto" id="mb">
+<img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/mb.jpg">
+</div>
+
+<div class="absoluto" id="chicas">
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica1.jpg"></div>
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica2.jpg"></div>
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica3.jpg"></div>
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica4.jpg"></div>
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica5.jpg"></div>
+<div><img src="http://localhost/dpmichellebelau/sites/all/themes/michellebelau/mis-imagenes/chica6.jpg"></div>
+</div>
+
+<div id="mask-mb">
+</div>
+<!--<div id="mask1">
+</div>
+
+<div id="mask2">
+</div>
+--></div>
+
+
+</body>
+</html>

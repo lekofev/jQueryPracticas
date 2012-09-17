@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	}
+#pagina{
+	margin:auto;
+	width:1200px;
+	height:9500px;
+	background-color:yellow;
+	background-image:url(fondox.jpg);
+	}
+#contenido{
+	height:800px;
+	width:1200px;
+	margin-bottom:67px;		
+	}
+#botones{
+	height:100px;
+	width:800px;
+	margin:auto;
+	background:orange;
+	position: fixed;
+	left:20%;
+	}
+.boton{
+	background-color:red;
+	margin:5px;
+	height:90px;
+	width:80px;
+	float:left;
+	z-index: 400;
+	}
+#slide{
+	border:solid 5px white;
+	margin:auto;
+	top:50px;
+	
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="../cycle.js"></script>
+
+<script type="text/javascript" src="jquery.scrollTo.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#slide').cycle();
+	
+	$('#boton1').click(function(){
+		$.scrollTo(5,800);
+		//$('#botones').css('top','5px')		
+		})
+	
+	$('#boton2').click(function(){
+		$.scrollTo(900,800);
+		//$('#botones').css('top','900px')
+		})
+	$('#boton3').click(function(){
+		$.scrollTo(1800,800);
+		//$('#botones').css('top','1800px')		
+		})
+	$('#boton4').click(function(){
+		$.scrollTo(2700,800);
+		//$('#botones').css('top','2700px')		
+		})		
+
+	$('#boton5').click(function(){
+		$.scrollTo(3500,800);
+		//$('#botones').css('top','3500px')		
+		})    
+	$('#boton6').click(function(){
+		$.scrollTo(4200,800);
+		//$('#botones').css('top','4200px')		
+		})
+	$('#boton7').click(function(){
+		$.scrollTo(5600,800);
+		//$('#botones').css('top','5600px')		
+		})
+
+
+
+});
+</script>
+
+<title>Documento sin título</title>
+</head>
+<body>
+<div id="botones">
+<div id="boton1" class="boton"></div>
+<div id="boton2" class="boton"></div>
+<div id="boton3" class="boton"></div>
+<div id="boton4" class="boton"></div>
+<div id="boton5" class="boton"></div>
+<div id="boton6" class="boton"></div>
+<div id="boton7" class="boton"></div>
+
+</div>
+
+<div id="pagina">
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido" style="position:relative;">
+<div id="slide">
+
+    <div id="imagen">
+    <img src="aa (1).jpg"/>
+    <h1>ATELIER BASADRE</h1>
+	<h2>San isidro, Lima-Perú</h2>
+    </div>
+
+
+	<div id="imagen">
+    <img src="aa (2).jpg"/>
+    <h1>ATELIER LIMA</h1>
+	<h2>San isidro, Lima-Perú</h2>
+    </div>
+    
+    
+    <div id="imagen">
+    <img src="aa (3).jpg"/>
+    <h1>ATELIER MIRAFLORES</h1>
+	<h2>San isidro, Lima-Perú</h2>
+    </div>
+    
+    <div id="imagen">
+    <img src="aa (4).jpg"/>
+    <h1>ATELIER MIRAFLORES</h1>
+	<h2>San isidro, Lima-Perú</h2>
+    </div>
+    
+    
+
+
+</div>
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+<div id="contenido">
+</div>
+
+</div>
+
+
+</body>
+</html>

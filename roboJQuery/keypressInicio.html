@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:100px;
+	height:100px;
+	background-color:orange;
+	position:absolute;
+	top:300px;
+	left:50px;
+	}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).keypress(tecla);
+	$(document).keydown(tecla);
+	$(document).keyup(tecla);
+
+	function tecla(e){
+		e.preventDefault();
+		$('#loescrito').html($('#loescrito').html()+' '+e.type +' : '+e.which+' : '+ String.fromCharCode(e.which));
+		$('#latecla').html('la tecla pulsada es '+e.type+' su valor numerico es'+e.which+' y el teclado es'+String.fromCharCode(e.which))
+			
+				mover(e);
+	}
+	
+	function mover(a){
+				var t=a.which;
+		//var x=$('#caja').css('left');
+		//	x=(parseInt(x)+200);
+			if(t==37){
+				$('#caja').animate({
+					'left':'1px'
+								},mov37);
+				function mov37(){													
+					var xleft=$('#caja').css('left');
+					$('#caja').html('ubicacion izq: '+xleft)	
+				}						
+			}else if(t==38){
+				$('#caja').animate({
+					'top':'200px'
+								},mov38);
+				function mov38(){
+					var ytop=$('#caja').css('top');
+					$('#caja').html('ubicacion sup: '+ytop)					
+					}
+										
+			}else if(t==39){
+				var izq=0;
+					izq=parseInt($('#caja').css('left'));
+					izq=izq+100;
+					
+					$('#caja').animate({
+					'left':izq+'px'
+								},1000,mov39);
+				
+
+				function mov39(){
+					var xright=$('#caja').css('left');
+					$('#caja').html('ubicacion der: '+xright+izq)					
+					}
+								
+											
+			}else if(t==40){
+				$('#caja').animate({
+					'top':'400px'
+								},mov40);
+				function mov40(){
+					var ybottom=$('#caja').css('top');
+					$('#caja').html('ubicacion bottom: '+ybottom)
+					}				
+			}
+
+			//mover(a);
+	}
+		
+	
+});
+
+</script>
+</head>
+<div id="tex"></div>
+<body>
+<h1>preciona una tecla</h1>
+      <b>Tecla pulsada:</b>
+      <div id="loescrito"></div>
+      <div id="latecla"></div>
+      <div id="caja"></div>
+      
+
+</body>
+</html>

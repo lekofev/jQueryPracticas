@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#msj{
+	display:none;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){//ejecutar cuando la pagina se carge
+	$('#btn').click(carga);//evento click q llama al a funcion carga
+	function carga(event){//la funcion carga
+		event.preventDefault();//previene la accion por defecto del Href=""
+		$('#msj').css('display','inline');//muesto el div con mensje cargando
+		$('#cont').load('paginalenta.php', function(){//cargo pagina.php en #cont, y despues inicia la funcion anonima para esconder el mnensaje de carga.
+			$('#msj').css('display','none');
+			});
+		}
+	
+	
+			
+	});
+</script>
+</head>
+<body>
+<a href="#" id="btn">CLick me</a>
+<div id="msj">Cargando...</div>
+<div id="cont"></div>
+
+</body>
+</html>

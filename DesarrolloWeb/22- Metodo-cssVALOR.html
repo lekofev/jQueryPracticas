@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	position:absolute;
+	
+	}
+.fuente{
+	color:white;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#caja').mouseover(mover)
+		
+	function mover(){
+		var tamanio=parseInt($(this).css('width'));
+		var tamanio2=parseInt($(this).css('height'));
+				
+		$(this).css('top',+tamanio+5+'px');
+		$(this).css('left',+tamanio2+5+'px');
+
+		var posi=$(this).offset();
+		alert(posi.top);
+		alert(posi.left);		
+		
+		}			
+		
+		
+		
+
+	});
+</script>
+</head>
+
+<body>
+<div id="caja">
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" >
+$(document).ready(function() {
+
+//FUNCIONES SCROLL
+var documento=$(document).height();
+var ventana=$(window).height();
+var divbody=$('body').height();
+
+//$(window).scrollTop(50);
+var scrolltop=$(window).scrollTop();
+
+
+
+
+//$('html').scrollTop(300);
+
+
+
+	
+	
+//FUNCIONES AJAX + SCROLL
+$(window).scroll(function(){
+	//var scrolll=(window).scrollTop();
+	//$('#flotante').html(scrolltop);	
+	
+var altura = $(document).height() - $(window).height()-1;	
+
+$('#msj').html("window: "+ventana+" document: "+documento+" body: "+divbody+" Scroll top: "+scrolltop+" var altura: "+altura);//BONUS
+
+	datoScroll=$(window).scrollTop() ;
+
+	if(datoScroll > altura){
+		
+		$('#content').append('<div class="caja">la caja</div>');
+		
+		};	
+	
+	});
+
+
+
+
+
+//FUNCIONES AJAX
+$('a').click(function(){
+		$('#loading img').css('display','block');
+		$.ajax({
+		  url: "hoja2.php",
+		  
+		  statusCode:{404: function(){
+			  alert('page not found')
+			  }}
+		}).done(
+		function( web ) {
+		  $("#content").append(web);
+		  //alert('cargado completo')
+			$('#loading img').css('display','none');		  
+		});
+
+		
+	});
+
+
+
+    
+});
+</script>
+<style>
+body, html{
+	min-height:800px;
+	width:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+	
+	}
+
+.active{
+	color:red;
+	
+	}
+#loading img{
+	display:none;
+	
+	}
+	
+#scrollable{
+	height:200px;
+	width:500px;
+	background-color:#FF3;
+	overflow:scroll;	
+	}	
+
+#flotante{
+	position: fixed;
+	top:400px;
+	
+	}	
+.caja{
+	height:400px;
+	width:600px;
+	background-color:#F90;
+	margin:20px;
+	
+	
+	}	
+	
+</style>
+
+</head>
+
+<body>
+<div id="flotante">fdfd
+</div>
+<div id="msj"></div>
+<a href="#cargar">cargarpagina</a>
+
+<div id="loading">
+<img src="loading.gif" />
+</div>
+
+<div id="content">
+
+</div>
+
+
+</body>
+</html>

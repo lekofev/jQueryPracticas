@@ -1,0 +1,82 @@
+/* CSS Document */
+.absoluto{
+	position:absolute;
+	
+	}	
+
+#mask1{
+	width:75px;
+	height:35px;
+	background-color:#FFFF66;
+	position:absolute;
+	top:243px;
+	left:84px;
+	}	
+	
+#mask2{
+	width:75px;
+	height:35px;
+	background-color:#FFFF66;
+	position:absolute;
+	top:243px;
+	left:302px;
+	}	
+
+#ani{
+	margin:auto;
+	background:white;
+	height:504px;
+	width:768px;
+	position:relative;
+	
+	}
+
+#time{
+	top:70px;
+	left:20px;
+	
+	}
+#time img{
+	display:none;
+	
+	}	
+	
+#line{
+	top:134px;
+	left:20px;
+	overflow:hidden;
+	width:1px;
+	height:13px;
+	
+	}
+#mask-mb{
+	top:173px;
+	left:84px;
+	width:292px;
+	height:237px;
+	background-color:white;
+	position:absolute;	
+	}
+#borde-mb{
+	top:173px;
+	left:84px;	
+	}
+
+#mb{
+	top:240px;
+	left:165px;
+	display:none;
+	}
+	
+#chicas{
+	left:470px;
+	
+	}	
+	
+.pixel{
+	width:5px;
+	height:5px;
+	background-color:orange;
+	float:left;
+	
+	}	

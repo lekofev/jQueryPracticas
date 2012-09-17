@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:300px;
+	height:300px;
+	background-color:orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var texto=$('<div>esto es el <h3>titulo dinamico</h3>...</div>');
+	texto.appendTo('#caja');
+					
+	});
+</script>
+</head>
+
+<body>
+<div>La función jQuery(), o con su abreviación $(), tiene otros usos interesantes cuando le enviamos parámetros distintos a los vistos en el artículo anterior.</div>
+<div>Por <a href="http://www.desarrolloweb.com/contacta/1.html"><strong>Miguel Angel Alvarez</strong></a><br />
+</div>
+<div><strong>Atención: </strong>Contenido exclusivo de DesarrolloWeb.com. No reproducir. Copyright.</div>
+<div>En el <a href="http://www.desarrolloweb.com/articulos/funcion-jquery.html">pasado capítulo del manual de jQuery</a> vimos unas primeras notas sobre el Core de jQuery y comenzamos a explicar la función jQuery(), que es la más importante en este framework Javascript. Ahora veremos como esta función, que también se puede acceder por medio del símbolo dólar $(), puede tener otras aplicaciones útiles, cuando recibe parámetros distintos a los que vimos anteriormente.
+  <h2>Función jQuery pasando un HTML</h2>
+  Una posibilidad de trabajar con la función jQuery es enviarle un string con un HTML. Esto crea esos elementos en la página y les coloca los contenidos que se indique en el string. Ojo, que el HTML tiene que estar bien formado para que funcione en cualquier navegador, esto es, que se coloquen etiquetas que se puedan meter en el BODY de la página y que todas las etiquetas tengan su cierre.
+  <p>var nuevosElementos = $(&quot;&lt;div&gt;Elementos que creo en &lt;b&gt;tiempo de ejecución&lt;/b&gt;.&lt;h1&gt;En ejecución...&lt;/h1&gt;&lt;/div&gt;&quot;);</p>
+  <p>Esto nos creará en la variable nuevosElementos los elementos HTML que hemos especificado en el string. Luego podríamos hacer lo que queramos con ellos, como colocarlos en la página con el método appendTo(), por ejemplo de esta manera:</p>
+  <p>nuevosElementos.appendTo(&quot;body&quot;);</p>
+  <div><strong>Nota:</strong> el método appendTo() no pertenece al Core, pero nos viene bien utilizarlo y así hacer algo con los elementos que acabamos de crear.</div>
+  <p>Veamos el código completo de una página que hace uso de este ejemplo:</p>
+  <p>&lt;html&gt;<br />
+    &lt;head&gt;<br />
+    &lt;title&gt;función jquery&lt;/title&gt;<br />
+    &lt;script src=&quot;../jquery-1.3.2.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+    &lt;script&gt;<br />
+    $(document).ready(function(){<br />
+    var nuevosElementos = $(&quot;&lt;div&gt;Estos elementos ..&lt;/b&gt;.&lt;h1&gt;Título...&lt;/h1&gt;&lt;/div&gt;&quot;);<br />
+    nuevosElementos.appendTo(&quot;body&quot;);<br />
+    });<br />
+    <br />
+    &lt;/script&gt;<br />
+    &lt;/head&gt;<br />
+    &lt;body&gt;<br />
+    &lt;p&gt;Esto es el cuerpo de la página, que tiene poca cosa...&lt;/p&gt;<br />
+    &lt;/body&gt;<br />
+    &lt;/html&gt;</p>
+  <p>Ahora, dejamos el link para <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-crear-elementos.html" target="_blank">ver el ejemplo en una página aparte</a>.</p>
+  <h2>Función jQuery pasando elementos</h2>
+  Otro posible valor que se le puede enviar a la función jQuery es un elemento o una jerarquía de elementos del DOM, para extenderlos con las funcionalidades que aporta el framework para los elementos.
+  <p>Por ejemplo:</p>
+  <p>var documento = $(document.body);<br />
+    documento.css(&quot;background-color&quot;, &quot;#ff8833&quot;);</p>
+  <p>Con la primera línea creamos una variable llamada documento, a la que asignamos el valor que devuelve el método $() enviando el parámetro document.body.</p>
+  <div><strong>Nota:</strong> La variable document.body corresponde con un elemento del DOM de Javascript, que crea automáticamente el navegador y hace referencia al documento de la página.</div>
+  <p>Con ello obtenemos un objeto que es el cuerpo de la página (document.body) al que le hemos agregado todas las funcionalidades del framework jQuery para los elementos.</p>
+  <p>Así pues, en la línea siguiente, invocamos el método css() sobre la variable &quot;documento&quot;, que es el propio documento de la página extendido. Por eso el método css(), que es de jQuery(), funciona sobre ese objeto.</p>
+  <p>Algo como esto no funcionaría porque estaríamos intentando lanzar un método de jQuery directamente sobre el objeto DOM sin haberlo extendido:</p>
+  <p>document.body.css(&quot;background-color&quot;, &quot;#ff8833&quot;);</p>
+  <p>No funcionará porque no podemos llamar a un método jQuery sobre un objeto DOM, si es que no lo hemos extendido con la función $().</p>
+  <div><strong>Nota:</strong> Esta función acepta documentos XML y objetos Window, aunque no son propiamente elementos del DOM.</div>
+  <p>Podemos <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-elementos.html" target="_blank">ver ahora una página donde se encuentra este ejemplo en marcha</a>.</p>
+  <h2>Función jQuery pasando una función</h2>
+  En la función $() una última posibilidad es pasarle como parámetro una función y entonces lo que tenemos es una función callback que se invoca automáticamente cuando el DOM está listo.
+  <div><strong>Nota:</strong> Ya explicamos lo que era un callback en el artículo <a href="http://www.desarrolloweb.com/articulos/callback-funciones-jquery.html">Callback de funciones jQuery</a></div>
+  <p>En esa función podemos colocar cualquier código, que se ejecutará sólo cuando el DOM está listo para recibir comandos que lo modifiquen. Con ello, esta función nos vale perfectamente para hacer cualquier cosa dentro de la página que afecte al DOM.</p>
+  <p>Ejemplo:</p>
+  <p>$(function (){<br />
+    //Aquí puedo hacer cualquier cosa con el DOM<br />
+    });</p>
+  <p>Este callback con la función jQuery $() sería una abreviatura de otro método que hemos visto repetidas veces a lo largo de este manual para definir acciones cuando el DOM está listo:</p>
+  <p>$(document).ready(function(){<br />
+    //Aquí puedo hacer cualquier cosa con el DOM<br />
+    });</p>
+  <p>Incluso podemos hacer varios callback, para agregar distintas acciones a realizar cuando el DOM está listo, las veces que queramos, igual que cuando definíamos el evento ready() sobre el objeto document.</p>
+  <p>Podemos ver el código de una página que hace uso de la función dólar, pasando por parámetro una función.</p>
+  <p>&lt;html&gt;<br />
+    &lt;head&gt;<br />
+    &lt;title&gt;función jquery&lt;/title&gt;<br />
+    &lt;script src=&quot;../jquery-1.3.2.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+    &lt;script&gt;<br />
+    <br />
+    $(function (){<br />
+    var documento = $(&quot;p&quot;);<br />
+    documento.css(&quot;background-color&quot;, &quot;#ff8833&quot;);<br />
+    });<br />
+    <br />
+    $(function (){<br />
+    var documento = $(&quot;b&quot;);<br />
+    documento.css(&quot;color&quot;, &quot;#fff&quot;);<br />
+    });<br />
+    <br />
+    //si colocase aquí este código, no funcionaría, porque el DOM no estaría listo para realizar acciones<br />
+    //var documento = $(&quot;p&quot;);<br />
+    //documento.css(&quot;background-color&quot;, &quot;#ff8833&quot;);<br />
+    <br />
+    &lt;/script&gt;<br />
+    &lt;/head&gt;<br />
+    &lt;body&gt;<br />
+    &lt;p&gt;&lt;b&gt;Párrafo&lt;/b&gt;!!&lt;/p&gt;<br />
+    &lt;p&gt;Otro &lt;b&gt;párrafo&lt;/b&gt;&lt;/p&gt;<br />
+    &lt;/body&gt;<br />
+    &lt;/html&gt;</p>
+  <p>Se puede <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-callback.html" target="_blank">ver en marcha en una página aparte</a>.</p>
+  <p>Hasta aquí hemos visto todas las posibilidades que existen para trabajar con la función jQuery. Realmente a lo largo de este manual ya la habíamos utilizado muchas veces y en lo sucesivocontinuaremos usándola, ya que cualquier cosa que deseemos hacer en una página web va a depender en algún momento de invocar a $() en alguna de sus variantes.</p>
+</div>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Accordion</title>
+<link href="accordion.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#accordion h2.current {
+	background: #036;
+}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/ui/ui.core.js"></script>
+<script type="text/javascript" src="../js/ui/ui.accordion.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#accordion").accordion({
+    header:'h2',
+    active:'.open',
+    selectedClass:'current'
+  });
+});
+</script>
+</head>
+<body>
+
+<h1>jQuery Accordion</h1>
+<div id="accordion">
+  <h2>Accordion 1</h2>
+  <div>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.  </p>
+  </div>
+  <h2>Accordion 2</h2>
+  <div>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+  </div>
+  <h2 class="open">Accordion 3</h2>
+  <div>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.    </p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.Ut enim ad minim veniam, quis nostrud exercitation in reprehenderit in voluptate. Velit esse cillum dolore lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.  </p>
+  </div>
+</div>
+<p>Accordion using ui.accordion.js.</p>
+</body>
+</html>

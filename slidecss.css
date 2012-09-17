@@ -1,0 +1,65 @@
+/* CSS Document */
+
+body{
+	background:yellow;
+	}
+#conte{
+	margin:auto;
+	height:500px;
+	width:800px;
+	background:white;	
+	}
+.boton{
+	margin:auto;
+	background:orange;
+	width:400px;
+	height:50px;
+	
+	}
+	
+#pag a {
+   /* background: none repeat scroll 0 0 red;*/
+    display: block;
+    float: left;
+    height: 50px;
+	font-size:0;
+    width: 100px;
+}
+
+.a{
+	background-image:url(imagenes/1.jpg);
+	background-repeat:no-repeat;
+	}
+	
+.ico0{
+	background-image:url(imagenes/1.jpg);
+	background-repeat:no-repeat;
+	background-position:25 50%;	
+	}
+	
+.ico1{
+	background-image:url(imagenes/2.jpg);
+	background-repeat:no-repeat;
+	background-position:25 50%;	
+	}
+.ico2{
+	background-image:url(imagenes/3.jpg);
+	background-repeat:no-repeat;
+	background-position:25 50%;	
+	}
+	
+.ico3{
+	background-image:url(imagenes/4.jpg);
+	background-repeat:no-repeat;
+	background-position:25 50%;	
+	}
+	
+.twtr-hd{
+	display:none;
+	
+	}
+	
+.twtr-ft{
+	display:none;
+	
+	}

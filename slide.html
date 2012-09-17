@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<link type="text/css" href="slidecss.css" rel="stylesheet" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="cycle.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#conte').cycle({
+		pager:'#pag',
+		fx:'scrollLeft',
+		timeout:0
+		});
+	
+	$('#pag a:eq(0)')
+	.css("background-image","url(imagenes/1.jpg)")
+	.css("background-repeat","no-repeat")
+	.css("background-position","25px");
+
+	$('#pag a:eq(1)').addClass('ico1');
+	$('#pag a:eq(2)').addClass('ico2');
+	$('#pag a:eq(3)').addClass('ico3');		
+	
+	$('.twtr-hd').addClass('twtr-hd');
+    
+});
+
+</script>
+<style>
+</style>
+</head>
+<body>
+
+<div class="boton">
+<span id="pag"></span>
+</div>
+
+<div id="conte">
+
+<div id="" class="con ">
+
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=176226959114674";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            
+            
+            
+            <div class="fb-like-box" data-href="http://www.facebook.com/packneton" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div>
+
+</div>
+
+<div id="" class="con ">
+                   
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#333333',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#000000',
+      color: '#ffffff',
+      links: '#4aed05'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    behavior: 'all'
+  }
+}).render().setUser('Lekofev').start();
+</script>
+
+</div>
+
+<div id="" class="con ">
+		<iframe width="560" height="315" src="http://www.youtube.com/embed/UeWUVwrWjpU" frameborder="0" allowfullscreen></iframe>
+
+
+</div>
+
+<div id="" class="con ">
+
+	<img src="imagenes/android.jpg" />
+
+
+</div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  div {
+	  width:220px;
+	  height:170px; 
+	  margin:10px;
+	  margin-right:50px;
+        background:yellow; 
+		border:2px groove; 
+		float:right; }
+  p { 
+  	margin:0;
+   	margin-left:10px;
+    color:red; 
+	width:220px;
+    height:120px;
+	padding-top:70px;
+    float:left;
+	font-size:14px;
+	   }
+  span {
+	  display:block;
+	  }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js">
+  </script>
+</head>
+
+<body>
+  <p>   
+    Try scrolling too.
+    <span>Move the mouse over the div.</span>
+    <span>&nbsp;</span>
+  </p>
+
+  <div>  
+  </div>
+  
+<script>
+    $("div").mousemove(function(e){
+      var pageCoords = "( " + e.pageX + ", " + e.pageY + " )";
+      var clientCoords = "( " + e.clientX + ", " + e.clientY + " )";
+		var x=e.pageX;
+		var y=e.pageY;
+	$(this).css('background-color','#'+x);
+      $("span:first").text("( e.pageX, e.pageY ) - " + pageCoords);
+      $("span:last").text("( e.clientX, e.clientY ) - " + clientCoords);
+    });
+
+</script>
+
+</body>
+</html>

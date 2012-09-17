@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja1{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	
+	}
+#caja2{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	border:10px solid red;
+	
+	}
+#caja3{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	padding:20px;
+
+	
+	}	
+	
+#caja4{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	border:10px solid red;
+
+	
+	}		
+.fuente{
+	color:white;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var a=$('#caja1').innerWidth();
+	aa=$('#caja1').innerHeight();	
+	$('#caja1').html('<h4>ancho '+a+'</h4></br><h4>alto '+aa+'</h4>')
+
+	var b=$('#caja2').innerWidth();
+	bb=$('#caja2').innerHeight();	
+	$('#caja2').html('<h4>ancho '+b+'</h4></br><h4>alto '+bb+'</h4>')
+
+	var c=$('#caja3').innerWidth();
+	cc=$('#caja3').innerHeight();	
+	$('#caja3').html('<h4>ancho '+c+'</h4></br><h4>alto '+cc+'</h4>')
+//////////
+	var e=$('#caja4').outerWidth();
+	ee=$('#caja4').outerHeight();	
+	$('#caja4').html('<h4>ancho '+e+'</h4></br><h4>alto '+ee+'</h4>')
+
+	var f=$('#caja5').innerWidth();
+	ff=$('#caja5').innerHeight();	
+	$('#caja5').html('<h4>ancho '+f+'</h4></br><h4>alto '+ff+'</h4>')
+
+
+
+	});
+</script>
+</head>
+<body>
+<div id="caja1"></div>
+<div id="caja2"></div>
+<div id="caja3"></div>
+<div id="caja4"></div>
+<div id="caja5"></div>
+</body>
+</html>

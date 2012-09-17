@@ -1,0 +1,35 @@
+<html>
+
+
+<head>
+<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+
+<script type="text/javascript">
+$(document).ready(function() {  
+    
+    $("#btn-enviar").click(function(){
+       // alert('xxxx');
+       $.get('http://mailing.samsung-peru.com/mailing-ado/index.html', function(data){
+		  $('#result').html(data);
+		  // alert("Data Loaded: " + data);
+		   })
+	   
+	   
+	  /* $.get("http://labs.phantasia.pe/likegenerator/build?text=asd", function(data){
+            alert(data.image_url);
+            }
+        );*/
+                
+        });
+    
+});
+</script>
+
+<body>
+    <button id='btn-enviar'>obtener imagenes</button>
+  <div id="result">
+  </div>  
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* CSS Document */
+
+body,html{
+	height:100%;
+	width:100%;
+	position:relative;
+	}
+#cuadro{
+	height:500px;
+	width:1000px;
+	background-color:#FFC;
+	margin:20px auto;
+	overflow:hidden;
+	position:relative;
+	top:0;
+	}
+.bullet{
+	height:50px;
+	width:120px;
+	position:absolute;
+	border-radius:50px;
+	background-image:url(libs/Rocket.png);
+	background-repeat:no-repeat;
+	left:100px;
+	}
+		
+#nave{
+	height:150px;
+	width:290px;
+	position:absolute;
+	background-image:url(libs/airplane.png);
+	background-repeat:no-repeat;
+	
+	}
+#nave-sub{
+	height:50px;
+	width:100px;
+	position:relative;
+	}	
+	
+#debug{
+	position:absolute;
+	top:0;
+	right:0;
+	height:30px;
+	width:800px;
+	background-color: #00F;
+	color:#fff;
+	}	
+	
+.enemigos{
+	height:132px;
+	width:192px;
+	position:absolute;
+	right:0px;
+	background-image:url(libs/enemys.png);
+	background-repeat:no-repeat;
+	}	

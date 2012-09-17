@@ -1,0 +1,78 @@
+/* CSS Document */
+
+.clearfix:after{
+	 clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+	
+	}
+
+#page{
+	background: #FFC;
+	
+	}
+
+#panel-pv-2011-id{
+	width:900px;
+	margin:auto;
+	background:red;
+	position:relative;
+	}
+	
+#panel-pv-2011-id .field-item{
+	float:left;
+	margin:20px 0 35px 39px;
+	position:relative;	
+	width:250px;
+	height:250px;
+	background:red;
+	}
+
+	
+#cuadro-top{
+    background-image: url("cuadro.png");
+    height: 25px;
+    left: -16px;
+    position: absolute;
+    top: -17px;
+    width: 285px;
+    z-index: 1000;
+	}	
+	
+#cuadro-right{
+    background-image: url("cuadro.png");
+    background-position: right -25px;
+    background-repeat: no-repeat;
+    height: 232px;
+    left: 242px;
+    position: absolute;
+    top: 8px;
+    width: 25px;
+    z-index: 1000;
+	}
+	
+#cuadro-bottom{
+    background-image: url("cuadro.png");
+    background-position: left -258px;
+    background-repeat: no-repeat;
+    height: 25px;
+    left: -16px;
+    position: absolute;
+    top: 240px;
+    width: 285px;
+    z-index: 1000;
+	}
+	
+#cuadro-left{
+    background-image: url("cuadro.png");
+    background-position: left -25px;
+    background-repeat: no-repeat;
+    height: 232px;
+    left: -16px;
+    position: absolute;
+    top: 8px;
+    width: 25px;
+    z-index: 1000;
+	}

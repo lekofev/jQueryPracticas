@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" >
+$(document).ready(function() {
+
+//FUNCIONES SCROLL
+var documento=$(document).height();
+var ventana=$(window).height();
+var divbody=$('body').height();
+
+//$(window).scrollTop(50);
+var scrolltop=$(window).scrollTop();
+
+
+var altura = $(document).height() - $(window).height()-1;
+
+$('#msj').html("window: "+ventana+" document: "+documento+" body: "+divbody+" Scroll top: "+scrolltop+" var altura: "+altura);
+//$('html').scrollTop(300);
+
+
+
+	
+	
+//FUNCIONES AJAX + SCROLL
+$(window).scroll(function(){
+	//var scrolll=(window).scrollTop();
+	//$('#flotante').html(scrolltop);	
+
+	datoScroll=$(window).scrollTop() ;
+
+	if(datoScroll > altura){
+		
+		$('#encolado').append('1<br>2<br>3<br>');
+		
+		};	
+	
+	});
+
+
+
+
+
+//FUNCIONES AJAX
+$('a').click(function(){
+		$('#loading img').css('display','block');
+		$.ajax({
+		  url: "hoja2.php",
+		  
+		  statusCode:{404: function(){
+			  alert('page not found')
+			  }}
+		}).done(
+		function( web ) {
+		  $("#content").append(web);
+		  //alert('cargado completo')
+			$('#loading img').css('display','none');		  
+		});
+
+		
+	});
+
+
+
+    
+});
+</script>
+<style>
+body, html{
+	min-height:1900px;
+	width:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+	
+	}
+
+.active{
+	color:red;
+	
+	}
+#loading img{
+	display:none;
+	
+	}
+	
+#scrollable{
+	height:200px;
+	width:500px;
+	background-color:#FF3;
+	overflow:scroll;	
+	}	
+
+#flotante{
+	position: fixed;
+	top:400px;
+	
+	}	
+	
+</style>
+
+</head>
+
+<body>
+<div id="flotante">fdfd
+</div>
+<div id="msj"></div>
+<a href="#cargar">cargarpagina</a>
+<div id="loading">
+<img src="loading.gif" />
+</div>
+<div id="content">
+</div>
+
+
+<div id="scrollable">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pretium hendrerit velit in mattis. Nullam iaculis lobortis sapien eget vestibulum. Vestibulum eget ipsum ac arcu auctor tempor. Vivamus quis nunc viverra neque rutrum feugiat. Donec metus turpis, sollicitudin ac mattis eget, sagittis eget sapien. Nam nec neque lorem. Nullam facilisis neque nisi. Praesent ut metus dui. Nunc auctor felis quis turpis feugiat commodo suscipit neque tempor. Ut euismod lorem posuere velit consequat id blandit lacus mattis. Ut lacinia, tortor ut suscipit tempus, quam velit ultrices nisi, a facilisis purus elit at odio. Sed eu consectetur purus.</p> 
+<p>Aenean sodales ullamcorper felis, ut iaculis nibh sollicitudin id. Quisque non pharetra nunc. Suspendisse mi lectus, vestibulum id imperdiet eget, elementum eu sem. Pellentesque fringilla semper ullamcorper. Vivamus at tempor sem. Maecenas rutrum dictum scelerisque. Maecenas tellus risus, facilisis eu elementum vel, porttitor quis justo. Cras suscipit mattis erat ac mattis. Aliquam a ligula eu lectus cursus gravida. Vestibulum at diam ut lorem lobortis vehicula in in turpis.</p> 
+<p>In tincidunt dui ac tortor dapibus eget cursus nisi molestie. Fusce tortor est, suscipit a bibendum sit amet, mollis sit amet dolor. Sed ultrices semper euismod. Aenean placerat pulvinar arcu, at viverra elit sagittis eget. Curabitur quis magna purus, at faucibus nunc. Integer nec nisi id dolor tempor euismod ac quis ipsum. Proin ultricies, sapien a rhoncus ultricies, neque nibh pellentesque augue, vitae pulvinar ante lectus eu erat. Aenean elementum viverra sagittis. Sed sollicitudin condimentum sapien at venenatis. Sed laoreet enim vitae lacus ultrices convallis. Nullam malesuada urna eu magna hendrerit euismod. Duis in pharetra ligula.</p> 
+<p>In hac habitasse platea dictumst. Nulla facilisi. Duis tincidunt metus sit amet diam sagittis in eleifend odio fringilla. Donec vestibulum suscipit gravida. Aliquam et orci sapien. Praesent vehicula suscipit vestibulum. Nulla facilisi. Morbi malesuada, nisl vitae volutpat interdum, ipsum lacus congue odio, vel vulputate nisi sem eu dui. Morbi at risus mollis tellus dignissim gravida.</p> 
+<p>Morbi ut tempor magna. Maecenas pretium odio id sem luctus quis accumsan urna pulvinar. Morbi pharetra scelerisque odio eu auctor. Integer at bibendum augue. Aenean dignissim metus quis leo convallis lacinia. Donec interdum laoreet nisi vitae rhoncus. Praesent non erat a lectus malesuada consequat in sed quam. Fusce ac eros id tortor bibendum tempus vitae quis velit. Cras neque velit, commodo lobortis scelerisque a, rhoncus quis magna.</p> 
+
+</div>
+<div id="encolado">
+</div>
+
+</body>
+</html>

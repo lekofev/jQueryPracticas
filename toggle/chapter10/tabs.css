@@ -1,0 +1,15 @@
+h1 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+h2 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin-top: 0;
+	color: #036;
+}
+p {
+	font: 18px Georgia, "Times New Roman", Times, serif;
+}
+
+.ui-tabs-hide{
+	display:none;
+	}

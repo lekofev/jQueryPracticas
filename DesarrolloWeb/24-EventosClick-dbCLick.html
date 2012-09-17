@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja1{
+	width:200px;
+	height:200px;
+	background-color:orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var clic=0;
+	var dbclic=0;
+	$('#caja1').click(function(e){
+		clic++;
+		$('#contador1').html('haz hecho un clic '+clic+' veces')
+		})
+	
+	$('#caja1').dblclick(function(){
+		dbclic++;
+		$('#contador2').html('haz hecho un clic '+dbclic+' veces')
+		})	
+	
+	});
+</script>
+</head>
+<body>
+<div id="caja1">
+</div>
+<div id="contador1">
+</div>
+<div id="contador2">
+</div>
+</body>
+</html>

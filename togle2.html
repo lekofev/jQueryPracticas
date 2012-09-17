@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+$('.node-prensa-videos .field-name-field-video-embed').hide();
+$('.node-prensa-videos .field-name-field-video-embed:first').show();
+	
+	$('.node-prensa-videos .content').toggle(a,b);
+
+function a(){
+			$('.field-name-field-video-embed').not(this).fadeOut();			
+			$(this).children('div:last').fadeIn();
+			
+			}
+
+function b(){
+			$(this).children('div:last').fadeOut();
+			}			
+			
+});
+</script>
+<style>
+.field-name-field-video-embed{
+	width:300px;
+	height:100px;
+	background-color:red;
+	}
+.content{
+	background:green;
+	
+	}
+</style>
+</head>
+
+<body>
+
+<div class="node-prensa-videos">
+	
+        <h2>titulo</h2>
+          <div class="content">
+                <div>descripcion</div>
+                <div>nsoe</div>
+                <div>dFecjha</div>
+                <div class="field-name-field-video-embed"></div>
+            </div>
+   
+</div>
+
+<br />
+<br />
+
+<div class="node-prensa-videos">
+
+<h2>titulo2</h2>
+  <div class="content">
+        <div>descripcion2</div>
+        <div>nso2e</div>
+        <div>dFecjha2</div>
+        <div class="field-name-field-video-embed"></div>
+	</div>
+
+</div>
+<br />
+<br />
+
+<div class="node-prensa-videos">
+
+<h2>titulo2</h2>
+  <div class="content">
+        <div>descripcion2</div>
+        <div>nso2e</div>
+        <div>dFecjha2</div>
+        <div class="field-name-field-video-embed"></div>
+	</div>
+
+</div>
+<br />
+<br />
+
+<div class="node-prensa-videos">
+
+<h2>titulo2</h2>
+  <div class="content">
+        <div>descripcion2</div>
+        <div>nso2e</div>
+        <div>dFecjha2</div>
+        <div class="field-name-field-video-embed"></div>
+	</div>
+
+</div>
+<br />
+<br />
+
+
+
+
+</body>
+</html>

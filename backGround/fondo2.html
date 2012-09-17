@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+body{
+	margin:0;
+	padding:0;
+	}
+html, body{
+	height:100%;
+	width:100%;
+	
+	}	
+.fondo{
+	/*background-color:black;*/
+	width:100%;
+	height:100%;
+	min-height:800px;
+	/*min-width:1024px;*/
+	}
+.fondo img{
+	}	
+.fondo1{
+	background-image:url(a.jpg);
+	background-repeat:no-repeat;
+	
+	}
+.fondo2{
+	background-image:url(b.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}
+.fondo3{
+	background-image:url(c.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}
+.fondo4{
+	background-image:url(d.jpg);
+	background-repeat:no-repeat;
+	display:none;
+	}	
+.fondo0{
+	background-image:url(d.jpg);
+	background-repeat:no-repeat;
+	}		
+</style>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="../cycle.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+		fondo2();
+
+	function fondo1(){
+	//$('.fondo1').fadeIn(5000,fondo2);
+		}		
+
+	function fondo2(){
+	$('.fondo2').fadeIn(5000,fondo3);		
+		}
+
+	function fondo3(){
+	$('.fondo3').fadeIn(5000,fondo4);		
+		}		
+		
+	function fondo4(){
+	$('.fondo4').fadeIn(5000,fondo4out);
+	}
+	
+	function fondo4out(){
+	//$('.fondo1').css('display','none');
+	$('.fondo2').css('display','none');
+	$('.fondo3').css('display','none');
+	$('.fondo4').fadeOut(5000,fondo2);	
+		}
+
+
+
+
+
+	});
+</script>
+</head>
+<body>
+<div id="cicle">
+    <!--<div class="fondo0 fondo">-->
+        <div class="fondo1 fondo">
+            <div class="fondo2 fondo">
+                <div class="fondo3 fondo">
+                    <div class="fondo4 fondo">
+                    </div>        
+                </div>    
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+
+</body>
+</html>

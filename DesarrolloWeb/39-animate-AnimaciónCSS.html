@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:100px;
+	height:100px;
+	background-color:orange;
+	position:absolute;
+	}
+#caja2{
+	width:100px;
+	height:100px;
+	background-color:red;
+	position:absolute;
+	top:200px;
+	}
+
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#caja').toggle(subir,regresar);
+	function subir(){
+		$(this).animate({
+			'left':'35%',
+			'width':'300px',
+			'height':'300px'
+			
+			},3000)
+		}
+
+	function regresar(){
+		$(this).animate({
+			'width':'100px',
+			'height':'100px',
+			'left':'1%'
+			
+			},2000)		
+		}
+	
+        
+ 
+	function mover(){
+		var obj=$('#caja2');
+		var po=obj.css('width');
+		po=parseInt(po);
+		po+=50;
+		obj.animate({
+			'left':po+'px',
+			},2000);
+		obj.fadeOut();
+		obj.fadeIn(mover);
+		
+		//obj.animate({'left':'100px'},1000,mover);	
+		
+		}
+	mover();
+	});
+</script>
+</head>
+
+<body>
+<div id="caja"></div>
+<div id="caja2"></div>
+</body>
+</html>

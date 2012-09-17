@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:300px;
+	height:300px;
+	background-color:orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+		$('#caja').fadeOut(2000,acc1);
+			
+	function acc1(){
+		$('#caja').css({'position':'absolute','top':'400px','left':'400px'});
+			acc2();
+		}
+	function acc2(){
+		$('#caja').fadeIn(2000);
+		acc3();		
+		}
+	function acc3(){
+		$('#caja').hide(2000);
+		acc4();
+		}		
+	function acc4(){
+		$('#caja').show(2000);
+	//	acc5();
+		}
+	function acc5(){
+		$('#caja').animate(2000);
+		}				
+					
+	});
+</script>
+</head>
+
+<body>
+<div id="caja">
+</div>
+
+</body>
+</html>

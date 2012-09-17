@@ -1,0 +1,17 @@
+/* CSS Document */
+
+.fuente{
+	font-weight:bold;
+	color:red;
+	}
+
+.lis{
+	display: block;
+	background:blue;
+	
+	}
+	
+
+.coleccionbold{
+	font-weight:bold;	
+	}

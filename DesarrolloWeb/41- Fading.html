@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd"
+>
+<html lang="es">
+<head>
+<title>Fading en jQuery</title>
+   <script src="../jquery.js"></script>
+<script>
+$(document).ready(function(){
+   $("#ocultartoda").click(function(e){
+      $("#milista").fadeOut();
+   });
+   $("#mostrartoda").click(function(e){
+      $("#milista").fadeIn();
+   });
+   $("#ocultarmostrar").click(function(e){
+      $("#milista").fadeOut(function(){
+         $(this).fadeIn();
+      });
+   });
+   $("#selopacidad").change(function(e){
+      var opacidad_deseada = e.target.options[e.target.selectedIndex].value
+      $("h1").fadeTo(1000,opacidad_deseada);
+   });
+   $("#pororden").click(function(e){
+      var opacidad_deseada = $("#selopacidad").attr("value");
+      $("#e1").fadeTo(500, opacidad_deseada, function(){
+         $("#e2").fadeTo(500, opacidad_deseada, function(){
+            $("#e3").fadeTo(500, opacidad_deseada);
+         });
+      });
+   })
+})
+</script>
+</head>
+<body>
+   <h1>Fading en jQuery</h1>
+   <b>Mostrar y ocultar elementos de forma suavizada con fading</b>
+   <p>
+      <a href="#" id="ocultartoda">ocultar toda la lista</a> | 
+      <a href="#" id="mostrartoda">Mostrar toda la lista</a> |
+      <a href="#" id="ocultarmostrar">Ocultar la lista y luego mostrarla</a> 
+   </p>
+   <form name="f1">
+      Cambia la opacidad del elemento H1 a: <select name="opacidad" id="selopacidad">
+         <option value="0.2">20%</option>
+         <option value="0.5">50%</option>
+         <option value="0.8">80%</option>
+         <option value="1">100%</option>
+      </select>
+      <br>
+      <a href="#" id="pororden">Cambiar la opacidad de los elementos de la lista por orden</a> 
+   </form>
+   
+   <ul id="milista">
+      <li id="e1">Elemento 1</li>
+      <li id="e2">Segundo elemento</li>
+      <li id="e3">Tercer LI</li>
+   </ul>
+   
+</body>
+</html>

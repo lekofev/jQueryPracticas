@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#b1').click(function(){
+		$('#contenido').html('<h3>Haz hecho click en el boton1111</h3>');		
+		})
+
+    $('#b2').click(function(){
+		$('#contenido').html('<h3>Haz hecho click en el boton22222</h3>');		
+		})
+	////////////////////	
+$('#sobre').mouseenter(function(){
+		$('#invi').css('display','block');
+	});
+
+
+$('#sobre').mouseleave(function(){
+		$('#invi').css('display','none');
+
+	});		
+
+		
+//////////
+$('a').click(function(alerta){alert('haaaaaaaa')});		
+function alerta(){
+	alert('haaaaaaaa')
+	}
+
+	
+});
+</script>
+
+</head>
+<body>
+<input type="button" id="b1" value="boton1" />
+<input type="button" id="b2" value="boton2" />
+<div id="contenido">
+</div>
+<hr />
+<div id="sobre" style="height:20px; width:300px; background-color:yellow">Pon el mmouse encima</div>
+<div id="invi" style="width:150px; height:150px; background-color:orange; display:none"></div>
+<hr />
+<br />
+<a>clickme</a>
+
+</body>
+</html>

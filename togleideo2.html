@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('h2').each(function() {
+        $(this).toggle(
+		function(){
+		$('.video:first').show('fade');
+		},
+		
+		function(){
+		$('.video:first').hide('fade');
+		}
+		);
+		
+		
+    });
+	
+	
+	
+	
+	/*$('.video').hide();
+	$('h2').toggle(ver, ocultar);*/
+	
+
+	
+	
+});
+
+</script>
+</head>
+
+<body>
+
+
+<h2>titulo</h2>
+<div class="des">descripcion</div>
+<div class="nose">nsoe</div>
+<div class="fecha">dFecjha</div>
+<div class="video"><iframe width="560" height="315" src="http://www.youtube.com/embed/4ysy-4xFExg" frameborder="0" allowfullscreen></iframe></div>
+<br />
+<br />
+
+
+
+<h2>titulo</h2>
+<div>descripcion</div>
+<div>nsoe</div>
+<div>dFecjha</div>
+<div class="video"><iframe width="560" height="315" src="http://www.youtube.com/embed/4ysy-4xFExg" frameborder="0" allowfullscreen></iframe></div>
+
+
+</body>
+</html>

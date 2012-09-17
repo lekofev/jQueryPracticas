@@ -1,0 +1,84 @@
+/* CSS Document */
+#contenedor{
+	width:445px;
+	height:395px;
+	background: #FFC;
+	position:relavtive;
+	}
+#marco{
+	width:435px;
+	height:385px;
+	position: absolute;
+	background-image:url(marco-slider-ateleir.png);
+	background-repeat:no-repeat;
+	z-index:250;
+	}
+
+#imagen{
+	position:relative;
+	
+	}
+
+
+
+#slide{
+	width:412px;
+	height:395px;
+	margin:0 auto;
+/*	background: #FC6;*/
+	}
+	
+#imagen > h1{
+	font-weight:lighter;
+	margin:0;
+	padding:0;
+	font-size:14px;
+	color:#7b6e52;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+
+#imagen > h2{
+	font-weight:lighter;
+	font-family:Arial, Helvetica, sans-serif;	
+	margin:0;
+	padding:0;
+	font-size:12px;
+	color:#4a4842;
+	}
+#paginas{
+	width:150px;
+	height:15px;
+	position:relative;
+	font-size:0px;
+	left:275px;
+	top:368px;
+	z-index:300;
+	
+	}
+	
+	
+#pag a{
+	background-image:url(slide-navegador-out.png);
+	background-repeat: no-repeat;
+/*	border:1px #00FF33 solid;*/
+	display:block;
+	float:right;
+	font-size:0px;
+	width:26px;
+	height:11px;
+	z-index:1000;
+	
+	}
+	
+#pag a.activeSlide{
+	background-image:url(slide-navegador-hover.png);
+	background-repeat: no-repeat;
+/*	border:1px #00FF33 solid;*/
+	display:block;
+	float:right;
+	font-size:0px;
+	width:26px;
+	height:11px;
+	z-index:1000;
+	
+	}

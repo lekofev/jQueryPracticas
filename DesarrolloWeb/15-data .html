@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#caja{
+	width:300px;
+	height:300px;
+	background-color:orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery.js"> </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+
+	//$('#guardar').click(guardo(cont));
+	$('#guardar').click(function(){
+		var cont=$('#texto');		
+		var txt=$('#ingresar').attr('value');
+		cont.data('mi dato',txt);
+		$('#texto').html('el valor de la caja es '+txt+'<< ese')
+		});
+		
+	$('#leer').click(function(){
+		var cont=$('#texto');		
+		var dato=cont.data('mi dato');
+		$('#texto').html('el encontrado en caja es '+dato+'<< ese')
+		});		
+		
+	$('#eliminar').click(function(){
+		var cont=$('#texto');		
+		cont.removeData('mi dato');
+		$('#texto').html('se ha eliminado el dato')
+		});		
+
+
+
+	});
+</script>
+</head>
+<body>
+<div id="texto"></div>
+<form>
+<input id="ingresar" name="ingresar" /><br />
+<input type="button" id="guardar" value="guardar" />
+<input type="button" id="leer" value="leer" />
+<input type="button" id="eliminar" value="eliminar" />
+</form>
+
+
+</body>
+</html>

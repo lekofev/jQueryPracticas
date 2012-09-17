@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	function tecla(e){
+		e.preventDefault();
+		$('#loescrito').html($('#loescrito').html()+' '+e.type +' : '+e.which+' : '+ String.fromCharCode(e.which));
+		
+		}
+	$(document).keypress(tecla);
+	$(document).keydown(tecla);
+	$(document).keyup(tecla);	
+});
+
+</script>
+</head>
+<div id="tex"></div>
+<body>
+<h1>Eventos de teclado en jQuery</h1>
+   <h2>Averiguar qué tecla se está pulsando</h2>
+   <form>
+      <textarea cols=300 rows=2 id="mitexto">Escribe algo aquí!</textarea>
+      <br>
+      <b>Tecla pulsada:</b>
+      <br>
+      <div id="loescrito"></div>
+   </form>
+</body>
+</html>

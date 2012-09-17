@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+#micapa{
+left: 200px;
+top: 20px;
+position: absolute;
+font-size: 0.75em;
+font-family: tahoma, verdana, sans-serif;
+width: 220px;
+background-color: #ddf;
+padding: 10px;
+border: 1px solid #bbb;
+} 
+</style>
+   <script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+function colaEfectos(){
+   capa = $("#micapa");
+   capa.animate({
+      "font-size": "1.5em"
+   }, 2000);
+   capa.hide(1000);
+   capa.show(1000);
+   capa.animate({
+      "left": "350px",
+      "top": "50px"
+   },1500);
+   capa.animate({
+      "font-size": "0.75em"
+   }, 2000);
+   capa.animate({
+      "left": "100px",
+      "top": "20px"
+   }, 1500, colaEfectos);
+}
+
+colaEfectos();
+}); 
+</script>
+</head>
+
+<body>
+<div id="micapa">Esta capa que se va a animar, en un bucle infinito...</div>
+</body>
+</html>

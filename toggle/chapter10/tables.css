@@ -1,0 +1,20 @@
+table {
+	border-right: 1px solid #A7A37E;
+	border-bottom: 1px solid #A7A37E;
+}
+td, th {
+	font-size: 1.3em;
+	padding: 3px;
+}
+th {
+	font-weight: bold !important;
+	border-bottom: 1px solid #333333;
+	background: url(../chapter01/images/th_bg.png) repeat-x;
+	border-top: 1px solid #333333;
+	padding-top: 4px;
+	border-left: 1px solid #A7A37E;
+}
+td {
+	border-left: 1px solid #A7A37E;
+}
+
