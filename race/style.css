@@ -1,0 +1,26 @@
+/* CSS Document */
+body, html{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	}
+body{
+	position:relative;
+	
+	}	
+
+#cuadro{
+    background-color: #CCCCCC;
+    height: 550px;
+    margin: auto;
+    position: relative;
+    width: 800px;
+	}
+
+#nave{
+	width:150px;
+	height:150px;
+	background-color:red;
+	position:absolute;
+	}

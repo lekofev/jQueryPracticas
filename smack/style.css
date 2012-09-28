@@ -1,0 +1,86 @@
+/* CSS Document */
+body, html{
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	}
+body{
+	position:relative;
+	
+	}	
+
+#cuadro{
+    background-color: #CCCCCC;
+    height: 600px;
+    margin: auto;
+    width: 400px;
+	position:relative;
+	}
+	
+	
+.rojo{
+	background-color:red !important;
+	}
+	
+#pts{
+	background: none repeat scroll 0 0 green;
+    height: 100px;
+    left: 180px;
+    position: absolute;
+    width: 180px;
+	color:#fff;
+	font-size:80px;
+}
+
+#vida{
+	background: none repeat scroll 0 0 #0033CC;
+    height: 500px;
+    left: 390px;
+    position: absolute;
+    top: 50px;
+    width: 22px;
+	border:1px solid #936;
+}
+
+#death{
+	background: none repeat scroll 0 0  #fff;
+    height:1px;
+    left: 200px;
+    width: 22px;
+	}
+
+.bicho{
+	position:absolute;
+    height: 110px;
+    width: 80px;
+	left:-200px;
+	top:200px;	
+	}
+
+.nice-bicho{
+	background-image:url(img/bicho.png);
+	background-repeat:no-repeat;
+	
+	}	
+.bad-bicho{
+	background-image:url(img/bad-bicho.png);
+	background-repeat:no-repeat;
+	 
+	}
+
+.strong-bicho{
+	background-image:url(img/strong-bicho.png);
+	background-repeat:no-repeat;
+	 
+	}	
+		
+	
+#mazo{
+	height:156px;
+	width:156px;
+	background-image:url(img/mazo-up.png);
+	position:absolute;
+	background-repeat:no-repeat;
+
+	}	

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+    <script src="jquery-1.5.1.js"></script>
+    <script src="ui/jquery.ui.core.js"></script>
+    <script src="ui/jquery.ui.widget.js"></script>
+    <script src="ui/jquery.ui.mouse.js"></script>
+    <script src="ui/jquery.ui.draggable.js"></script>
+    <script src="jquery-collision-1.0.1.js"></script>
+    <script src="jquery-ui-draggable-collision-1.0.1.js"></script>
+
+<script>
+$(document).ready(function(e) {
+        
+  
+            $( "#objeto" ).draggable({
+				containment: "body",
+				obstacle: ".obstaculos",
+				preventCollision: true,
+				restraint: "#cont",
+				preventProtrusion: true
+			});
+			
+	/*$('#objeto').animate({
+		left:'800px'
+		},2000);*/
+
+function moverIzq(){			
+	var obs=$('.obstaculos2').offset();
+	var al=obs.left;
+	var at=obs.top;
+	var b1=parseInt(Math.round(obs.left))+300;
+	var c1=obs.top;
+	var d1=parseInt(Math.round(obs.top))+100;
+	
+	var obj=$('#objeto').offset();	
+	var a=obj.left;
+	var b=parseInt(Math.round(obj.left))+100;
+	var c=obj.top;
+	var d=parseInt(Math.round(obj.top))+100;
+
+	o=$('#objeto');
+	var l=parseInt(o.css('left'));
+	l=l+5;
+		if(b<al && d>at){
+			o.css({'left':l+'px'})
+		}
+	}
+	
+	
+	function posicion(){
+		  var obj=$('#objeto').offset();
+		  
+		  $('#log').html('A: '+Math.round(obj.left)+"- B: "+(parseInt(Math.round(obj.left))+100)+"- C: "+Math.round(obj.top)+"- D: "+(parseInt(Math.round(obj.top))+100));		
+	}	
+	posicion();
+	
+	setInterval(moverIzq,100);	
+			
+ });
+
+	  
+</script>
+
+<style>
+body,html{
+	width:100%;
+	height:100%;
+	background-color:#F6C;
+	margin:0;
+	padding:0;
+	}
+#cont{
+    background-color: #CC9900;
+    height: 400px;
+    margin: auto;
+    width: 1000px;
+    position: relative;	
+	}	
+
+.obstaculos {
+    background-color: #336699;
+    bottom: 0;
+    height: 280px;
+    left: 340px;
+    margin: auto;
+    position: absolute;
+    width: 320px;
+	}
+#objeto{
+	width:100px;
+	height:100px;
+	background-color:red;
+	position:absolute;
+	top:50px;
+	}
+	
+.obstaculos2 {
+    background-color: yellow;
+    bottom: 0;
+    height: 100px;
+    left: 340px;
+    margin: auto;
+    position: absolute;
+    width: 300px;
+	}
+#log{
+	width:100%;
+	height:30px;
+	position:absolute;
+	bottom:0;
+	background-color:#0C3;
+	}	
+	
+
+</style>
+</head>
+
+<body>
+<div id="cont">
+    <div id="objeto">objeto</div>
+    <div id="" class="obstaculos">obsta1</div>
+    <div id="" class="obstaculos2">obsta2</div>
+    
+</div>
+<div id="log"></div>
+
+</body>
+</html>

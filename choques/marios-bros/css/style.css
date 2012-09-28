@@ -1,0 +1,27 @@
+@charset "utf-8";
+/**
+* @description	Standard Layout
+* @author		Nombre_programador
+* @version		1.0
+*/
+
+body{
+	background:#0060B8;
+}
+
+#mario{
+	background:url(../images/sprite-mario.png) no-repeat;
+	bottom:112px;
+	height:31px;
+	position:absolute;
+	overflow:hidden;
+	width:40px;
+}
+
+#suelo{
+	background:url(../images/bg-suelo.jpg) repeat-x top left;
+	bottom:0;
+	height:112px;
+	position:absolute;
+	width:100%;
+}
