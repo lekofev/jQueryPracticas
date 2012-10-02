@@ -12,16 +12,22 @@ window.addEventListener('load',init,false);
 
 var canvas=null,ctx=null;
 var x=10, y=50;
-
+var PAUSE=true;
 var lastKey=null;
+
+
 
 function init(){
 	canvas=document.getElementById('canvas');
 	canvas.style.background='#000000';
 	ctx=canvas.getContext('2d');
-	paint(ctx);	
-	
+	paint(ctx);		
 	setInterval(run,500);	
+}
+
+function run(){
+ game();
+ paint(ctx);
 }
 
 function game(){
@@ -29,32 +35,39 @@ function game(){
 	 lastKey=evt.keyCode;
 	},false); 
 	
- if(lastKey==37)
- dir=0;
- if(lastKey==38)
- dir=1;
- if(lastKey==39)
- dir=2;
- if(lastKey==40)
- dir=3;
+if(!PAUSE){
+	 if(lastKey==37)
+	 dir=0;
+	 if(lastKey==38)
+	 dir=1;
+	 if(lastKey==39)
+	 dir=2;
+	 if(lastKey==40)
+	 dir=3;
+	 
+	 if(dir==0)
+	 x-=10;
+	 if(dir==1)
+	 y-=10;
+	 if(dir==2)
+	 x+=10;
+	 if(dir==3)
+	 y+=10
+	 
+	 if(x>canvas.width)
+	 x=0
+	 if(y>canvas.height)
+	 y=0
+	 if(x<0)
+	 x=canvas.width
+	 if(y<0)
+	 y=canvas.height 
+}
  
- if(dir==0)
- x-=10;
- if(dir==1)
- y-=10;
- if(dir==2)
- x+=10;
- if(dir==3)
- y+=10
- 
- if(x>canvas.width)
- x=0
- if(y>canvas.height)
- y=0
- if(x<0)
- x=canvas.width
- if(y<0)
- y=canvas.height 
+ if(lastKey==13){
+  PAUSE=!PAUSE;
+  //lastKey=null;
+ }
  
 }
 
@@ -63,12 +76,13 @@ function paint(ctx){
 	ctx.fillText('Last Key: '+lastKey,0,20);
 	ctx.fillStyle='#0f0';
 	ctx.fillRect(x,y,50,50);
+	
+	if(PAUSE)
+	ctx.fillText('PAUSE',140,75);
+		
 }
 
-function run(){
- game();
- paint(ctx);
-}
+
 
 
 </script> 
