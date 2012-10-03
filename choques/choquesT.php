@@ -53,20 +53,22 @@ $(document).ready(function() {
 	var aWidth=parseInt($('.a').css('width'));
 	var aHeight=parseInt($('.a').css('height'));
 	var axLong=parseInt(a.left)+aWidth;
-	var ayLong=parseInt(a.left)+aHeight;
+	var ayLong=parseInt(a.top)+aHeight;
 	
 	var bWidth=parseInt($('.b').css('width'));
 	var bHeight=parseInt($('.b').css('height'));
 	var bxLong=parseInt(b.left)+bWidth;
-	var byLong=parseInt(b.left)+bHeight;
+	var byLong=parseInt(b.top)+bHeight;
 
 
 	var mm=false;
 	console.log(parseInt(a.left)+" "+parseInt(a.top)+" "+aWidth+" "+aHeight+" "+bWidth+" "+bWidth);
 	data.append(a.left+" "+axLong+" "+b.left+" "+bxLong+" "+a.top+" "+aWidth+" "+aHeight+" "+bWidth+" "+bWidth+"<br>")
-	data.append(axLong+'<'+b.left+' - '+a.left+'>'+bxLong+'-'+ayLong+'<'+b.top+'-'+a.top+'>'+byLong)
+	
+	console.log(a.left+" "+axLong+", "+b.left+" "+bxLong+", "+a.top+" "+ayLong+", "+b.top+" "+byLong+", ")
+	console.log(axLong+'<'+b.left+' - '+a.left+'>'+bxLong+' - '+ayLong+'<'+b.top+' - '+a.top+'>'+byLong)
 	function choque(){
-		if((axLong<b.left || a.left > bxLong) && ayLong < b.top || a.top > byLong)
+		if(axLong<b.left && a.left > bxLong && ayLong < b.top && a.top > byLong)
 			mm=mm;
 			else
 			mm=true;

@@ -15,8 +15,8 @@ var lastKey=null;
 var PAUSE=true;
 var dir=0;
 var score=0;
-var player=new Rectangle(40,40,50,50);
-var food=new Rectangle(80,80,50,50);
+var player=new Rectangle(40,40,20,20);
+var food=new Rectangle(80,80,20,50);
 
 function random(max){
  return parseInt(Math.random()*max);
@@ -111,6 +111,7 @@ document.addEventListener('keydown',function(evt){
 							this.y<rect.y+rect.height&&
 							this.y+this.height>rect.y
 							);
+			  console.log(this.x+' '+(rect.x+rect.width));
 			  }
 		 }
 	}
