@@ -15,8 +15,8 @@ var lastKey=null;
 var PAUSE=true;
 var dir=0;
 var score=0;
-var player=new Rectangle(40,40,10,10);
-var food=new Rectangle(80,80,10,10);
+var player=new Rectangle(40,40,50,50);
+var food=new Rectangle(80,80,50,50);
 
 function random(max){
  return parseInt(Math.random()*max);
@@ -26,7 +26,7 @@ function init(){
  canvas=document.getElementById('canvas');
  canvas.style.background='#000';
  ctx=canvas.getContext('2d');
- setInterval(run,50);
+ setInterval(run,500);
 }
 
 function run(){
@@ -97,21 +97,23 @@ document.addEventListener('keydown',function(evt){
  lastKey=evt.keyCode;
 },false);
 
-function Rectangle(x,y,width,height){
- this.x=(x==null)?0:x;
- this.y=(y==null)?0:y;
- this.width=(width==null)?0:width;
- this.height=(height==null)?this.width:height;
-
- this.intersects=function(rect){
-  if(rect!=null){
-   return(	this.x<rect.x+rect.width&&
-			this.x+this.width>rect.x&&
-			this.y<rect.y+rect.height&&
-			this.y+this.height>rect.y);
-  }
- }
-}
+	function Rectangle(x,y,width,height){
+	 this.x=(x==null)?0:x;
+	 this.y=(y==null)?0:y;
+	 this.width=(width==null)?0:width;
+	 this.height=(height==null)?this.width:height;
+	
+		 this.intersects=function(rect){
+			  if(rect!=null)
+			  {
+				   return(	this.x<rect.x+rect.width&&
+							this.x+this.width>rect.x&&
+							this.y<rect.y+rect.height&&
+							this.y+this.height>rect.y
+							);
+			  }
+		 }
+	}
 
 </script> 
 
