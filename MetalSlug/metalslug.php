@@ -22,9 +22,9 @@ canvas{
 window.addEventListener('load',init,false);
 	var canvas=null,gunner=null;
 	var tecla=null;
-	var dx=50, dy=50, dir=null
+	var dx=50, dy=500, dir=null
 	var spriteGunner=null;
-	var sx=349,sy=1,sw=66,sh=64,dx=0,dy=0,dw=66,dh=64;
+	var sx=349,sy=1,sw=66,sh=64,dx=0,dy=300,dw=66,dh=64;
 	
 	spriteGunner=new Image();
 	spriteGunner.src="img/sluggunner.png";
@@ -47,31 +47,58 @@ function mover(){
 function dibujarGunner(gunner){
 	gunner.clearRect(0,0,canvas.width,canvas.height);
 	gunner.fillText('ultima tecla: '+tecla,0,20)
-	gunner.drawImage(spriteGunner,349,1,66,64,dx,dy,66,64);
+	gunner.drawImage(spriteGunner,sx,sy,sw,sh,dx,dy,dw,dh);
 	//
 }
 
 function direccion(){
 	//dx+=5;dy+=5
 	if(tecla==65)
-		{dir=1;}
+		{
+		dir='left';
+		sx=285;
+		}
 	if(tecla==87)
-		{dir=2;}
+		{dir='up';
+
+		}
 	if(tecla==68)
-		{dir=3;}
+		{dir='right';
+			
+		}
 	if(tecla==83)
-		{dir=4;}
+		{dir='down';
 		
+		}
+
+
+//moviemiento y direccion, cambio de sprite
+
 	if(dir==null)
-		{dx+=5;}
-	if(dir==1)
-		{dx-=5;}
-	if(dir==2)
-		{dy-=5;}
-	if(dir==3)
-		{dx+=5;}
-	if(dir==4)
-		{dy+=5;}						
+		{
+	sx=sx,sy=sy,sw=sw,sh=sh,dx=dx,dy=dy,dw=dw,dh=dh
+		
+		}
+	if(dir=='left')
+		{
+		sx=285,sy=1,sw=66,sh=64,dx-=5,dy=dy,dw=66,dh=64;
+		}
+		
+	if(dir=='right')
+		{
+		sx=349,sy=1,sw=66,sh=64,dx+=5,dy=dy,dw=66,dh=64;
+		}
+			
+	if(dir=='up')
+		{
+		sx=349,sy=1,sw=66,sh=64,dx=dx,dy=dy,dw=66,dh=64;
+		}
+		
+	if(dir=='down')
+		{
+		sx=572,sy=1842,sw=69,sh=43,dx=dx,dy=dy,dw=69,dh=43;
+		
+		}						
 	//return dir
 	}
 
