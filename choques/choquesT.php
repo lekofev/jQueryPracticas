@@ -28,12 +28,12 @@ body,html{
 .a{
 	background-color:orange;
 	top:250px;
-	left:300px;
+	left:100px;
 	}
 .b{
 	background-color:green;
-	top:160px;
-	left:400px;
+	top:250px;
+	left:300px;
 	}		
 .data{
 	width:100%;
@@ -47,6 +47,13 @@ body,html{
 <script type="text/javascript" src="../jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+
+$('.a').animate({
+	left:'400px'
+	},5000);
+
+	function choque(){
+		
 	var data=$('.data');
 	var a=$('.a').offset();
 	var b=$('.b').offset();
@@ -59,27 +66,23 @@ $(document).ready(function() {
 	var bHeight=parseInt($('.b').css('height'));
 	var bxLong=parseInt(b.left)+bWidth;
 	var byLong=parseInt(b.top)+bHeight;
-
-
-	var mm=false;
-	console.log(parseInt(a.left)+" "+parseInt(a.top)+" "+aWidth+" "+aHeight+" "+bWidth+" "+bWidth);
-	data.append(a.left+" "+axLong+" "+b.left+" "+bxLong+" "+a.top+" "+aWidth+" "+aHeight+" "+bWidth+" "+bWidth+"<br>")
 	
-	console.log(a.left+" "+axLong+", "+b.left+" "+bxLong+", "+a.top+" "+ayLong+", "+b.top+" "+byLong+", ")
-	console.log(axLong+'<'+b.left+' - '+a.left+'>'+bxLong+' - '+ayLong+'<'+b.top+' - '+a.top+'>'+byLong)
-	function choque(){
-		if(axLong<b.left && a.left > bxLong && ayLong < b.top && a.top > byLong)
-			mm=mm;
-			else
+	var mm=false;
+		
+		
+		if(a.left<bxLong && axLong > b.left && a.top < byLong && ayLong > b.top)
 			mm=true;
+			else
+			mm=mm;
 			
 		if(mm)
-		console.log('choque')
+		//console.log('choque')
+		data.html('choque')
 		else
-		console.log('no-choque')
-
+		//console.log('no-choque')
+		data.html('no-choque')
 	}
-    choque();
+   setInterval(choque,500);
 	
 });
 </script>
