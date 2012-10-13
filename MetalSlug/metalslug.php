@@ -25,7 +25,8 @@ window.addEventListener('load',init,false);
 	var dx=50, dy=500, dir=null
 	var spriteGunner=null;
 	var sx=349,sy=1,sw=66,sh=64,dx=0,dy=300,dw=66,dh=64;
-	
+	var pasoL=null;
+	var accion=0;
 	spriteGunner=new Image();
 	spriteGunner.src="img/sluggunner.png";
 
@@ -37,7 +38,7 @@ tecla=e.keyCode;
 function init(){
 	canvas=document.getElementById('myCanvas');
 	gunner=canvas.getContext('2d');		
-	setInterval(mover,100);
+	setInterval(mover,50);
 }
 function mover(){
 	direccion();
@@ -56,7 +57,7 @@ function direccion(){
 	if(tecla==65)
 		{
 		dir='left';
-		sx=285;
+		
 		}
 	if(tecla==87)
 		{dir='up';
@@ -70,10 +71,7 @@ function direccion(){
 		{dir='down';
 		
 		}
-
-
 //moviemiento y direccion, cambio de sprite
-
 	if(dir==null)
 		{
 	sx=sx,sy=sy,sw=sw,sh=sh,dx=dx,dy=dy,dw=dw,dh=dh
@@ -81,12 +79,16 @@ function direccion(){
 		}
 	if(dir=='left')
 		{
-		sx=285,sy=1,sw=66,sh=64,dx-=5,dy=dy,dw=66,dh=64;
+		sx=285,sy=1,sw=66,sh=64,dx-=5,dy=dy,dw=66,dh=64;				
+
 		}
 		
 	if(dir=='right')
 		{
+			if(accion!=0)
+			
 		sx=349,sy=1,sw=66,sh=64,dx+=5,dy=dy,dw=66,dh=64;
+				
 		}
 			
 	if(dir=='up')
@@ -98,8 +100,14 @@ function direccion(){
 		{
 		sx=572,sy=1842,sw=69,sh=43,dx=dx,dy=dy,dw=69,dh=43;
 		
-		}						
-	//return dir
+		}					
+	accion++;
+		if(accion==15)
+			{
+			accion=0;
+			}
+	tecla=null
+	dir=null
 	}
 
 /*
