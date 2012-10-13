@@ -29,7 +29,7 @@ window.addEventListener('load',init,false);
 	var accion=0;
 	spriteGunner=new Image();
 	spriteGunner.src="img/sluggunner.png";
-
+	var a=0, b=0;
 document.addEventListener('keydown',teclaPrecionada,false);
 function teclaPrecionada(e){
 tecla=e.keyCode;
@@ -98,11 +98,33 @@ function direccion(){
 		
 	if(dir=='down')
 		{
-		sx=572,sy=1842,sw=69,sh=43,dx=dx,dy=dy,dw=69,dh=43;
+			var caminar=new Array();
+			var paso0= new Array(351,1760,69,43,dx,dy,69,43)
+			var paso1= new Array(420,1758,65,65,dx,dy,65,65)
+			var paso2= new Array(492,1760,65,63,dx,dy,65,63)
+			var paso3= new Array(560,1763,64,60,dx,dy,64,60)												
+			caminar[1]=paso0;
+			caminar[2]=paso1;
+			caminar[3]=paso2;
+			caminar[4]=paso3;					
+			
+			//a=1;
+			if(a!=0)
+			{
+			console.log(caminar[a][b])
+			a++
+			//b++
+			}
+			
+			if(a>3)
+			{
+			a=0;
+			}
+		//sx=step.sx,sy=step.sy,sw=step.sw,sh=step.sh,dx=step.dx,dy=step.dy,dw=step.dw,dh=step.dh;
 		
 		}					
 	accion++;
-		if(accion==15)
+		if(accion==6)
 			{
 			accion=0;
 			}
