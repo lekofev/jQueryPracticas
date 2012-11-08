@@ -30,6 +30,7 @@ window.addEventListener('load',init,false);
 	spriteGunner=new Image();
 	spriteGunner.src="img/sluggunner.png";
 	var a=0, b=0;
+	
 document.addEventListener('keydown',teclaPrecionada,false);
 function teclaPrecionada(e){
 tecla=e.keyCode;

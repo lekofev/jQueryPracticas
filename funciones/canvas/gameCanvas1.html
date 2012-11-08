@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<!--[if lte IE 8]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->
+<title>My First Canvas Game</title>
+<script type="application/javascript">
+window.addEventListener('load',init,false);
+var canvas=null,ctx=null;
+function init(){
+ canvas=document.getElementById('canvas');
+ canvas.style.background='#999';
+ ctx=canvas.getContext('2d');
+ paint(ctx);
+}
+function paint(ctx){
+ ctx.fillStyle='#0f0';
+ ctx.fillRect(50,50,100,60);
+}
+</script>
+</head>
+
+<body>
+<h1>My First Canvas Game</h1>
+
+<p><canvas id="canvas" width="300" height="150" style="border:1px solid #000">
+Canvas not supported by your browser.
+</canvas></p>
+
+</body>
+</html>

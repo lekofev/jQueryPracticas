@@ -1,0 +1,11 @@
+var flashvars = {
+};
+var params = {
+  menu: "false",
+  wmode: "transparent",
+  allowScriptAccess: "always"
+};
+var attributes = {
+  wmode: "transparent"
+};
+swfobject.embedSWF("ruta_animacion.swf", "id_contenedor", "ancho", "alto", "9.0.0", "", flashvars, params, attributes);

@@ -1,7 +1,7 @@
 // JavaScript Document
 $(document).ready(function(e) {
   
-	jQuery.fn.crearBullets=function(){
+	jQuery.fn.crearBullets=function(gh){
 		this.each(function(){
 			obj=$(this);
 			var bullets="<div id='' class='bullet'></div>"

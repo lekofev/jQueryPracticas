@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>jPageFlip</title>
+    <meta charset="utf-8">
+    <meta name="language" content="de">
+    <meta name="description" content="jPageFlip - jQuery Plugin zur Simulation des Umblätterns von Seiten">
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="jQuery, pageflip, jpageflip, jqueryplugin, flippingbook" />
+    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jpageflip-0.9.7.js"></script>
+    <script type="text/javascript">
+   
+      window.onload = pageIsLoaded(); 
+      
+      function pageIsLoaded() {
+      
+      $(document).ready(function(){
+        
+
+          $('#myPageFlip').jPageFlip({
+              width: 225,
+              height: 300,
+              top: 30,
+              left: 70,
+              startPage : 1
+            });
+          
+          });
+
+    } // pageIsLoaded
+
+  </script>
+    
+  </head>
+  
+  <body>
+   
+    <div id="myPageFlip">
+      <img src="images/clearpixel.gif" class="jPageFlip">
+      <img src="images/bild06.jpg" class="jPageFlip">
+      <img src="images/bild07.jpg" class="jPageFlip">
+      <img src="images/bild02.jpg" class="jPageFlip">
+      <img src="images/bild03.jpg" class="jPageFlip">
+      <img src="images/bild04.jpg" class="jPageFlip">
+      <img src="images/bild08.jpg" class="jPageFlip">
+      <img src="images/transparenz_alpha_front.png" class="jPageFlip">
+      <img src="images/transparenz_alpha_back.png" class="jPageFlip">
+      <img src="images/church.jpg" class="jPageFlip">
+      <img src="images/bild05.jpg" class="jPageFlip">
+      <img src="images/bild09.jpg" class="jPageFlip">
+      <img src="images/harz_links.jpg" class="jPageFlip">
+      <img src="images/harz_rechts.jpg" class="jPageFlip">
+      <img src="images/bild10.jpg" class="jPageFlip">
+    </div>
+  
+  </body>
+</html>

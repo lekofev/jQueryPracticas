@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<!--[if lte IE 8]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->
+<title>My First Canvas Game</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="application/javascript" src="game.js"></script>
+
+<script type="text/javascript">
+window.addEventListener('load',init,false);
+var canvas=null,ctx=null;
+var mousex=0,mousey=0;
+var player=new Circle(0,0,5);
+var target=new Circle(100,100,10);
+
+function init(){
+ canvas=document.getElementById('canvas');
+ canvas.style.background='#000';
+ ctx=canvas.getContext('2d');
+ run();
+}
+
+function run(){
+ setTimeout(run,50);
+ game();
+ paint(ctx);
+}
+
+function game(){
+ player.x=mousex;
+ player.y=mousey;
+ 
+ if(player.x<0)
+  player.x=0;
+ if(player.x>canvas.width)
+  player.x=canvas.width;
+ if(player.y<0)
+  player.y=0;
+ if(player.y>canvas.height)
+  player.y=canvas.height;
+ 
+ if(player.distance(target)<0)
+  canvas.style.background='#333';
+ else
+  canvas.style.background='#000';
+}
+
+function paint(ctx){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.strokeStyle='#0f0';
+ ctx.beginPath();
+ ctx.arc(player.x,player.y,player.radius,0,Math.PI*2,true);
+ ctx.stroke();
+ ctx.strokeStyle='#f00';
+ ctx.beginPath();
+ ctx.arc(target.x,target.y,target.radius,0,Math.PI*2,true);
+ ctx.stroke();
+ 
+ ctx.fillStyle='#fff';
+ ctx.fillText('Distance: '+player.distance(target).toFixed(1),10,10);
+}
+
+document.addEventListener('mousemove',function(evt){
+ mousex=evt.pageX-canvas.offsetLeft;
+ mousey=evt.pageY-canvas.offsetTop;
+},false);
+
+function Circle(x,y,radius){
+ this.x=(x==null)?0:x;
+ this.y=(y==null)?0:y;
+ this.radius=(radius==null)?0:radius;
+ 
+ this.distance=function(circle){
+  if(circle!=null){
+   var dx=this.x-circle.x;
+   var dy=this.y-circle.y;
+   return (Math.sqrt(dx*dx+dy*dy)-(this.radius+circle.radius));
+  }
+ }
+}
+</script> 
+
+</head>
+
+<body>
+<h1>lala</h1>
+
+<p><canvas id="canvas" width="300" height="150" style="border:1px solid #000">
+Canvas not supported by your browser.
+</canvas></p>
+
+</body>
+</html>

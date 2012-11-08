@@ -22,6 +22,7 @@
 				$(".youtube").colorbox({iframe:true, innerWidth:425, innerHeight:344});
 				$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 				$(".inline").colorbox({inline:true, width:"50%"});
+				$(".inline2").colorbox({inline:true, width:"50%"});
 				$(".callbacks").colorbox({
 					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
 					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
@@ -69,7 +70,7 @@
         <p><a class='iframe' href="flash.html">Outside Webpage (Iframe)</a></p>
 		
         <p><a class='inline' href="#inline_content">Inline HTML</a></p>
-		
+		<p><a class='inline2' href="#inline_content2">Inline2 HTML</a></p>
 		<h2>Demonstration of using callbacks</h2>
 		<p><a class='callbacks' href="../content/marylou.jpg" title="Marylou on Cumberland Island">Example with alerts</a>. Callbacks and event-hooks allow users to extend functionality without having to rewrite parts of the plugin.</p>
 		
@@ -85,5 +86,19 @@
 			<a class="ajax" href="../content/flash.html">Click here to load new content</a></p>
 			</div>
 		</div>
+        
+		<!-- This contains the hidden content for inline calls -->
+		<div style='display:none'>
+			<div id='inline_content2' style='padding:10px; background:#fff;'>
+			<p><strong>This content comes from a hidden element on this page.</strong></p>
+			<p>The inline option preserves bound JavaScript events and changes, and it puts the content back where it came from when it is closed.</p>
+			<p><a id="click" href="#" style='padding:5px; background:#ccc;'>Click me, it will be preserved!</a></p>
+			
+			<p><strong>If you try to open a new ColorBox while it is already open, it will update itself with the new content.</strong></p>
+			<p>Updating Content Example:<br />
+			<a class="ajax" href="../content/flash.html">Click here to load new content</a></p>
+			</div>
+		</div>
+        
 	</body>
 </html>
