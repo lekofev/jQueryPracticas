@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/jScrollPane.css" />
 <link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 
-<script type="text/javascript" src="jScrollPane/scripts/jquery-1.2.6.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.galleriffic.js"></script>
 <script type="text/javascript" src="js/jquery.opacityrollover.js"></script>

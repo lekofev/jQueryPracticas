@@ -9,8 +9,9 @@
 
 <link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 
-<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.hoverscroll.js"></script>
+<script type="text/javascript" src="js/jquery.opacityrollover.js"></script>
 <script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
@@ -20,8 +21,20 @@ $(document).ready(function(e) {
 		iframe:true,
 		width:1025,
 		height:610,
-		scrolling:false
+		scrolling:false,
+		opacity:0.9,
+		transition: "none"
 		})
+		
+	var onMouseOutOpacity = 0.5;
+	$('#items li').opacityrollover({
+		mouseOutOpacity:   onMouseOutOpacity,
+		mouseOverOpacity:  1.0,
+		fadeSpeed:         'fast',
+		exemptionSelector: '.selected'
+	});
+		
+		
 });
 
 </script>
@@ -33,7 +46,7 @@ $(document).ready(function(e) {
     	<header>
 		</header>
         <section id="page">
-        	<aside>
+        	<aside id="sidebar">
             </aside>
             
             <section id="galeria-items">
@@ -41,7 +54,6 @@ $(document).ready(function(e) {
                 	<li>
                     <a href="#">
                     <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
-                    <div class="capa-hover-out"></div>
                     <img src="img/fotos/lino (1).jpg" />
                     </a>
                     </li>                    
@@ -49,7 +61,6 @@ $(document).ready(function(e) {
                     <li>
                     <a href="#">
                     <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
-                    <div class="capa-hover-out"></div>
                     <img src="img/fotos/lino (2).jpg" />
                     </a>
                     </li>
@@ -57,7 +68,6 @@ $(document).ready(function(e) {
                     <li>
                     <a href="#">
                     <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
-                    <div class="capa-hover-out"></div>
                     <img src="img/fotos/lino (3).jpg" />
                     </a>
                     </li>

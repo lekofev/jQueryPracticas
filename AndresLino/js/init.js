@@ -29,7 +29,7 @@ var b=$(document).width(); // returns height of HTML document
 			speed:5000
     });
 	//$('.txt-hover-in').css('display','none');
-	$('#items li a').mouseenter(function(){
+/*	$('#items li a').mouseenter(function(){
 			$(this).children('.capa-hover-out').stop().animate({
 				'opacity':'0'
 			}, 300);
@@ -46,7 +46,7 @@ var b=$(document).width(); // returns height of HTML document
 			$(this).children('.txt-hover-in').stop().animate({
 				'opacity':'0'
 			}, 300);			
-	});
+	});*/
 
 
 //var a=$(window).width();   // returns height of browser viewport
