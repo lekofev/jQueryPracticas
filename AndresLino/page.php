@@ -41,33 +41,51 @@ $(document).ready(function(e) {
 <title>Documento sin título</title>
 </head>
 <body>
-<a id="link" href="galeria.php">colorox</a>
+<!-- <a id="link" href="galeria.php">colorox</a> -->
     <section id="contenedor">
     	<header>
 		</header>
         <section id="page">
         	<aside id="sidebar">
+            	<nav id="menu">
+                	<ul>
+                    	<li><a class="facebook icons-img" href="">ANDRES LINO</a></li>
+                    	<li><a class="twitter icons-img" href="">GALLERÍA</a></li>
+                    	<li><a class="youtube icons-img" href="">ESCRÍBEME</a></li>
+                    </ul>	
+                </nav>
+            
+            	<section id="social-icons">
+                	<ul>
+                    	<li><a class="facebook icons-img" href=""></a></li>
+                    	<li><a class="twitter icons-img" href=""></a></li>
+                    	<li><a class="youtube icons-img" href=""></a></li>
+                    	<li><a class="gallery icons-img" href=""></a></li> 
+                    </ul>
+                </section>
             </aside>
             
             <section id="galeria-items">
             	<ul id="items">
                 	<li>
-                    <a href="#">
-                    <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
+                    <a id="link" href="galeria.php">
+                    <div class="txt-hover-in txt-galeria"></div>
                     <img src="img/fotos/lino (1).jpg" />
                     </a>
                     </li>                    
                     
                     <li>
                     <a href="#">
-                    <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
+                    <div class="txt-hover-in"></div>
                     <img src="img/fotos/lino (2).jpg" />
                     </a>
                     </li>
                     
                     <li>
                     <a href="#">
-                    <div class="txt-hover-in">RALLY CAMINOS DEL INCA 2011</div>
+                    <div class="txt-hover-in txt-galeria">RALLY
+CAMINOS DEL INCA 2012 DOLOR SIT AMET, 
+CONSECTETUR ADIPISICING </div>
                     <img src="img/fotos/lino (3).jpg" />
                     </a>
                     </li>

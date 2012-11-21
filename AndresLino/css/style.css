@@ -38,42 +38,122 @@ aside{
 	float:left;
 	height:512px;
 	width:193px;
-	background-color:#FFFF99;	
 	}
 	
 #galeria-items{
 	float:left;
 	height:512px;
 	overflow:hidden;
-	background-color: #000;
+	background-color: #fff;
 	}
 	
 /* -----------------------Aside----------------------- */
+
+@font-face {
+	font-family: 'Conv_AkzidenzGrotesk-MediumCondAlt';
+	src: url('fonts/AkzidenzGrotesk-MediumCondAlt.eot');
+	src: local('☺'), url('fonts/AkzidenzGrotesk-MediumCondAlt.woff') format('woff'), url('fonts/AkzidenzGrotesk-MediumCondAlt.ttf') format('truetype'), url('fonts/AkzidenzGrotesk-MediumCondAlt.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 
 #sidebar{
 	position:relative;
 	
 	}
 
-#sidebar .social-icons{
-	height:34px;
-	width:190px;
-	margin-left:30px;	
+#social-icons{
+	height:27px;
+	width:178px;
+	position:absolute;
+	bottom:0;
+	padding-left: 13px;	
 	}	
-
-
-#sidebar .social-icons a{
+#social-icons ul,
+#social-icons ul li{
+	margin:0;
+	padding:0;
+	
+	}
+#social-icons ul li{
 	display:block;
-	margin:0 5px;
-	height:16px;
-	width:16px;	
 	float:left;
+	
+	}
+#social-icons a.icons-img{
+	display:block;
+	margin:0 7px;
+	height:27px;
+	width:27px;	
+	float:left;
+	background-image:url(../img/icons.jpg);
+	background-repeat:no-repeat;
 	}	
-
+#social-icons a.facebook{
+	background-position:-2px -1px;
+	}
+#social-icons a.facebook:hover{
+	background-position:-35px -1px;
+	}
+	
+#social-icons a.twitter{
+	background-position:-2px -66px;
+	}
+#social-icons a.twitter:hover{
+	background-position:-35px -66px;
+	}
+	
+#social-icons a.youtube{
+	background-position:-2px -36px;
+	}
+#social-icons a.youtube:hover{
+	background-position:-35px -36px;
+	}	
+#social-icons a.gallery{
+	background-position:-2px -104px;
+	}
+#social-icons a.gallery:hover{
+	background-position:-35px -104px;
+	}
+	
+	
+#menu{
+    margin-top: 145px;
+    padding-left: 20px;
+	}
+#menu ul,
+#menu ul li{
+	margin:0;
+	padding:0;
+	
+	}
+#menu ul li{
+	margin-bottom:6px;
+	margin-bottom:11px \9;	
+	}	
+#menu a{
+	font-family: 'Conv_AkzidenzGrotesk-MediumCondAlt' !important;
+	color:#918F94;
+	text-decoration:none;
+	font-size:26px;
+	
+	font-family: Arial, Helvetica, sans-serif \9;
+	font-size:16px \9;
+	}
+#menu a:hover{
+	color:#434244;
+	}	
 
 	
 /* ------------------------  galeria items ------------------------------------*/	
+.jScrollPaneDrag,
+.jScrollPaneTrack{
+	border-radius:5px;
+	}
+.advance-link:hover{
 	
+	}
 	
 #galeria-items ul li{
 	display: inline;
@@ -103,16 +183,22 @@ aside{
 	width:185px;
 		
 	}
-#galeria-items .txt-hover-in{
+	
+#galeria-items .txt-galeria{
+	font-family: 'Conv_AkzidenzGrotesk-MediumCondAlt';	
 	position:absolute;
 	height:511px;
-	width:170px;
+	width:185px;
 	margin:auto;
-	font-size:24px;
+	font-size:46px;
 	color:#fff;
 	text-shadow:0px 0px 3px rgba(0, 0, 0, 0.5);
-	font-family: 'Didact Gothic', sans-serif;
+	text-align:center;
+	line-height: 0.8;
+	font-style:italic;
 	dddisplay:none;
+	}	
+#galeria-items .txt-hover-in{
 	}
 	
 /* ------------------------------ Galeria ColorBox ------------------------*/
