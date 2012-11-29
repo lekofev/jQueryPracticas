@@ -35,6 +35,31 @@ $(document).ready(function(e) {
 	});
 		
 		
+	$('#galeria-items .item a').mouseenter(function(){
+			console.log('in')
+			$(this).children('.txt-hover-in').show();
+			
+			})
+			
+	/*$('#galeria-items .item a').unbind('mouseenter');
+			
+			$('#galeria-items .item').each(function() {
+            
+			console.log('in')
+			$(this).mouseenter(function(){
+				.children('txt-hover-in').show();
+				});
+
+			     
+	    });
+		
+	$('.sub-title').mouseenter(function(){})*/
+
+		$('#galeria-items .item .txt-hover-in').mouseout(function(){
+			console.log('out')
+			$('.txt-hover-in').hide();
+			})		
+		
 });
 
 </script>
@@ -44,6 +69,9 @@ $(document).ready(function(e) {
 <!-- <a id="link" href="galeria.php">colorox</a> -->
     <section id="contenedor">
     	<header>
+        	<div id="logo">
+            	ANDRES LINO
+            </div>
 		</header>
         <section id="page">
         	<aside id="sidebar">
@@ -69,23 +97,39 @@ $(document).ready(function(e) {
             	<ul id="items">
                 	<li>
                     <a id="link" href="galeria.php">
-                    <div class="txt-hover-in txt-galeria"></div>
+        <div class="txt-hover-in txt-galeria title">RALLY<br />
+        CAMINOS DEL INCA 2012 DOLOR SIT AMET, 
+        CONSECTETUR ADIPISICING 
+            <div class="sub-title">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            </div>
+        </div>
                     <img src="img/fotos/lino (1).jpg" />
                     </a>
                     </li>                    
                     
                     <li>
                     <a href="#">
-                    <div class="txt-hover-in"></div>
+        <div class="txt-hover-in txt-galeria title">RALLY<br />
+        CAMINOS DEL INCA 2012 DOLOR SIT AMET, 
+        CONSECTETUR ADIPISICING 
+            <div class="sub-title">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            </div>
+        </div>
                     <img src="img/fotos/lino (2).jpg" />
                     </a>
                     </li>
                     
                     <li>
                     <a href="#">
-                    <div class="txt-hover-in txt-galeria">RALLY
-CAMINOS DEL INCA 2012 DOLOR SIT AMET, 
-CONSECTETUR ADIPISICING </div>
+        <div class="txt-hover-in txt-galeria title">RALLY<br />
+        CAMINOS DEL INCA 2012 DOLOR SIT AMET, 
+        CONSECTETUR ADIPISICING 
+            <div class="sub-title">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            </div>
+        </div>
                     <img src="img/fotos/lino (3).jpg" />
                     </a>
                     </li>
