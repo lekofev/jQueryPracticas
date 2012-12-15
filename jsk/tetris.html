@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</head>
+
+
+<script type="text/javascript">
+(function(){
+	/**
+	 * Draws char at given position x, y while
+	 * clearing the previous one
+	 * @param c    character to draw
+	 * @param x    x coordinate (column)
+	 * @param y    y coordinate (row)
+	 * @param set  if true, board state is changed
+	 */
+	function draw_char(c, x, y, set, l)
+	{
+		if (set) ctx[y * 10 + x] = c;
+		ctx.fillStyle = '#fff';
+		ctx.fillRect(x * 18, y * 22 + 5, l || 17, 23);
+		ctx.fillStyle = '#000';
+		c && ctx.fillText(c, x * 18, y * 22 + 22);
+	}
+
+	/**
+	 * Returns board state at given coordinate.
+	 * Something thar evals to true -> slot used
+	 * Else slot unused.
+	 */
+	function cells (x, y)
+	{
+		return ctx[x + y*10];
+	}
+
+	/**
+	 * Function that does many things to sabe bytes due
+	 * to the reuse of the double loop
+	 *
+	 * If 4 arguments are passed, the function rotates the piece
+	 * @param A   old piece
+	 * @param B   old piece edge size: 3 or 4
+	 * @param C   new piece. rotated pice will be stored here.
+	 * @param D   trailing argument to choose this code path
+	 *
+	 * If 3 arguments are passed, the function checks for
+	 * collision of the piece with the current board state.
+	 * This code path can't use the global state variables
+	 * because those can only change /after/ there are no
+	 * collisions.
+	 * @param A   piece x coordinate (column)
+	 * @param B   piece Y coordinate (row)
+	 * @param C   piece being checked
+	 *
+	 * If 2 arguments are passed, the function draws the piece
+	 * @param A   char to draw. If it evals to false, then piece is cleared.
+	 * @param B   state change flag: 1 - don't change state, 2 - change board state
+	 *
+	 * If 0 arguments are passed (or 1 ignored), the function
+	 * loops the board to check for complete rows so these are removed.
+	 */
+	function loop_piece(A, B, C, D)
+	{
+		for (x = 4; --x + 1;)
+			for (y = 4; --y + 1;)
+			{
+				if (D){
+					//rotation
+					C[A[7] ? y + (B-x-1)*4 : B-y-1 + x*4] = A[x + y*4];
+					//C[B-y-1 + x*4] = A[x + y*4];
+				}
+				else if (C)
+				{
+					//Detect collisions.
+					if (C[x + y*4] && (
+						x+A < 0 ||
+						x+A >= 10 || // 10 -> ncols
+						y+B < 0 ||
+						y+B >= 20 || // 20 -> nrows
+						cells(x+A, y+B)))
+						return 1;
+				}
+				else if(B)
+				{
+					//Fill piece.
+					if (current_piece[x + y*4])
+						draw_char(A, x + current_root_x, y + current_root_y, B-1)
+				}
+				else
+				{
+					//remove lines, x in the loop is being ignored
+					//current_root_* are no longer needed at this point so we can use them as auxiliary variabless
+					//A -> x coordinate, because it is unused above in the if checks
+					for(current_root_x = 10; --current_root_x+1, cells(current_root_x, y + current_root_y););
+
+					// Loop above completed traversing row, so row is fully filled.
+					if (current_root_x < 0)
+						//Now curr_char tells the row we're clearing - y and A tells column
+						for(curr_char = ++y + current_root_y; --curr_char + 1;)
+							for(A = 10; --A + 1;)
+								draw_char(cells(A, curr_char - 1), A, curr_char, 1);
+				}
+			}
+	}
+
+	/**
+	 * Aux function to save som duplicate code. The closure compiler will inline it
+	 * so we need to save a ref to Math.random, which is quite lengthy.
+	 */
+	function rand(max){
+		return (Math.random()*max)|0;
+	}
+
+	/**
+	 * Hearthbeat function. Move current piece one row downwards,
+	 * or places new piece in the board, if none ATM.
+	 */
+	function tick_main(){
+		if (current_piece)
+			move_piece(current_root_x, current_root_y +1);
+		else
+		{
+			current_piece = [
+				//Pipe
+				[ , , , ,1,1,1,1      ],
+				//Square
+				[ , , , , ,1,1, , ,1,1],
+				// Ls
+				[1,1,1, ,1            ],
+				[1,1,1, , , ,1        ],
+				//simple S
+				[1,1, , , ,1,1        ],
+				[ ,1,1, ,1,1          ],
+				//small t
+				[ ,1, , ,1,1,1        ]
+			][curr_char = rand(7)]; //choose new random piece
+
+			current_dim = curr_char < 2 ? 4 : 3; // and set which is the piece's size: 3 or 4
+
+			for (curr_char = rand(8)+1; rand(4);) //set curr_char to random char for rendering the piece.
+				loop_piece(current_piece, current_dim, current_piece = {}, 1); // randomly rotate the piece a bit, so it's not dropped always in the same state
+
+			//move new piece into the board, if collision happens, then it's game over (hence 4th arg).
+			move_piece(current_root_x = 3,
+				current_root_y = (current_piece[0]|current_piece[1]|current_piece[2])-1,
+				0, 1);
+		}
+		tick_main && setTimeout(tick_main, 400); //tick_main is undefined when game ends, so it's not called again
+	}
+
+	/**
+	 * Function that moves piece and updaes board or game state
+	 * @param new_x     new column
+	 * @param new_y     new_row
+	 * @param rotate_or_piece  if true, then piece will be rotated once.
+	 *                         Stupid name for variable, because it's later
+	 *                         reused for other purpouses.
+	 * @param finish    flag that tell that if the piece collides, then it's game over
+	 */
+	function move_piece(new_x, new_y, rotate_or_piece, finish)
+	{
+		rotate_or_piece ?
+			loop_piece(current_piece, current_dim, rotate_or_piece = {}, 1) :
+			rotate_or_piece = current_piece;
+
+		if (!loop_piece(new_x, new_y, rotate_or_piece)) // Collision ?
+		{
+
+			loop_piece(0, 1); //clear the last position
+			current_root_x = new_x;
+			current_root_y = new_y;
+			current_piece = rotate_or_piece;
+			loop_piece(curr_char, 1); //and fill new position
+		}
+		else if (finish)
+			tick_main = draw_char('END', 4, 9, 0, 3*18, 7*14);
+		else if (current_root_y - new_y) //there was vertical displacement, so it hit bottom or other piece beneath.
+		{
+			loop_piece(curr_char, 2); // draw piece in new position and update board state !
+			current_piece = loop_piece(); // 0 args -> check for complete lines
+		}
+	}
+	var
+	//Top-left corner of the piece currently being played
+		current_root_x, current_root_y,
+	//Array with current piece. Each slot tells whether it has a 'pixel' or not.
+		current_piece,
+	//Piece edge size: 3 or 4
+		current_dim,
+	//Vars used in loop_piece, saves one extra var declaration.
+		x, y,
+		_cells = [],
+	//Curr char holds the char of the current piece being played. Also used as auxiliary were while we need a temp reference to the canvas element
+		curr_char = document.body['children'][0],
+	//2d-context, where suff is painted.
+	//And array with status of the board. Each slot tells whether its filled or
+	//not. Coordinates x,y compute to (x+y*10). Because the board state only
+	//needs numeric indexes, they are not shadowed by host properties
+		ctx = curr_char.getContext('2d');
+		
+	onkeydown = function (e){
+		e = {
+			// up arr
+			38: 2,
+			// left arr
+			37: -1,
+			// right arr
+			39: 1,
+			// down arr
+			40: 0
+		}[current_piece && e.keyCode];
+
+		e < 2  && move_piece(current_root_x + e, current_root_y + (e ? 0 : 1));
+		e == 2 && move_piece(current_root_x, current_root_y, 1);
+	}
+
+	curr_char.width = 176;
+	curr_char.height = 448;
+	curr_char.style.border = '1px solid #000';
+	ctx.font = '16pt monospace';
+
+	tick_main(); // Start game !
+})();
+</script>
+
+<script type="text/javascript">
+//a="var o	c*10+b]=aS=\"#fff\"Rect(b*18,c*22+5,e||17,23)S=\"#000\";a&&i.fillTextb*18,c*22+22)},kg=4gu=4u)	c[a[7]?u+(b-g-1)*4:b-u-1+g*4]=a; c){c&&(<>=1<>=2+())return 1} b)v&&og+h,,b-1h=10h+1,h+(;);h<0f=++fa=10a)o(a+(f-1,a,f},mv),j+1v=[[,,,,,11,1,,,,,1,1,1,1]][f=7|0];p=f<2?4:3;f=(8|0)4|0;)k(v={};=3,j=(v[0]|v[1]|v[2])-1,0m&&setTimeout(m,400)},nc?k(c={}:c=v;kb,c))	m=o(\"END\",4,9,0,54,98j-b){k(f,2);v=k()}}{k(0;h=a;j=b;v=c;k(f},h,j,g,u,f=document.body.children[0],i=f.getContext(\"2d\");onkeydowna={38:2,37:-1,39:1,40:0}[v&&a.keyCode];a<2&&+a,j+(a?0:1));a==2&&,jwidth=176height=448s.border=\"1px solid #000\";i.font=\"16pt monospace\";m()";for(b in c="i[/;f./,1)/n(h/u+j/u+b/0||/g+a/if(/+1;/;--/(a,/v,p,/,1)}/else/for(/tyle/)*10]/)for(/	if(d)/,,,1,1/);else{/[g+u*4]/;i.fill/,1,1],[,/,1],[1,1,/Math.random()*/=function(a,b,c,d,e){".split("/"))a=a.replace(RegExp(c[b][0],"g"),c[b].substr(1));eval(a)
+</script>
+
+
+<body>
+<canvas id="c" width="176" height="448" style="border: 1px solid rgb(0, 0, 0);"></canvas>
+
+</body>
+</html>
