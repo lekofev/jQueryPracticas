@@ -3,7 +3,7 @@
 <html>
 	<head>
 
-		<title>Basic jScrollPane demo</title>
+		<title>Basic arrows jScrollPane demo</title>
 
 		<!-- styles specific to demo site -->
 		<link type="text/css" href="style/demo.css" rel="stylesheet" media="all" />
@@ -37,7 +37,7 @@
 		<script type="text/javascript" id="sourcecode">
 			$(function()
 			{
-				$('.scroll-pane').jScrollPane();
+				$('.scroll-pane').jScrollPane({showArrows: true});
 			});
 		</script>
 	</head>
@@ -56,13 +56,12 @@
 			</ul>
 		</div>
 		<div id="container">
-			<h1>jScrollPane - simple demo page</h1>
+			<h1>jScrollPane - example with arrow buttons</h1>
 			<p>
-				This demonstration shows basic use of the jScrollPane plugin to add scrollbars to a HTML
-				element which has an overflow of "auto". Note that with javascript disabled the browsers
-				default scrollbars will be used to provide scrolling for the element below. With javascript
-				enabled then the browsers default scrollbars will be replaced with jScrollPane scrollbars
-				which can be styled at will.
+				This demonstration builds on the <a href="basic.html">basic scrollpane example</a> by adding navigation
+				"arrows" to the scrollbar. As you can see from the sourcecode below, these are simply added by passing
+				<strong><a href="settings.html#showArrows">showArrows</a>:true</strong> in the settings object when you
+				initialise jScrollPane.
 			</p>
 
 			<h2>Vertical only</h2>
