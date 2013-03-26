@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<style type="text/css">
+body{
+	background-color:black;
+	
+	}
+canvas{
+	border: 1px solid red;
+	margin: auto;
+	display: block;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script type="text/javascript">
+//window.addEventListener('load',init,false);
+$(function(){
+	canvas=document.getElementById('canvas');
+	ctx=canvas.getContext('2d');
+	//haciendo el canvas del tamaño del navegador
+	//var w=window.innerWidth, h=window.innerHeight;
+	h=150;
+	//canvas.height=h;
+	canvas.height=350;
+	canvas.width=1100;
+	
+	
+	var esferas=[]
+	for(var j=0;j<5;j++)
+	{
+		esferas.push(new esfera())
+	}
+	
+	function dibujar(){
+		
+		ctx.globalCompositeOperation="source-over";
+		ctx.fillStyle="black";
+		ctx.fillRect(0, 0, 1100, 350);
+		ctx.globalCompositeOperation = "lighter";
+		
+		for(var m=0;m<esferas.length;m++)
+		{
+			var e=esferas[m]
+			//console.log(Math.PI*0, Math.PI*0.5, Math.PI*1, Math.PI*1.5, Math.PI*2, e.d )
+			
+			ctx.beginPath();
+			//e.opacidad=((e.y/canvas.height))
+			/*
+			var g = ctx.createRadialGradient(e.x,e.y, 0, e.x,e.y, e.r);
+			
+			g.addColorStop(0, 'rgba(91,187,125,1)');
+			g.addColorStop(1, 'rgba(91,187,125,0)');
+			*/
+			//ctx.fillStyle = 'rgba(73,170,125,'+p.opacidad+')';
+			ctx.fillStyle = 'red';
+			
+			ctx.arc(e.x, e.y, e.r, 0, Math.PI*2, false); 
+			ctx.closePath();
+			ctx.fill();
+
+		}
+	}
+	
+	function rebote(a)
+	{
+		if(a<=0)
+		{
+			return a=a*-1;
+		}
+	
+	}
+	
+	function esfera(){
+		
+		this.x=parseInt(Math.random()*300);
+		this.y=parseInt(Math.random()*300);
+		this.r=parseInt(Math.random()*50);
+		this.d=Math.random()*7
+
+		
+	}
+	dibujar();
+	//canvas
+	//setInterval(dibujar,30)	
+	/*
+	var $i
+	$('#play').click(function(){
+		$i=setInterval(dibujar,45)	
+	})
+	$('#stop').click(function(){
+		clearInterval($i)
+	})
+	*/
+	
+});
+</script>
+
+
+</head>
+
+<body ><!--
+<input type="button" value="play" id="play">
+<input type="button" value="stop" id="stop">
+	 Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>

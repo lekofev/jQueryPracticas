@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+body{
+	background-color:#000;
+	
+	}
+canvas{
+	border: 1px solid red;
+	margin: auto;
+	display: block;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script src="TimelineMax.js"></script>
+<script type="text/javascript">
+//window.addEventListener('load',init,false);
+$(function(){
+	canvas=document.getElementById('canvas');
+	ctx=canvas.getContext('2d');
+	//haciendo el canvas del tamaño del navegador
+	//var w=window.innerWidth, h=window.innerHeight;
+	canvas.height=350;
+	canvas.width=1100;
+	
+	var particulas=[]
+	for(var j=1;j<=500;j++)
+	{
+		particulas.push(new crearParticula())
+			
+	}
+	
+	function dibujar(){
+		
+		//
+		//ctx.clearRect(0,0,1100,350)
+		//var r=parseInt(Math.random()*1000)
+		//console.log(r)
+		ctx.globalCompositeOperation="source-over";
+		ctx.fillStyle="black";
+		ctx.fillRect(0, 0, 1100, 350);
+		ctx.globalCompositeOperation = "lighter";
+		
+		for(var m=0;m<particulas.length;m++){
+			var p=particulas[m]
+			//console.log(p)
+			ctx.beginPath();
+			ctx.fillStyle = 'white';
+			ctx.arc(p.x, p.y, 2, 0, Math.PI*2, true); 
+			ctx.closePath();
+			ctx.fill();
+			p.y-=p.z.y
+			if(p.y<10)
+			{
+				particulas[m]=new crearParticula()
+			}
+		}
+	}
+	function crearParticula(){
+		this.x=parseInt(Math.random()*1000);
+		this.y=345;
+		this.z = {x: 2.5+Math.random()*5, y: 15+Math.random()*10};
+		
+	}
+	setInterval(dibujar,33)
+	//canvas
+});
+</script>
+</head>
+
+<body>
+	<!-- Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>

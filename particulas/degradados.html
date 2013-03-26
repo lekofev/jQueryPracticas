@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<style type="text/css">
+body{
+	background-color:black;
+	
+	}
+canvas{
+	border: 1px solid red;
+	margin: auto;
+	display: block;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script src="TimelineMax.js"></script>
+<script type="text/javascript">
+$(function(){
+  // get the canvas element using the DOM
+  var canvas = document.getElementById('canvas');
+  canvas.height=500;
+  canvas.width=1000;
+
+  // Make sure we don't execute when canvas isn't supported
+
+    // use getContext to use the canvas for drawing
+    var ctx = canvas.getContext('2d');
+
+
+	
+	var cc=[]
+	for(var i=0; i<=3; i++)
+	{
+		cc.push(new crear());
+	}
+	
+	//console.log(cc)
+	
+	function dibujar(){
+	
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = "lighter";
+	
+		for(var i=0; i<3; i++)
+		{
+			var c=cc[i]
+
+			console.log(c.x, parseInt(c.x/2))
+var g = ctx.createRadialGradient(parseInt(c.x), parseInt(c.y), 0, parseInt(c.x),parseInt(c.y), parseInt(c.r));
+			ctx.beginPath();
+			
+			g.addColorStop(0, '#fff600');
+			g.addColorStop(1, 'rgba(255,246,0,0)');
+			ctx.fillStyle=g;	 
+			ctx.arc(c.x, c.y, c.r, 0, Math.PI*2, true); 
+			//ctx.closePath(); 
+			ctx.fill();
+			
+		}
+	}
+	
+	function crear(){
+		
+		this.x=parseInt(Math.random()*500);
+		this.y=parseInt(Math.random()*500);
+		this.r=parseInt(Math.random()*250);
+	}
+	dibujar()
+
+});
+</script>
+</head>
+
+<body>
+<input type="button" value="play" id="play">
+<input type="button" value="stop" id="stop">
+	<!-- Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>

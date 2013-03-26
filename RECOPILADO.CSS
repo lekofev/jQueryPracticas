@@ -1,0 +1,135 @@
+The Code
+This would go in your <head> with all the other regular CSS <link>ed CSS files. The opening and closing tags should be familiar, that's just regular ol' HTML comments. Then between the brackets, "IF" and "IE" should be fairly obvious. The syntax to note is "!" stand for "not", so !IE means "not IE". gt means "greater than", gte means "greater than or equal", lt means "less than", lte means "less than or equal."
+
+Target ALL VERSIONS of IE
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="all-ie-only.css" />
+<![endif]-->
+Target everything EXCEPT IE
+<!--[if !IE]><!-->
+	<link rel="stylesheet" type="text/css" href="not-ie.css" />
+ <!--<![endif]-->
+Target IE 7 ONLY
+<!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" href="ie7.css">
+<![endif]-->
+Target IE 6 ONLY
+<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="ie6.css" />
+<![endif]-->
+Target IE 5 ONLY
+<!--[if IE 5]>
+	<link rel="stylesheet" type="text/css" href="ie5.css" />
+<![endif]-->
+Target IE 5.5 ONLY
+<!--[if IE 5.5000]>
+<link rel="stylesheet" type="text/css" href="ie55.css" />
+<![endif]-->
+Target IE 6 and LOWER
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="ie6-and-down.css" />
+<![endif]-->
+<!--[if lte IE 6]>
+	<link rel="stylesheet" type="text/css" href="ie6-and-down.css" />
+<![endif]-->
+Target IE 7 and LOWER
+<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
+<![endif]-->
+<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
+<![endif]-->
+Target IE 8 and LOWER
+<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="ie8-and-down.css" />
+<![endif]-->
+<!--[if lte IE 8]>
+	<link rel="stylesheet" type="text/css" href="ie8-and-down.css" />
+<![endif]-->
+Target IE 6 and HIGHER
+<!--[if gt IE 5.5]>
+	<link rel="stylesheet" type="text/css" href="ie6-and-up.css" />
+<![endif]-->
+<!--[if gte IE 6]>
+	<link rel="stylesheet" type="text/css" href="ie6-and-up.css" />
+<![endif]-->
+Target IE 7 and HIGHER
+<!--[if gt IE 6]>
+	<link rel="stylesheet" type="text/css" href="ie7-and-up.css" />
+<![endif]-->
+<!--[if gte IE 7]>
+	<link rel="stylesheet" type="text/css" href="ie7-and-up.css" />
+<![endif]-->
+Target IE 8 and HIGHER
+<!--[if gt IE 7]>
+	<link rel="stylesheet" type="text/css" href="ie8-and-up.css" />
+<![endif]-->
+<!--[if gte IE 8]>
+	<link rel="stylesheet" type="text/css" href="ie8-and-up.css" />
+<![endif]-->
+Universal IE 6 CSS
+Dealing with IE 6 and below is always an extra-special challenge. These days people are dropping support for it right and left, including major businesses, major web apps, and even governments. There is a better solution than just letting the site go to hell, and that is to server IE 6 and below a special stripped-down stylesheet, and then serve IE 7 and above (and all other browsers) the regular CSS. This is been coined the universal IE 6 CSS.
+
+<!--[if !IE 6]><!-->
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="REGULAR-STYLESHEET.css" />
+<!--<![endif]-->
+
+<!--[if gte IE 7]>
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="REGULAR-STYLESHEET.css" />
+<![endif]-->
+
+<!--[if lte IE 6]>
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="http://universal-ie6-css.googlecode.com/files/ie6.0.3.css" />
+<![endif]-->
+Hacks
+If you must...
+
+IE-6 ONLY
+* html #div { 
+    height: 300px;
+}
+IE-7 ONLY
+*+html #div { 
+    height: 300px;
+}
+IE-8 ONLY
+#div {
+  height: 300px\0/;
+}
+IE-7 & IE-8
+#div {
+  height: 300px\9;
+}
+NON IE-7 ONLY:
+#div {
+   _height: 300px;
+}
+Hide from IE 6 and LOWER:
+#div {
+   height/**/: 300px;
+}
+html > body #div {
+      height: 300px;
+}
+
+
+
+/* opacity */
+
+
+.transparent_class {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.5;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+
+  /* Good browsers */
+  opacity: 0.5;
+}
