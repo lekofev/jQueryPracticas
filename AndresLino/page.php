@@ -14,6 +14,7 @@
 <script type="text/javascript" src="js/jquery.opacityrollover.js"></script>
 <script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.9.2.acordion.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
 <script type="text/javascript" >
 $(document).ready(function(e) {
@@ -58,8 +59,12 @@ $(document).ready(function(e) {
 		$('#galeria-items .item .txt-hover-in').mouseout(function(){
 			console.log('out')
 			$('.txt-hover-in').hide();
-			})		
+			})
 		
+		$('#menu-acordeon').accordion({
+            collapsible: true
+        });
+			
 });
 
 </script>
@@ -76,11 +81,23 @@ $(document).ready(function(e) {
         <section id="page">
         	<aside id="sidebar">
             	<nav id="menu">
-                	<ul>
+                <h3><a class="facebook icons-img" href="">ANDRES LINO</a></h3>
+                	<div id="menu-acordeon">
+                    	<h3><a class="facebook icons-img" href="">GALLERÍA</a></h3>
+                        <ul>
+                            <li><a class="" href="">2012</a></li>
+                            <li><a class="" href="">2011</a></li>
+                            <li><a class="" href="">2010</a></li>
+                   		</ul>	
+                        
+                    </div>
+                 <h3><a class="youtube icons-img" href="">ESCRÍBEME</a></h3>
+                	<!-- <ul>
                     	<li><a class="facebook icons-img" href="">ANDRES LINO</a></li>
                     	<li><a class="twitter icons-img" href="">GALLERÍA</a></li>
                     	<li><a class="youtube icons-img" href="">ESCRÍBEME</a></li>
                     </ul>	
+                    -->
                 </nav>
             
             	<section id="social-icons">
