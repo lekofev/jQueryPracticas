@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+body{
+	background-color:#000;
+	
+	}
+canvas{
+	//border: 1px solid red;
+	margin: auto;
+	display: block;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script src="TimelineMax.js"></script>
+<script type="text/javascript">
+//window.addEventListener('load',init,false);
+$(function(){
+	canvas=document.getElementById('canvas');
+	ctx=canvas.getContext('2d');
+	//haciendo el canvas del tamaño del navegador
+	//var w=window.innerWidth, h=window.innerHeight;
+	h=150;
+	//canvas.height=h;
+	canvas.height=350;
+	canvas.width=1100;
+	
+	
+	var particulas=[]
+	for(var j=1;j<=200;j++)
+	{
+		particulas.push(new crearParticula())
+			
+	}
+	
+	function dibujar(){
+		h+=1
+		//canvas.height=h;
+		
+		//ctx.clearRect(0,0,1100,350)
+		//var r=parseInt(Math.random()*1000)
+		//console.log(r)
+		ctx.globalCompositeOperation="source-over";
+		ctx.fillStyle="black";
+		ctx.fillRect(0, 0, 1100, 350);
+		ctx.globalCompositeOperation = "lighter";
+		
+		for(var m=0;m<particulas.length;m++)
+		{
+			var p=particulas[m]
+			//console.log(p)
+			ctx.beginPath();
+			//ctx.fillStyle = 'white';
+			//ctx.Style = 'rgba('+l.r+','+l.g+','+l.b+','+l.o+')';
+			
+			//p.opacidad=((p.y/345))
+			p.opacidad=((p.y/canvas.height))
+			
+			var g = ctx.createRadialGradient(p.x,p.y, 0, p.x,p.y, p.r);
+			
+			g.addColorStop(0, 'rgba(91,187,125,'+p.opacidad+')');
+			g.addColorStop(1, 'rgba(91,187,125,0)');
+			
+			//ctx.fillStyle = 'rgba(73,170,125,'+p.opacidad+')';
+			ctx.fillStyle = g;
+			
+			ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true); 
+			ctx.closePath();
+			ctx.fill();
+			//console.log(p.x, p.y, p.pendiente, p.velocidad, p.vida, p.opacidad)
+			
+			p.y-=p.velocidad;
+			
+			if((m%2)==0)
+			{
+				p.x++
+			}else
+			{
+				p.x--
+			}
+			
+			p.vida--
+			
+			if(p.y<50 || p.opacidad==0)
+			{
+				//p.y=345
+				//p.opacidad=1
+				//particulas.push(new crearParticula())
+				particulas[m] = new crearParticula();
+			}
+
+		}
+	}
+	
+	function crearParticula(){
+		var maximo=900;
+		var minimo=100;
+		this.bajada=0;
+		xx=parseInt(Math.random()*maximo)
+		if(xx<minimo)
+		{
+			this.x=xx+parseInt(Math.random()*(maximo-minimo));
+		}else
+		{
+			this.x=xx;
+		}
+		
+		
+		
+		v=parseInt(Math.random()*15);
+		
+		if(v<5 )
+		{
+			this.velocidad=10
+		}else{
+			this.velocidad=v
+		}
+		this.vida=parseInt(Math.random()*250);
+		rr=parseInt(Math.random()*7);
+		
+			
+		
+		if(rr==0)
+		{
+			this.r=3
+			
+		}else
+		{
+			this.r=rr;
+		}
+		
+		this.y=canvas.height-rr;
+		
+	}
+	
+	//canvas
+	var $i
+	$('#play').click(function(){
+		$i=setInterval(dibujar,45)	
+	})
+	$('#stop').click(function(){
+		clearInterval($i)
+	})
+	
+});
+</script>
+</head>
+
+<body>
+<input type="button" value="play" id="play">
+<input type="button" value="stop" id="stop">
+	<!-- Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>

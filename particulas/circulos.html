@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<style type="text/css">
+body{
+	background-color:black;
+	margin:0;
+	padding:0;
+	
+	}
+canvas{
+	outline: 1px solid red;
+	margin: auto;
+	display: block;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script src="TimelineMax.js"></script>
+<script type="text/javascript">
+//window.addEventListener('load',init,false);
+$(function(){
+	canvas=document.getElementById('canvas');
+	ctx=canvas.getContext('2d');
+	//haciendo el canvas del tamaño del navegador
+	//var w=window.innerWidth, h=window.innerHeight;
+
+	canvas.height=window.innerHeight;
+	canvas.width=window.innerWidth;
+	
+
+	
+	var circulos=[]
+	/*
+	for(var j=1;j<=10;j++)
+	{
+		circulos.push(new crear_circulo())
+			
+	}
+	*/
+	//dibujar();
+	function dibujar(e){
+		
+		for(var j=1;j<=100;j++)
+		{	
+			if(j%2==0){
+				circulos.push(new crear_circulo())	
+			}
+		}
+		//console.log(circulos)
+		/*
+		console.log(circulos)
+		ctx.globalCompositeOperation="source-over";
+		//ctx.fillStyle="green";
+		//ctx.fillRect(0, 0, 1100, 350);
+		ctx.globalCompositeOperation = "lighter";
+		*/
+		
+		for(var m=0;m<100;m++){
+			//console.log(e.clientX,e.clientY)
+			c=circulos[m]
+		ctx.beginPath();
+		//var lingrad = ctx.createRadialGradient(c.x,c.y,c.r,c.x+30,c.y+30,100);
+		var lingrad = ctx.createRadialGradient(e.clientX,e.clientY,m,e.clientX,e.clientY,m+100);
+		lingrad.addColorStop(0, 'red');
+		lingrad.addColorStop(1, 'blue');
+		
+		//ctx.fillStyle = lingrad;
+		/*
+		ctx.strokeStyle = 'red';
+		ctx.arc(c.x, c.y, c.r, 0, Math.PI*2, true); 
+		ctx.lineWidth=2;
+		//ctx.fillRect(100, 0, 400, 200);
+		ctx.closePath();
+		ctx.stroke();
+		*/
+			if(m%2==0){
+				ctx.beginPath();
+				//ctx.fillStyle = 'red';
+				ctx.arc(c.x,c.y, m, 0, Math.PI*2, true); 
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = lingrad;
+				ctx.stroke(); 
+				ctx.closePath();
+				//ctx.fill();
+			}
+		
+		
+		}
+	}
+	//dibujar();
+	canvas.addEventListener('click', dibujar)
+	
+	
+	function crear_circulo(e){
+		this.x=(e)?e.clientX:-1;
+		this.y=(e)?e.clientY:-1;
+		this.r= Math.round(Math.random()*255);
+		this.b= Math.round(Math.random()*255);
+		this.g= Math.round(Math.random()*255);
+		this.a= 1;
+		this.radio=1
+		//console.log(this.x, this.y)
+	}
+	
+	
+	function aa(e){
+		//this.x=(e)?console.log(e):-1;
+		//this.y=(e)?e.clientY:-1;
+		//console.log(e, this.x, this.y)
+		console.log(e);
+	}
+	aa(e);
+	//setInterval(dibujar,1000)
+
+/*
+	var gradient = ctx.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius);
+	gradient.addColorStop(0, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
+	gradient.addColorStop(0.5, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
+	gradient.addColorStop(1, "rgba("+p.r+", "+p.g+", "+p.b+", 0)");
+	ctx.fillStyle = gradient;
+	ctx.arc(p.location.x, p.location.y, p.radius, Math.PI*2, false);
+	ctx.fill();
+	
+	*/
+});
+</script>
+</head>
+
+<body><!-- 
+<input type="button" value="play" id="play">
+<input type="button" value="stop" id="stop">
+	Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>

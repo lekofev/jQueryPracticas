@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+body{
+	background-color:#000;
+	
+	}
+#marco{
+	height:350px;
+	width:1100px;
+	border: 1px solid red;
+	margin: auto;
+	display: block;
+	position:relative;
+}
+.pr{
+	border-radius:3px;
+	background-color:#fff;
+	height:5px;
+	width:5px;
+	position:absolute;
+	bottom:0;
+	color:#FC0;
+	}
+</style>
+
+
+<!--CDN links for the latest TweenLite, CSSPlugin, and EasePack-->
+
+<script src="jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="CSSPlugin.min.js"></script>
+<script type="text/javascript" src="EasePack.min.js"></script>
+<script type="text/javascript" src="TweenMax.js"></script>
+<script type="text/javascript" src="TimelineMax.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+
+	
+	function animar(){
+		$('.pr').each(function(index, element) {
+			$(this).animate({
+				bottom:'350px'
+			},1500)
+		});
+	}
+	
+	function crear(){
+	    //console.log(Math.random()*100)
+		n=parseInt(Math.random()*1000);
+		//console.log(n)
+		$('#marco').append('<div class="pr" style="left:'+n+'px" ></div>');
+		//animar()
+		tween()
+	}
+	function tween(){
+		var obj=$('.pr:last');
+		TweenMax.to(obj, 1.5, {css:{bottom:"340px", backgroundColor:"#F00"}});
+		borrar();
+
+	}
+	
+	function borrar(){
+		$('.pr').each(function(index, element) {
+			var j=parseInt($(this).css('bottom'))
+			//console.log(j)
+			if(j>300){
+				$(this).fadeOut(70)
+				if(j>335){
+					$(this).remove();
+				}
+			}
+        });
+	}
+	
+	setInterval(crear,10)	
+	//TweenMAx
+	
+var frames = 0;
+
+function render_frame(){
+    /* With this function I mean the place where you render a frame */
+    frames++;    
+}
+
+setInterval(function() {
+
+    $('#fps').html(frames+' fps');
+    frames = 0;
+
+}, 1000);
+	
+});
+
+
+</script>
+</head>
+
+<body>
+	<!-- Añadir código aquí -->
+<div id="marco">
+	<div class="pr">
+    </div>
+</div>
+
+</body>
+</html>

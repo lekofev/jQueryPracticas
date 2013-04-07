@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</head>
+<script type="text/javascript">
+
+//document.body.clientWidth; // webkit fix: http://qfox.nl/weblog/218
+// start of submission //
+var m=Math,
+v=A=w=300,
+T,
+e,
+o,
+u=[],
+n=10,
+l=[0,725,0,645,0,0,-67,0,52,0,0,26,0,81,0,-19,-85,45,n,w,19,-85,45,n,w,0,-72,53,n,110,0,-n,69,n,w,0,15,76,n,w,0,39,76,n,w];
+var d=document;
+k=d.body.children[0];
+k.height=w;T=k.getContext('2d');
+e=T.getImageData(0,0,w,w);
+o=e.data;setInterval("%p=0;p<w*w;)o[p*4+3]=u[p++]=0;a=m.sin(v++/9)/6+6;b=-A/w;h=m.sin(a);H=m.cos(a);S=m.sin(b);C=m.cos(b);%n=0;n<45;){x@y@z@R@D@r=y*h+z*H;X=(x*C-r*S+w/2)>>.5;Y=(y*H-z*h+w/2)>>.5;Z=x*S+r*C+w;j=(X+R>w)?w:X+R;%i=Y-R;i<Y+R;i++)%q=(R<X)?X-R:0;q<j&&i<w;q++){b=i-Y;b=R*R-b*b;a=q-X;a*=a;if(a<b)if((c=m.sqrt(b-a)+Z)>u[p=i*w+q]){if(D)o[p*4+3]=(Z-c)*99/R+D;u[p]=c}}}r=20;%y=r;y<w-r;y++)%x=r;x<w-r;)if(u[p=x+++w*y]){%Y=y-11,B=o[F=p*4+3];Y<5+y;Y+=6)%X=x-12;X<4+x;X+=6)if((h=u[Y*w+X]-u[p])>3)B+=(h<r)?h:r;o[F]=(B>255)?255:B;}T.putImageData(e,0,0)".replace(/@/g,'=l[n++];').replace(/%/g,'for('),9);d.onmousemove=function(e){A=e.clientX-w}
+// end of submission // 
+</script>
+<body>
+<canvas id="c" height="300"></canvas>
+</body>
+</html>

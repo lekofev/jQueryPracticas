@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+.bg{
+	
+	}
+
+#canvas{
+	height:500px;
+	width:500px;
+	margin:auto;
+	border:20px solid #FFC;
+	position:relative;
+	
+	}	
+	
+#cabeza{
+
+	height: 190px;
+	width: 280px;
+	position: absolute;
+	top: 100px;
+	border-radius: 150px 130px 149px 130px / 140px 100px 90px 50px;
+	left: 100px;
+	box-shadow:inset rgba(6, 6, 4, 0.05) -39px -41px 86px;
+	background-image: url(noise.png);	
+
+	background:-webkit-radial-gradient(70px 30px, ellipse cover, rgba(226, 230, 207, 1) 0%, rgba(190, 196, 160, 1) 0%, rgba(42, 46, 21, 1) 67%, rgba(10, 11, 5, 1) 80%);
+
+	
+	
+	/*
+	background-image: gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(125,185,232,1)), color-stop(100%,rgba(30,87,153,1)));
+
+_background: radial-gradient(60% 45%, circle closest-side, red, blue 60%, green)*/
+	}
+#cabeza:hover
+{
+-webkit-transition: all 1s cubic-bezier(0, .72, .87, 0); 
+}
+.ojos{
+	position:relative;
+	
+	}
+
+#ojo1{
+	height: 45px;
+	width: 45px;
+	border-radius: 23px;
+	box-shadow:inset rgba(23, 12, 0, 1) 8px 11px 31px;
+	background:-webkit-radial-gradient(center center, ellipse cover, 
+		rgba(0, 5, 0, 1) 18%, 
+		rgba(54, 19, 17, 1) 20%, 
+		rgba(139, 78, 11, 1) 50%, 
+		rgba(23, 12, 0, 1) 111% 
+	);
+	
+
+	}
+
+.ojo-sombra1{
+	height: 45px;
+	width: 45px;
+	position: absolute;
+	top: 70px;
+	left: 40px;
+	border-radius: 23px;
+	box-shadow:rgba(23, 12, 0, 1) 1px 0px 7px;
+	background-color:rgba(23, 12, 0, 1);
+	-webkit-filter: blur(1px);
+	}
+
+.ojo-sombra2{
+	height: 45px;
+	width: 45px;
+	border-radius: 23px;
+	box-shadow:rgba(23, 12, 0, 0.1) 1px 6px 7px;
+	background-color:rgba(23, 12, 0, 1);
+	}
+	
+.sombra-clara-ojo{
+	height: 52px;
+	width: 52px;
+	position: absolute;
+	top: 66px;
+	left: 36px;
+	border-radius: 29px 33px 24px 35px / 24px 37px 24px 34px;
+	background:-webkit-radial-gradient(center center, ellipse cover, 
+		rgba(70, 73, 42, 1) 24%, 
+		rgba(124, 128, 93, 1) 13%, 
+		rgba(179, 186, 153, 1) 65%, 
+		rgba(204, 207, 176, 1) 20%, 
+		rgba(164, 170, 124, 1) 110%
+		
+	);
+	opacity:1;
+	-webkit-filter: blur(2px);
+	}
+
+#mancha1{
+	height: 9px;
+	width: 8px;
+	left: 13px;
+	top: 31px;
+	border-radius:8px 1px 3px 7px/ 8px 1px 3px 2px;
+	opacity:0.2;
+	position: absolute;
+	background:-webkit-radial-gradient(center center, ellipse cover, rgba(235, 163, 70, 1) 17%, rgba(175, 113, 33, 1) 103%, rgba(110, 53, 26, 1) 70% );
+	}
+#mancha2{
+height: 10px;
+width: 12px;
+left: 30px;
+top: 22px;
+border-radius: 3px 7px 8px 1px / 3px 2px 8px 1px;
+opacity: 0.2;
+position: absolute;
+background: -webkit-radial-gradient(center center, ellipse cover, rgba(235, 163, 70, 1) 17%, rgba(175, 113, 33, 1) 103%, rgba(110, 53, 26, 1) 70% );
+	}
+	
+#mancha3{
+height: 10px;
+width: 5px;
+left: 24px;
+top: 6px;
+border-radius: 3px 7px 8px 1px / 3px 2px 8px 1px;
+opacity: 0.2;
+position: absolute;
+background: -webkit-radial-gradient(center center, ellipse cover, rgba(235, 163, 70, 1) 17%, rgba(175, 113, 33, 1) 103%, rgba(110, 53, 26, 1) 70% );
+	}
+	
+#mancha4{
+height: 4px;
+width: 11px;
+left: 4px;
+top: 22px;
+border-radius: 3px 7px 8px 1px / 3px 2px 8px 1px;
+opacity: 0.1;
+position: absolute;
+background: -webkit-radial-gradient(center center, ellipse cover, rgba(235, 163, 70, 1) 17%, rgba(175, 113, 33, 1) 103%, rgba(110, 53, 26, 1) 70% );
+	}
+	
+#brillo{
+height: 14px;
+width: 18px;
+left: 9px;
+top: 9px;
+border-radius: 25px 11px 19px 1px / 19px 0px 21px 1px;
+position: absolute;
+background-color: white;
+opacity:0.9;
+	-webkit-filter: blur(1px);
+	}
+
+/*
+, , )
+
+*/
+
+</style>
+
+</head>
+
+<body>
+
+<div id="canvas">
+    <div id="cabeza">
+
+      	<div id="" class="sombra-clara-ojo">
+        </div>
+        <div class="ojo-sombra1">
+            <div class="ojo-sombra2">
+                <div id="ojo1" class="ojos">
+                        <div id="mancha1" class="machitas-ojo"></div>
+                        <div id="mancha2" class="machitas-ojo"></div>
+                        <div id="mancha3" class="machitas-ojo"> </div>
+                        <div id="mancha4" class="machitas-ojo"></div>
+                        <div id="brillo"></div>
+                </div>        
+            </div>       
+        </div> 	
+
+
+
+
+       
+    </div>
+    
+</div>
+</body>
+</html>

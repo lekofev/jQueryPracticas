@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+
+    <script src='src/uncompressed/plugins/CSSPlugin.js_'></script>
+    <script src='src/uncompressed/easing/EasePack.js_'></script>
+    <script src='src/uncompressed/TweenMax.js'></script>
+    <script src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
+    <script type="text/javascript">
+	$(document).ready(function(e) {
+		var caja=$('.caja');
+		//TweenMax.to(caja, 1.5, {width:300});
+		var tl = new TimelineLite();
+		tl.set(caja,{
+			css:{
+				width:300
+				}
+			
+			},0,1);
+		
+		tl.set(caja,{
+			css:{
+				height:300
+				}
+			
+			},0,2);
+			
+		tl.to(caja, 3,{
+			css:{
+				backgroundColor:"#FF0000"
+				},
+			ease:Power2.easeOut
+			
+			});
+		$('body').click(function(){
+			tl.reverse();
+			})
+
+
+		
+	});
+	</script>
+<style>
+.caja{
+	width:200px;
+	height:200px;
+	background-color:#FC0;
+	
+	}
+</style>
+
+</head>
+
+<body>
+<div class="caja">la caja</div>
+
+</body>
+</html>

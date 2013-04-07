@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<style type="text/css">
+body{
+	background-color:#000;
+	margin:0;
+	padding:0;
+	
+	}
+canvas{
+	margin: auto;
+	display: block;
+	background-color:#000;
+}
+</style>
+<script src="jquery-1.8.1.min.js"></script>
+<script src="TimelineMax.js"></script>
+<script type="text/javascript">
+$(function(){
+	canvas=document.getElementById('canvas');
+	ctx=canvas.getContext('2d');
+	
+	var H=window.innerHeight, W=window.innerWidth;
+	canvas.height=H;
+	canvas.width=W;
+	
+	window.addEventListener('mousemove',track_mouse)
+	var lineas=[]
+	var mouse={};
+	
+	function dibujar(){
+		ctx.globalCompositeOperation="source-over";
+		//ctx.fillStyle="black";
+		//ctx.fillRect(0, 0, W, H);
+		ctx.globalCompositeOperation = "lighter";
+		
+		for(var m=0;m<lineas.length;m++){
+			var l=lineas[m]
+			//console.log(lineas)
+			//console.log(l.Ax, l.Ay, l.Bx, l.By )
+			ctx.beginPath();
+			ctx.lineWidth = 2;
+			//console.log(lineas[m].Ax,lineas[m].Ay, mouse.x)
+			//ctx.arc(lineas[m].Ax, lineas[m].Ay*-1, 1, 0, Math.PI*2, true);
+			//ctx.arc(lineas[m].Bx, lineas[m].By, 1, 0, Math.PI*2, true);
+			ctx.moveTo(lineas[m].Ax, lineas[m].Ay*-1)
+			//ctx.lineTo(lineas[m].Bx, lineas[m].By*-1)
+			ctx.lineTo(lineas[m].Bx, lineas[m].By*-1)
+			
+			//ctx.strokeStyle = 'rgba(100,100,100,0.4)';
+			ctx.strokeStyle = 'rgba('+l.r+','+l.g+','+l.b+','+l.o+')';
+			console.log(''+l.r+','+l.g+','+l.b+','+l.o+'')
+			ctx.closePath();
+			ctx.stroke();
+			if(lineas[m].Ax!=mouse.x)
+			{
+				//console.log('dif')
+				lineas[m]=new crearLinea()
+			}
+			
+		}
+	}
+
+	for(var i=1;i<=2;i++)
+	{
+		lineas.push(new crearLinea())
+	}
+
+	function track_mouse(e){
+		mouse.x=e.clientX?e.clientX:W/2;
+		mouse.y=e.clientY?(e.clientY)*-1:H/2;
+		dibujar();
+		//var m={x:e.clientX, y:client.Y};		
+		//console.log(e.clientX, e.clientY)
+	}
+	//console.log(mouse.x+'ddd')
+
+	function crearLinea(){
+			this.Ax=mouse.x-parseInt(Math.random()*60*-1);
+			this.Ay=mouse.y-parseInt(Math.random()*60);
+			this.Bx=mouse.x+parseInt(Math.random()*1000);
+			this.By=mouse.y+parseInt(Math.random()*1000);
+			this.r=Math.round(Math.random()*256)
+			this.g=Math.round(Math.random()*256)
+			this.b=Math.round(Math.random()*256)
+			this.o=parseInt(Math.random()*100)/100
+			//this.op=
+			//this.Bx=parseInt(Math.random()*1000);
+			//this.By=parseInt(Math.random()*1000);
+	}
+	
+	setInterval(dibujar,500)
+});
+</script>
+</head>
+
+<body>
+	<!-- Añadir código aquí -->
+<canvas id="canvas">
+
+</canvas>
+
+
+</body>
+</html>
