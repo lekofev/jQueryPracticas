@@ -133,3 +133,151 @@ html > body #div {
   /* Good browsers */
   opacity: 0.5;
 }
+
+
+
+
+/* ---------- Globales -------------- */
+body,html{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+	}
+	
+@font-face {
+	font-family: 'Conv_SamsungIF_Rg';
+	src: url('fonts/SamsungIF_Rg.eot');
+	src: local('☺'), url('fonts/SamsungIF_Rg.woff') format('woff'), url('fonts/SamsungIF_Rg.ttf') format('truetype'), url('fonts/SamsungIF_Rg.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+	
+.arial{
+	font-family:Arial, Helvetica, sans-serif;
+	
+	}
+.bg-repeat-x{
+	background-repeat:repeat-x
+	
+	}
+#legales{
+    color: #767676;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 10px;
+    height: 70px;
+    margin: auto;
+    padding: 5px 0;
+    text-align: justify;
+	}
+
+.msj_error {
+    color: #00a9e0;
+    display: block;
+    font-family: arial;
+    font-size: 17px;
+    font-weight: bold;
+    margin: auto auto 4px;
+	height: 18px;
+}
+.msj_campos_obligatorios{
+	font-size: 12px;
+	color: #ffffff;
+}
+.error_msj_color{
+	  color: #B20808 !important;
+	font-weight:bold;
+	}
+	
+.msj_error_size{
+	height:20px;
+	margin-top:30px;
+	
+	}
+	
+.display-inline{
+	display:inline;
+	}
+.display-block{
+	display:block;
+	}
+.float-left{
+	float: left;
+}
+.float-right{
+	float: right;
+}
+input.error{
+	background-color: #f7f91c;
+	}
+select.error{
+	background-color: #f7f91c;
+	}
+textarea.error{
+	background-color: #f7f91c;
+	}	
+label.error{
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    margin-left: 11px;
+    padding-top: 8px;
+    width: 240px;
+    float: left;
+    display: block;
+
+	}
+
+
+.btns {
+  background-image: url(../images/btns.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bg-norepeat {
+  background-repeat: no-repeat;
+}
+.bg-repeat-x {
+  background-repeat: repeat-x;
+}
+.bg-repeat-y {
+  background-repeat: repeat-y;
+}
+.bg-repeat {
+  background-repeat: repeat;
+}
+
+.txt-bold{
+	font-weight:bold;
+	}
+	
+.txt-center{
+	text-align:center;
+	}
+	
+.estirado{
+	height:100%;
+	width:100%;
+	
+	}
+
+.centrado{
+	margin:auto;
+	
+	}
+.relativo{
+	position:relative;
+	}
+.absoluto{
+	position:absolute;
+	}
+
+.ancho-app{
+	width:760px;
+	}
+
+
+/* ----------  End Globales -------------- */
