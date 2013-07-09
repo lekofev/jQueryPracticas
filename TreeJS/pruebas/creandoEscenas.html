@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	<style>
+		canvas {
+			width: 90%;
+			height: 90%;
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+	<script src="js/Three.js"></script>
+	<script type="text/javascript">
+	var scene= new THREE.Scene();
+	var camera=  new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000)
+	var rendered= new THREE.WebGLRenderer();
+	rendered.setSize(window.innerWidth, window.innerHeight);
+	document.body.appendChild(rendered.domElement);
+
+	</script>
+</body>
+</html>
