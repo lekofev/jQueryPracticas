@@ -22,49 +22,26 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css?v=1">
-	<style>
-		canvas {
-			width: 90%;
-			height: 90%;
-			border:1px solid red;
-		}
-	</style>
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script src="js/vendor/modernizr-2.6.1.min.js"></script>
 </head>
 <body>
+	<!-- Añadir código aquí -->
+	
+	
 	
 	<script src="js/vendor/jquery-1.8.1.min.js"></script>
-	<script src="js/Three.js"></script>
-	<script type="text/javascript">
-	var scene= new THREE.Scene();
-	var camera=  new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000)
-	var renderer= new THREE.WebGLRenderer();
-	renderer.setSize(window.innerWidth, window.innerHeight);
-	document.body.appendChild(renderer.domElement);
-
-	var geometry= new THREE.CubeGeometry(1,1,1)
-	var material= new THREE.MeshBasicMaterial({color:0x0ff00})
-	var cube= new THREE.Mesh(geometry, material)
-	scene.add(cube)
-	camera.position.z=5;
-
-	function render()
-	{
-		requestAnimationFrame(render)
-		renderer.render(scene, camera)
-		
-		// console.log(window.event)
-		// var posX = e.clientX;
-    	// var posY = e.clientY;
-
-
-		cube.rotation.x+=0.1;
-		cube.rotation.y+=0.1;
-		// cube.rotation.x+=posX/100;
-		// cube.rotation.y+=posY/100;
-
-	}
-	render();
-
-	</script>
+	<script src="js/init.js?v=1"></script>
 </body>
 </html>

@@ -2,6 +2,79 @@
 
 $(document).ready(function(e) {
     
+
+
+	var lt_ie9=false;
+	var msie=false;
+	var url=document.URL;
+	var urlHash;
+	var urlLimpia;
+
+	// urlHash=url.replace(location.protocol+'//'+location.host+location.pathname,'')
+	urlHash=location.hash;
+	urlHash=urlHash.substring(1,urlHash.length)
+
+	var urlLimpia=url;
+	while(urlLimpia.search('#')!=-1)
+	{
+		urlLimpia=urlLimpia.substring(0,urlLimpia.length-1)
+	}
+
+	// //console.log(url)
+	// //console.log(urlHash)
+	// //console.log(urlLimpia)
+
+	if(jQuery.browser.msie && jQuery.browser.version<9.0)
+	{
+		lt_ie9=true;
+	}	
+
+	if(jQuery.browser.msie)
+	{
+		msie=true;
+	}		
+
+
+	if($('.page').hasClass('inicio_page'))
+	{
+		inicio()
+	}
+	else if($('.page').hasClass('video_page'))
+	{
+		video()
+	}
+	else if($('.page').hasClass('caracteristicas_page'))
+	{
+		
+		caracteristicas();
+	}
+	else if($('.page').hasClass('familia_page'))
+	{
+		
+		familia();
+	}
+	else if($('.page').hasClass('familia_detalles_page'))
+	{
+		
+		familia_detallles();
+	}
+
+
+
+		switch(urlHash)
+		{
+			case '':
+				prealoder()
+			break;
+			case 'inicio':
+				lavadoras()
+			break;
+			default:
+				prealoder()
+			break;
+		}
+
+
 	function startCycle(startingSlide) {
 		opts = $('.cycle-fotos').cycle({ 
 			  fx:     'fade',
@@ -1008,3 +1081,49 @@ function prealoder()
 										}
 								)
 							]
+
+
+
+
+
+			var tl_nivel_agua=new TimelineMax({
+				paused:true,
+				onComplete:function(){
+					tl_prendas.play()
+					iniciarBurbujas()
+				}
+			})
+			var tl_prendas=new TimelineMax({
+				paused:true,
+				yoyo:true,
+				repeat:-1
+			})
+
+			// tl_tambor.play()
+			tl_nivel_agua.play()
+
+			tl_nivel_agua.add(
+				[
+					TweenMax.to($('.tambor'),tiempo_ciclo/2,
+						{
+							right:'-1880px',
+							ease:Linear.easeNone
+							// ease:Power1.easeInOut
+						}
+					),
+					TweenMax.to($('.agua_ondas'),tiempo_ciclo/2,
+						{
+							top:'93px',
+							right:'-18462px',
+							ease:Power1.easeOut
+						}
+					),
+					TweenMax.to($('.agua'),tiempo_ciclo/2,
+						{
+							top:'233px',
+							ease:Power1.easeOut
+
+						}
+					)
+				],null, "start", null
+			)

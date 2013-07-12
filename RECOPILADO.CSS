@@ -132,6 +132,9 @@ html > body #div {
 
   /* Good browsers */
   opacity: 0.5;
+
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='http://www.radiantinteractive.com/rs/images/MerkabaGlow.png');
+  
 }
 
 
@@ -230,7 +233,7 @@ label.error{
 
 
 .btns {
-  background-image: url(../images/btns.png);
+  background-image: url(../images/sprite.png);
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;
@@ -278,6 +281,12 @@ label.error{
 .ancho-app{
 	width:760px;
 	}
+.sprite{
+	background-image: url(../images/sprite.png);
+	background-repeat:no-repeat;
+  	border: none;
+  	background-color: transparent;
 
+	}
 
 /* ----------  End Globales -------------- */
