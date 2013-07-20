@@ -1,0 +1,233 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>6 >6_GenerateMigra.mp4
+rails generate<<lista de cosas que puedo generar
+
+rails generate migration DoNothingYet<< crea un migracion de prueba, se crea la carpeta "db/migrate" la fecha_nombre_de_migracion.rb
+
+rails generate model User << crea la migracion para para User, crea un archivo donde se escribira la tabla que se ha de crear, usar CamelCase, se crea el archivo db/migrate/fecha_create_user.rb, aqui se debe escribir lo necesari para crear la base de datos
+    create_table :users do |t|#este es un bucle que crea las tablas de la base de datos
+    	t.string "firt_name"
+    		#el id se crea por defecto
+    		#crea la tabla first_name
+    		#t.colunm "name", :type, options//crea una tabla con opciones.
+    		#ejemplo
+    		#:limit => size
+    		#:default => value
+    		#:null => true/false
+    		#:precision => number
+    		#:scale => number
+
+
+      t.timestamps
+
+    create_table :users do |t| #create_table :users, :id=>false do |t|#hace q no cree el id por defecto	
+		t.string "first_name", :limit=>25
+		t.string "last_name", :limit=>50
+		t.string "email", :default=>"",:null=>false
+		t.string "password", :limit=>40
+		t.timestamps
+	end
+
+
+>>6 >7_runmigration
+rake db:migrate RAILS:ENV=production # te cambia elentorno de la migracion a produccion.
+
+rake db:migrate #te migra los script y los conviert en tablas
+
+rake db:migrate VERSION=0 #regresa la tabla a su origen, borra todo
+
+rake db:migrate VERSION=20130717145102 # de la carpeta db/migrate/archivo, se escribe el numero para migrar solo esta version
+
+rake db:migrate:up VERSION=354848 # solo te migra esta version
+ 
+rake db:migrate:down VERSION=324324324 #te borra de la tabla esta version.
+
+rake db:migrate:redo VERSION=3213545 #borra y vuelve a crear la migracion.
+
+rake -T #muestra las tereas q uedes hacer
+rake -D db:migrate #muestra la lista de las csas que puedes hacer
+
+
+>>6 > 8_MigratMethods
+rails generate migrations AlterUsers # te crea un migrate para alterar la tabla users.
+
+
+>>7 > 4_CreateRecords
+
+rails console #ingresas a la consola de rails, debes estar en la carpeta
+
+subject= Subject.new #crea una instancia del modelo para llenar tablas.
+# devuelve valoresm si id=nil, entonces es una record nuevo.
+
+subjet.new_record? #hace una pregunta pra saber si es una neuva record. "true" si es nuevo.
+
+subject.name="algo" # se guarda "algo" en name y se guarda en memoria.
+
+subject = Subject.new(:name=>"first subject", :position =>1, visible=>true) # cracion de un elemento en una sola linea.
+
+subject.save #guarda el subject agregado.
+
+subject= Subject.create(:name=>"second subject", :position => 2) #crea una nueva fila.
+
+
+
+>>7 > 5_UpdateRecords
+
+rails console
+
+subject = Subject.find(1) #hace una busqueda por ID y se guarda en subject la fila completa
+
+subjec.name ="Nuevo nombre" #hace un cambio temporal de .name y lo guarda en memoria.
+
+subject.save #guardo los cambios.
+
+subject.find(2) #se busca la fila 2 para actualziar todo de una.
+
+subject.update_attributes(:name=>"updates", visible=>true) #esto actualiza y guarda los cambios.
+
+>>7 > 6_DeleteRecords
+
+rails c
+
+Subject.create(:name="Bad subject") #crea uno nuevo y lo guarda.
+
+subject = Subject.fin(3) #buscamos el row 3 y hacemos instancia para intereactuar.
+
+subject.destroy #borra la fila de la base de datos.
+
+subject.frozen? #pegunta si ha guardado la fila en memoria
+
+>>7 > 7_FindRecords
+
+Subject.find(2)
+
+Subject.find_by_id(2), Subject.find_by_LOQUEQUIERBUSCAR("el valor a buscar")
+
+Subject.find_by_name("first name") #busca la fila que haga match
+
+Subject.all #busca todo y retorna un array de objetos
+
+Subject.first, Subject.last #busca el ultimo y primero
+
+>>7 > 8_conditions
+
+Subject.where(:visible=>true) #buscado condicoinal
+
+Subject.where(:visible=>true).order("position ASC")
+
+tipos de query
+
+-String
+    "name='first name' AND visible=true"
+    felixble war sql
+    beware SQL injection
+
+- Array
+    ["name=? AND visible=true", "first name"]
+    felixble escaped sql
+    safe from sql injection
+
+- Hash
+    {:name=>"fisrt subject", :visible=>true}
+    simple escaped sql
+    safe from SQL injection
+
+ejemplos
+hash
+subjects = Subject.where({:visible=>true})
+
+array
+subjects= Subject.where(["visible=?", true])
+
+Subject.where(:visible=>true, :position=>1)
+
+subjects.class
+subjects.to_sql
+
+Subject.where(:visible=>true, :position=>1).first
+
+subjects= Subject.scoped # no records
+
+>> 7> 9_OrderLimit
+
+Subject.order("position ASC").limit(20).offset(40)
+
+>>7 > 10_NamedScopes
+en /model/subject.rb
+    
+    scope :visible, -> {where(:visible => true)}
+    #en la consola
+    subjects=Subject.visible
+    scope :search, lambda{|query| where(["name LIKE ?","%#{query}%"])} #esta es una busqueda personalizada
+    scope :search, lambda{|first, last| where(:first_name=>first, :last_name=>last)}
+
+
+
+>>8 >2_OneToOne
+
+    /model/Subject.rb
+    has_one :page
+
+    /model/page.rb
+    belongs_to :subject
+    #belongs_to :subject,{:foreing_key=>"subject_id"}
+
+    #en consola.
+    subject=Subject.find(1)
+
+    first_page = Page.new(creamos una pagina)
+    
+    first_page.subject
+    =>nil #es por q aun noe sta asociado
+    
+    subject.page = first_page #asi se genera la relacion foreing key
+
+    first_page.subject #retorna la fila ya relacionada
+    subject.page #retorna la fila ya relacionada
+
+    subject.page.destroy # elimina toda la fial de page
+
+
+
+
+>> 8 >3_OneToMany
+
+    /model/Subject.rb
+    has_many :pages # en plural ya q tiene muchos pages
+
+    /model/page.rb
+    belongs_to :subject #singular x q aun tiene un solo padre
+
+    subject.pages
+    subject.pages <<page
+    subject.pages = [page, page, page]
+    subject.pages.delete(page)
+    subject.pages.clear
+    subject.pages.empty?
+    subject.pages.size
+
+    #ejemplo
+    subject=Subject.find(1)
+    first_page=Page.new(creo la pagina)
+    subject.pages<<first_page #relaciono el page con subject id=1, se autoguarda en la base de datos
+    subject.pages.delete(first_page) #te borra la relacion, pero no de la tabla
+
+
