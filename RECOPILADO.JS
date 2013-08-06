@@ -1127,3 +1127,111 @@ function prealoder()
 					)
 				],null, "start", null
 			)
+
+
+function pushHistory(n)
+		{
+			if(msie)
+			{
+				switch(n)
+				{
+					case 0:
+						location.hash='WA18F7G6DTS';
+					break;
+					case 1:
+						location.hash='WA18F7L8DTA';
+					break;
+					case 2:
+						location.hash='WA16F7L8DTA';
+					break;
+					case 3:
+						location.hash='WA16F7L4UWA';
+					break;
+					case 4:
+						location.hash='WA16F7L2UWW';
+					break;
+					case 5:
+						location.hash='WA14F5L8DTA';
+					break;
+					case 6:
+						location.hash='WA14F5L4UWA';
+					break;
+					case 7:
+						location.hash='WA14F5L2UWW';
+					break;
+					case 8:
+						location.hash='WA12F5L8DTA';
+					break;
+					case 9:
+						location.hash='WA12F5L4UWA';
+					break;
+					case 10:
+						location.hash='WA12F5L4UWW';
+					break;
+					case 11:
+						location.hash='WA12F5L2UWW';
+					break;
+					case 12:
+						location.hash='WA10F5L8DTA';
+					break;
+					case 13:
+						location.hash='WA10F5L4UWA';
+					break;
+					case 14:
+						location.hash='WA10F5L2UWW';
+					break;
+				}
+			}
+			else
+			{
+				switch(n)
+				{
+					case 0:
+						history.pushState(null, null, urlLimpia+'#WA18F7G6DTS');
+					break;
+					case 1:
+						history.pushState(null, null, urlLimpia+'#WA18F7L8DTA');
+					break;
+					case 2:
+						history.pushState(null, null, urlLimpia+'#WA16F7L8DTA');
+					break;
+					case 3:
+						history.pushState(null, null, urlLimpia+'#WA16F7L4UWA');
+					break;
+					case 4:
+						history.pushState(null, null, urlLimpia+'#WA16F7L2UWW');
+					break;
+					case 5:
+						history.pushState(null, null, urlLimpia+'#WA14F5L8DTA');
+					break;
+					case 6:
+						history.pushState(null, null, urlLimpia+'#WA14F5L4UWA');
+					break;
+					case 7:
+						history.pushState(null, null, urlLimpia+'#WA14F5L2UWW');
+					break;
+					case 8:
+						history.pushState(null, null, urlLimpia+'#WA12F5L8DTA');
+					break;
+					case 9:
+						history.pushState(null, null, urlLimpia+'#WA12F5L4UWA');
+					break;
+					case 10:
+						history.pushState(null, null, urlLimpia+'#WA12F5L4UWW');
+					break;
+					case 11:
+						history.pushState(null, null, urlLimpia+'#WA12F5L2UWW');
+					break;
+					case 12:
+						history.pushState(null, null, urlLimpia+'#WA10F5L8DTA');
+					break;
+					case 13:
+						history.pushState(null, null, urlLimpia+'#WA10F5L4UWA');
+					break;
+					case 14:
+						history.pushState(null, null, urlLimpia+'#WA10F5L2UWW');
+					break;
+				}				
+			}
+
+		}//pushHistory
