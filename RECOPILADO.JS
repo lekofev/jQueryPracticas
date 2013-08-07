@@ -1235,3 +1235,63 @@ function pushHistory(n)
 			}
 
 		}//pushHistory
+
+
+
+	function shareTW(a) {
+		this.id=a;
+		var name, url
+			switch(id)
+			{
+			case '1':
+				name='¡Una refrigeradora con 10 años de garantía! Conoce el modelo Samsung RT22FAJADSP.';
+				url='http://bit.ly/10ZHKVP'
+			break;
+			case '2':
+				name='¡La refrigeradora perfecta para tus verduras! Conoce la nueva refrigeradora Samsung RT25FAJADSP.';
+				url='http://bit.ly/14xygC7'
+			break;
+			case '3':
+				name='¿Botellas de 3 litros en tu refrigeradora? ¡Con la nueva Samsung RT29FAJHDSP es posible!';
+				url='http://bit.ly/120bC9p'
+			break;
+			case '13':
+				name='¿Botellas de 3 litros en tu refrigeradora? ¡Con la nueva Samsung RT29FAJHDWW es posible!';
+				url='http://bit.ly/15KRJSI'
+			break;
+			case '4':
+				name='¡Conoce la nueva refrigeradora Samsung RT32FAJHDSL que te ayudará a ahorrar electricidad!';
+				url='http://bit.ly/11lOwVH'
+			break;
+			case '14':
+				name='¡Conoce la nueva refrigeradora Samsung RT32FAJHDWW que te ayudará a ahorrar electricidad!';
+				url='http://bit.ly/15C6Hd3'
+			break;
+			case '5':
+				name='¡La refrigeradora con 5L de agua de capacidad! Conoce el modelo Samsung RT32FBRHDSL.';
+				url='http://bit.ly/183TjDw'
+			break;
+			case '6':
+				name='¡Controla tu refrigeradora sin abrirla! Conoce el Samsung RT35FEAJDSL con panel digital.';
+				url='http://bit.ly/15KRYxj'
+			break;
+			case '16':
+				name='¡Controla tu refrigeradora sin abrirla! Conoce el Samsung RT35FEAJDWW con panel digital.';
+				url='http://bit.ly/11lOHjQ'
+			break;
+			case '7':
+				name='¡Congela bebidas en tiempo récord! Conoce la nueva refrigeradora Samsung RT38FEAJDSL.';
+				url='http://bit.ly/19JNrO0'
+			break;
+			case '8':
+				name='¡Nunca faltará hielo en tu refrigeradora! Conoce el modelo Samsung RT38FEAKDSL con Auto Ice Maker.';
+				url='http://bit.ly/18PvY5t'
+			break;
+				
+			}
+		
+			var txt_tw = encodeURIComponent(name);	
+			window.open('https://twitter.com/share?text=' + txt_tw + '&url='+url, "Tw", "menubar=1,resizable=1,width=650,height=450");
+			return false;
+	
+	}
