@@ -39,7 +39,7 @@ $(document).ready(function(e) {
 	{
 		inicio()
 	}
-	else if($('.page').hasClass('video_page'))
+	else if($('.page').hasClass('nosotros'))
 	{
 		video()
 	}
@@ -1037,6 +1037,21 @@ opts = $('.escenas-home-ie .cycle-escenas').cycle({
 		}).data('cycle.opts');
 
 
+$('.escenas-home-ie .cycle-escenas').cycle({ 
+			fx: 'fade',
+			timeout:9000,
+			//delay:3000,
+			speed:1000,
+			slideResize: true,
+			containerResize: true,
+			width: '100%',
+			height: '100%',
+			fit: 1,
+			before:function(curr, next, opts){
+			},			
+			end:function(){
+				}
+})
 
 function prealoder()
 {

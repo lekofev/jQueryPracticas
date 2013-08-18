@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	<style>
+	body{
+		/*background-color: #000;*/
+	}
+		canvas {
+			width: 90%;
+			height: 90%;
+			border:1px solid red;
+		}
+	</style>
+	
+
+
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script type="text/javascript">
+	
+			// var escena;
+			// var camara;
+			// var render;
+			// var triangulo;
+			// var cuadrado;
+			// var ultimoTiempo;
+			// var cubo;
+			// var piramide;
+			var escena;
+			var camara;
+			var render;
+			var piramide;
+			var cubo;
+			var ultimoTiempo;
+
+			function degToRad(degrees) {
+				return degrees * Math.PI / 180;
+			}
+			function rotateAroundWorldAxis( object, axis, radians ) {
+			    var rotationMatrix = new THREE.Matrix4();
+
+			    rotationMatrix.makeRotationAxis( axis.normalize(), radians );
+			    rotationMatrix.multiply( object.matrix );                       // pre-multiply
+			    object.matrix = rotationMatrix;
+			    object.rotation.setEulerFromRotationMatrix( object.matrix );
+			}
+
+			function iniciarEscena(){
+				//Render
+				render = new THREE.WebGLRenderer();
+
+				render.setClearColorHex(0x000000, 1);
+
+				var canvasWidth = 500;
+				var canvasHeight = 500;
+				render.setSize(canvasWidth, canvasHeight);
+
+				document.getElementById("canvas").appendChild(render.domElement);
+
+				//Escena
+				escena = new THREE.Scene();
+
+				//Camara
+				camara = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 0.1, 100);
+				camara.position.set(0, 0, 0);
+				camara.lookAt(escena.position);
+				escena.add(camara);
+
+				//Material
+				// var material = new THREE.MeshBasicMaterial({
+				// 	color:0xc7c7f2,
+				// 	side:THREE.DoubleSide
+				// });
+
+				// var trianguloMaterial = new THREE.MeshBasicMaterial({
+				// 	vertexColors:THREE.VertexColors,
+				// 	side:THREE.DoubleSide
+				// });
+
+				//Triángulo
+				// var trianguloGeometria = new THREE.Geometry();
+				// trianguloGeometria.vertices.push(new THREE.Vector3( 0.0,  1.0, 0.0));
+				// trianguloGeometria.vertices.push(new THREE.Vector3(-1.0, -1.0, 0.0));
+				// trianguloGeometria.vertices.push(new THREE.Vector3( 1.0, -1.0, 0.0));
+				// trianguloGeometria.faces.push(new THREE.Face3(0, 1, 2));
+
+				// trianguloGeometria.faces[0].vertexColors[0] = new THREE.Color(0xFF0000)
+				// trianguloGeometria.faces[0].vertexColors[1] = new THREE.Color(0x00FF00)
+				// trianguloGeometria.faces[0].vertexColors[2] = new THREE.Color(0x0000FF)
+
+				// triangulo = new THREE.Mesh(trianguloGeometria, trianguloMaterial);
+				// triangulo.position.set(-1.5, 0.0, -7.0);
+				// escena.add(triangulo);
+
+
+				//Cuadrado
+
+				// var cuadradoMaterial = new THREE.MeshBasicMaterial({
+				// 	color:0x8080ff,
+				// 	side:THREE.DoubleSide
+				// })
+
+				// var cuadradoGeometria = new THREE.Geometry();
+				// cuadradoGeometria.vertices.push(new THREE.Vector3(-1.0,  1.0, 0.0));
+				// cuadradoGeometria.vertices.push(new THREE.Vector3( 1.0,  1.0, 0.0));
+				// cuadradoGeometria.vertices.push(new THREE.Vector3( 1.0, -1.0, 0.0));
+				// cuadradoGeometria.vertices.push(new THREE.Vector3(-1.0, -1.0, 0.0));
+				// cuadradoGeometria.faces.push(new THREE.Face4(0, 1, 2, 3));
+			
+				// cuadrado = new THREE.Mesh(cuadradoGeometria, cuadradoMaterial);
+				// cuadrado.position.set(1.5, 0.0, -7.0);
+				// escena.add(cuadrado);
+				
+
+
+				//piramide
+				var piramideMaterial = new THREE.MeshBasicMaterial({
+					vertexColors:THREE.VertexColors,
+					side:THREE.DoubleSide
+				})
+
+				// var piramideGeometria = new THREE.CylinderGeometry(0,1.2,1.8,4,1, true)	
+				// for(i=0; i<piramideGeometria.face.length; i++)
+				// {
+				// 	piramideGeometria.faces[i].vertexColors[0]= new THREE.Color(0xff0000)
+				// 	if((i%2)==0)
+				// 	{
+				// 		piramideGeometria.faces[i].vertexColors[1]= new THREE.Color(0x00ff00)
+				// 		piramideGeometria.faces[i].vertexColors[2]= new THREE.Color(0x0000ff)
+				// 	}
+				// 	else
+				// 	{
+				// 		piramideGeometria.faces[i].vertexColors[1]= new THREE.Color(0x0000ff)
+				// 		piramideGeometria.faces[i].vertexColors[2]= new THREE.Color(0x00ff00)
+				// 	}
+				// 	piramideGeometria.faces[i].vertexColors[3]= new THREE.Color(0xff0000)
+				// }
+				
+				var piramideGeometria = new THREE.CylinderGeometry(0, 1.2, 1.8, 4, 1, false);
+				for(i = 0; i < piramideGeometria.faces.length; i++){
+					if(piramideGeometria.faces[i] instanceof THREE.Face4){
+						piramideGeometria.faces[i].vertexColors[0] = new THREE.Color(0xFF0000);
+						if((i % 2) == 0){
+							piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x00FF00);
+							piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x0000FF);
+						} else {
+							piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x0000FF);
+							piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x00FF00);
+						}
+						piramideGeometria.faces[i].vertexColors[3] = new THREE.Color(0xFF0000);
+					} else {
+						piramideGeometria.faces[i].vertexColors[0] = new THREE.Color(0xFF0000);
+						piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x00FF00);
+						piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x0000FF);
+					}
+				}
+
+
+
+				piramide= new THREE.Mesh(piramideGeometria, piramideMaterial);
+				piramide.position.set(-1.5,0.0,-7.0)
+				escena.add(piramide)
+
+
+
+				//cubo
+				var cuboMateriales=[
+					new THREE.MeshBasicMaterial({color:0xf0000}),
+					new THREE.MeshBasicMaterial({color:0x00ff00}),
+					new THREE.MeshBasicMaterial({color:0x0000ff}),
+					new THREE.MeshBasicMaterial({color:0x000fff}),
+					new THREE.MeshBasicMaterial({color:0xffff00}),
+					new THREE.MeshBasicMaterial({color:0xff00ff})
+				];
+
+				var cuboMaterial = new THREE.MeshFaceMaterial(cuboMateriales);				
+				var cuboGeometria = new THREE.CubeGeometry(1.7,1.7,1.7);
+
+				cubo= new THREE.Mesh(cuboGeometria, cuboMaterial);
+				cubo.position.set(1.5,0.0,-7.0)
+				escena.add(cubo)
+
+
+			}
+			
+			function renderEscena(){
+				render.render(escena, camara);
+			}
+
+			function animarEscena()
+			{
+				var delta=(Date.now()-ultimoTiempo)/1000;
+				if(delta>0)
+				{
+					// triangulo.rotation.y += degToRad(90)*delta;
+					// cuadrado.rotation.x += degToRad(75)*delta;
+					piramide.rotation.y +=degToRad(90)*delta;
+					rotateAroundWorldAxis(cubo, new THREE.Vector3(1,1,1),-degToRad(75)*delta)
+					renderEscena()
+				
+				}
+				ultimoTiempo=Date.now();
+				requestAnimationFrame(animarEscena)
+			}
+
+			function webGLStart() {
+				iniciarEscena();
+				ultimoTiempo=Date.now();
+				// console.log(ultimoTiempo)
+				animarEscena();
+			}
+
+		</script>
+	</head>
+	<body onload="webGLStart();">
+		<div id="canvas"></div>
+	</body>
+</html>
