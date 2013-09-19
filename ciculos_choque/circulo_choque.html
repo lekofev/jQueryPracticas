@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<style>
+	.caja{
+		width: 200px;
+		height: 350px;
+		border:1px solid red;
+		position: absolute;
+		top: 20px;
+		left: 250px;
+
+	}
+	.c{
+		width: 50px;
+		height: 50px;
+		border-radius: 40px;
+		background-color: orange;
+		position: absolute;
+	}
+	.c1{
+		left: 100px;
+		top: 0px;
+	}
+	.c2{
+		left: 120px;
+		top: 120px;
+
+	}
+	
+	</style>
+<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+<script src="js/vendor/jquery-1.8.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	a=$('.c1')
+	b=$('.c2')
+	var _x=1;
+	var _y=1;
+
+	for(i=0;i<10;i++)
+	{
+		$('.caja').append('<div class="c c'+i+'">'+i+'</div>')
+	}
+
+
+
+	setInterval(init,10)
+
+	function moverEnY()
+	{
+		$.each($('.caja'), function(index, val) {
+			$(this).css('top','')
+		});		
+	}
+
+	function init()
+	{
+		a.css('top',_y+'px')
+		if(!collision(a, b))
+		{
+			_y++
+		}
+	}
+
+	function collision(c1, c2) {
+		var dx=(parseInt(c1.css('left'))+(c1.width()/2))-(parseInt(c2.css('left'))+(c2.width()/2))
+		var dy=(parseInt(c1.css('top'))+(c1.height()/2))-(parseInt(c2.css('top'))+(c2.height()/2))
+		var dist = (c1.width()/2) + (c2.width()/2);	 
+	  return (dx * dx + dy * dy <= dist * dist)
+	}
+});
+</script>
+
+</head>
+<body>
+	<!-- Añadir código aquí -->
+	<div class="caja">
+		<!-- 
+		<div class="c c1">1</div>
+		<div class="c c2">2</div>
+		 -->
+	</div>	
+</body>
+</html>

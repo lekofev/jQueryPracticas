@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<style>
+	.caja{
+	    border: 1px solid red;
+	    height: 350px;
+	    width: 630px;
+	    position: relative;
+	    margin: auto;
+	}
+	.avion{
+		width: 50px;
+		height: 50px;
+		background-color: orange;
+		position: absolute;
+	}
+	.enemigo{
+		width: 50px;
+		height: 70px;
+		background-color: red;
+		position: absolute;
+	}
+	.puntos{
+		font-family: arial;
+		font-size: 20px;
+	}
+
+	
+	</style>
+<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+<script src="js/vendor/jquery-1.8.1.min.js"></script>
+
+</head>
+<body>
+	<!-- Añadir código aquí -->
+	<div id="touchstart">0000</div>
+	<div id="touchmove">0000</div>
+	<div id="touchend">0000</div>
+	<div id="touchcancel">0000</div>
+
+	<div class="caja">
+		
+	</div>	
+<script>
+$(document).ready(function(){
+
+	
+	moverTouch()
+	function moverTouch()
+	{
+
+		var _touchstart=document.getElementById('touchstart')	
+		var _touchmove=document.getElementById('touchmove')	
+		var _touchend=document.getElementById('touchend')	
+		var _touchcancel=document.getElementById('touchcancel')
+
+		document.addEventListener('touchstart', function(e) {
+		    e.preventDefault();
+		    var touch = e.touches[0];	
+
+			_touchstart.innerHTML = touch.pageX + " - " + touch.pageY;
+		}, false);
+		
+		document.addEventListener('touchmove', function(e) {
+		    e.preventDefault();
+		    var touch = e.touches[0];	
+
+			_touchmove.innerHTML = touch.pageX + " - " + touch.pageY;
+		}, false);	
+		
+		document.addEventListener('touchend', function(e) {
+		    e.preventDefault();
+		    var touch = e.touches[0];	
+
+			_touchend.innerHTML = touch.pageX + " - " + touch.pageY;
+		}, false);
+		
+		document.addEventListener('touchcancel', function(e) {
+		    e.preventDefault();
+		    var touch = e.touches[0];	
+
+			_touchcancel.innerHTML = touch.pageX + " - " + touch.pageY;
+		}, false);	
+		
+	}
+});
+
+// touchstart
+// touchmove
+// touchend
+// touchcancel
+
+
+</script>
+</body>
+</html>
