@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+	<style>
+		#can{
+			border: 1px solid #cccccc;
+		}
+	</style>
+</head>
+<body onload="init();" style="background-color:#e0e0e0">
+	
+	<h2>Simple Animation</h2>
+    <img id="ball" src="ballon.png" style="display:none" />
+    <canvas id="can" height="400" width="600" style="position:relative;top:-50">
+    </canvas>
+	
+
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript">
+
+        var can, ctx, ball,
+            x, y, xVec, yVec,
+            direc, interval,
+            rot = 0,
+            gravity = 1,
+            left = 75,
+            right = 525,
+            bottom = 325,
+            centerOffset = -75;
+
+
+		var grad;
+		var twoPi = Math.PI * 2;
+ 
+        function init() {
+            ball = document.getElementById("ball");
+            can = document.getElementById("can");
+            ctx = can.getContext("2d");
+            ctx.strokeStyle = "black";
+            // initialize position, speed, spin direction
+            x = 98;
+            y = 75;
+            xVec = 5.5;
+            yVec = 0;
+            direc = 1;
+            // draw lines for the ball to bounce off of
+            ctx.moveTo(0, bottom + 75);
+            ctx.lineTo(600, bottom+ 75);
+            ctx.lineTo(600, 0)
+            ctx.stroke();
+            // set animation to repeat every 40 ms
+
+            interval = setInterval(animate, 40);
+
+            makeGradient()
+        }
+ 
+
+        function animate() {
+            model();
+            // clear canvas except for lines at edge
+            ctx.clearRect(0, 0, can.width - 1 , can.height - 1);
+            draw();
+        }
+ 
+        function model() {
+            rot += .1 * direc;
+            x += xVec;
+            yVec += gravity;
+            y += yVec;
+            bounceIf();
+        }
+ 
+        function bounceIf() {
+            if (y >= bottom) {
+                y = bottom;
+                yVec = -1 * yVec - gravity
+            }
+            if (x >= right || x <= left) {
+                xVec *= -1;
+                direc *= -1;
+            }
+        }
+ 
+        function draw() {
+            // ctx.save();
+            // ctx.translate(x, y);
+            // ctx.rotate(rot);
+            // ctx.drawImage(ball, centerOffset,centerOffset);
+            // ctx.restore();
+
+
+			ctx.save();
+		    ctx.translate(x, y);
+		    ctx.rotate(rot);
+		    ctx.drawImage(ball, centerOffset,centerOffset);
+		    ctx.fillStyle = grad;
+		    ctx.beginPath();
+		    ctx.arc(0,0, 73, 0, twoPi);
+		    ctx.closePath;
+		    ctx.fill();
+		    ctx.restore();
+
+        }
+		function makeGradient() {
+		    grad = ctx.createRadialGradient(0, 0, 10, 0, 0, 75);
+		    grad.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+		    grad.addColorStop(1, 'rgba(0, 0, 255, 0.3)');
+		}
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+	<style>
+		#myCanvas{
+			border: 1px solid #cccccc;
+		}
+	</style>
+</head>
+<body onload="init();">
+	<!-- Añadir código aquí -->
+	
+	<canvas id="myCanvas" width="500" height="300">
+		
+	</canvas>
+	
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        function init() {
+        	console.log('ready')
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
+			ctx.save();
+			// drawBlueRect()
+			// drawPath() 
+			reflejo()
+
+			ctx.restore()
+
+			function drawBlueRect() {
+			    ctx.fillStyle = "blue";
+			    ctx.fillRect(0, 0, 50, 50);
+			}
+
+			function drawPath() {
+			    ctx.strokeStyle = "black";
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(80, 40);
+			    ctx.lineTo(40, 80);
+			    ctx.closePath();
+			    ctx.stroke();
+			    ctx.translate(120, 80);	
+			    ctx.scale(0.5,0.5)
+			    ctx.rotate(Math.PI/8)	
+			    drawPath2()	    
+			}
+			function drawPath2() {
+			    ctx.strokeStyle = "black";
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(80, 40);
+			    ctx.lineTo(40, 80);
+			    ctx.closePath();
+			    ctx.stroke();	
+			    ctx.translate(160, 160);	
+			    ctx.scale(1.5,1)			 
+			    drawPath3()   
+			}
+			function drawPath3() {
+			    ctx.strokeStyle = "black";
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(80, 40);
+			    ctx.lineTo(40, 80);
+			    ctx.closePath();
+			    ctx.stroke();		    
+			}
+			function reflejo()
+			{
+			ctx.fillStyle = "blue";
+            ctx.font = "48pt Helvetica";
+            ctx.fillText("Reflection", 0, 100);
+            ctx.setTransform(-1, 0, 0, 1, 0, 0);
+            ctx.fillStyle = "red";
+            ctx.fillText("Reflection", 0, -100);
+			}
+
+
+        }
+
+
+    </script>
+</body>
+</html>

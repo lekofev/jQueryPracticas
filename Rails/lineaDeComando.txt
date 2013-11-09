@@ -332,5 +332,36 @@ rm -f -r {file-name}
 -f: Forcefully remove file
 -r: Remove the contents of directories recursively
 
-thin start -e development -s -S /tmp/web.sock
-thin stop -e development -s -S /tmp/web.sock
+thin start -e development -s3 -S /tmp/web.sock
+thin stop -e development -s3 -S /tmp/web.sock
+
+thin restart -e development -S /tmp/microondas.sock -s3
+
+mysql -uroot -p123456 whh_development < /var/www/whh/whh_development.sql;
+
+
+
+layout "pagina"
+
+
+C:\Users\Rrodriguez\AppData\Roaming\npm
+
+mysql -uroot -pae45d876e27a2bb406607423b9045853 wiki_ghost_db < /var/www/nginx/2013/wiki_phantasia_ghost/ghost_db.sql
+
+mysql -uroot -pae45d876e27a2bb406607423b9045853
+
+whereis nginx
+/usr/local/nginx/
+
+ln -nfs /etc/nginx/sites-available/whh /etc/nginx/sites-enabled/whh
+
+sudo ln -nfs /usr/local/nginx/sites-enabled/wiki-ghost-development.phantasial.pe /usr/local/nginx/sites-available/wiki-ghost-development.phantasial.pe
+
+sudo ln -s /etc/nginx/sites-enabled/example.com example.com
+
+sudo nginx -s reload
+thin stop -e development -s3 -S /tmp/microondas.sock
+thin start -e development -s3 -S /tmp/microondas.sock
+
+thin stop -e production -s3 -S /tmp/microondas.sock
+thin start -e production -s3 -S /tmp/microondas.sock

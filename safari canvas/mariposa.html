@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+	<style>
+		#can{
+			border: 1px solid #cccccc;
+		}
+	</style>
+</head>
+<body onload="init();" style="background-color:#e0e0e0">
+	
+    <h1>Butterfly</h1>
+    <p>Why are they called butterflies?</p>
+    <p>Shouldnt they be flutter-bys?</p>
+    <h2>but-ter-fly</h2>
+    <p><i>--noun</i></p>
+    <ol>
+        <li>any of numerous diurnal insects of the order Lepidoptera, characterized by clubbed antennae, a slender body, and large, broad, often conspicuously marked wings.</li>
+        <li>a person who flits aimlessly from one interest or group to another: a social butterfly.</li>
+        <li>butterflies, ( used with a plural verb ) Informal . a queasy feeling, as from nervousness, excitement, etc.</li>
+    </ol>
+    <img id="b1" style="display:none" src="butterfly1.png" >
+    <img id="b2" style="display:none" src="butterfly2.png" >
+    <img id="b3" style="display:none" src="butterfly3.png" >
+    <img id="b4" style="display:none" src="butterfly4.png" >
+    <canvas id="can" height="450" width="450" style="position:absolute;left:0;top:225">
+    </canvas>
+	
+
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript">
+
+        var can, ctx;
+        var sprite = new Array();
+        var counter = 0;
+        var rot = 0;
+        var centerX = -200;
+        var centerY = -148;
+ 
+        function init() {
+            can = document.getElementById("can");
+            ctx = can.getContext("2d");
+            // get images into array
+            sprite[0] = document.getElementById("b1");
+            sprite[1] = document.getElementById("b2");
+            sprite[2] = document.getElementById("b3");
+            sprite[3] = document.getElementById("b4");
+            // set shadow color, offset, blur
+            ctx.shadowColor = "rgba(80,80,80,.3)";
+            ctx.shadowBlur = "5";
+            ctx.shadowOffsetX = "10";
+            ctx.shadowYOffsetY = "20";
+            // draw butterfly
+            draw();
+            // wait 3 sec, then begin animation
+            var t = setTimeout(flap, 3000);
+            }
+ 
+        function flap() {
+            var wait = 40;
+            counter++;
+            if (counter == 4) {
+                counter = 0;
+                wait += (Math.random() * 1500);
+                rot += .01;
+            }
+            draw();
+            setTimeout(flap, wait);
+        }
+ 
+        function draw() {
+            ctx.clearRect(0, 0, can.width, can.height);
+            ctx.save();
+            ctx.translate(can.width / 2, can.height / 2);
+            ctx.rotate(rot);
+            ctx.drawImage(sprite[counter], centerX, centerY);
+            ctx.restore();
+        }
+
+    </script>
+</body>
+</html>

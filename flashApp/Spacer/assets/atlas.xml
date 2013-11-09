@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:1afd58cfc6602ccb6a31b0ecd990733c:1/1$ -->
+<TextureAtlas imagePath="atlas.png">
+    <SubTexture name="alien1" x="2" y="2" width="48" height="82"/>
+    <SubTexture name="alien2" x="52" y="2" width="48" height="82"/>
+    <SubTexture name="alien3" x="102" y="2" width="48" height="82"/>
+    <SubTexture name="alien4" x="152" y="2" width="48" height="82"/>
+    <SubTexture name="alien5" x="202" y="2" width="48" height="82"/>
+    <SubTexture name="alien6" x="252" y="2" width="48" height="82"/>
+    <SubTexture name="alien7" x="302" y="2" width="48" height="82"/>
+    <SubTexture name="alien8" x="352" y="2" width="48" height="82"/>
+    <SubTexture name="bullet" x="402" y="2" width="12" height="33"/>
+    <SubTexture name="explosion" x="416" y="2" width="64" height="64"/>
+    <SubTexture name="hero" x="2" y="86" width="82" height="69"/>
+    <SubTexture name="logo" x="2" y="157" width="474" height="133"/>
+    <SubTexture name="playButton" x="2" y="292" width="211" height="69"/>
+    <SubTexture name="smoke" x="215" y="292" width="64" height="64"/>
+    <SubTexture name="tryAgainButton" x="281" y="292" width="211" height="69"/>
+</TextureAtlas>

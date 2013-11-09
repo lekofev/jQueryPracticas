@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<style>
+	body, html{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #000000;
+	}
+	#canvas{
+		border: 1px solid orange;
+	}
+</style>
+<body>
+	<canvas id="canvas">		
+	</canvas>
+
+<script>
+
+(function() {
+
+	var stageAncho=document.body.clientWidth-10;
+	var stageAlto=document.body.clientHeight-10;
+	
+
+	var naveAncho=40;
+	var naveAlto=40;
+
+	var padding=10;
+
+	var posicionInicialX=parseInt(stageAncho/2);
+	var posicionInicialY=parseInt(stageAlto-100);
+
+	var posicionFinalX;
+	var posicionFinalY;
+
+
+	var velocidadJugador=1;
+	var velocidadProyectil=12;
+	var ease=7;
+	var anguloR;
+
+	var rotar=false;
+
+	var canvas=document.getElementById('canvas')
+	canvas.setAttribute('width',stageAncho)
+	canvas.setAttribute('height',stageAlto)
+
+	var jugador= new crearJugador(posicionInicialX, posicionInicialY, naveAncho, naveAlto, '#FF0000');
+	
+	var proyectil;
+
+	var ctxNave=canvas.getContext('2d');
+	var ctxBullet=canvas.getContext('2d');
+	var ctxEnemigo=canvas.getContext('2d');
+
+	var ctxTest=canvas.getContext('2d');
+
+	var arrProyectiles=[];
+	var arrEnemigos=[];
+
+	var temporalEnemigo=0;
+	var frecuenciaEnemigo=50;
+	var velocidadEnemigo=2;
+
+	var touchEnemigo=false;
+
+
+	function toDegres(r)
+	{
+		return (r*180)/Math.PI
+	}
+	function toRadian(s)
+	{
+		return (s*Math.PI)/180
+	}
+
+	var arrPlayers=[]
+
+	function crearJugador(_posicionInicialX, _posicionInicialY,_ancho, _alto, _color)
+	{
+		var i = new Object()
+		i._x=_posicionInicialX;
+		i._y=_posicionInicialY;
+		i._w=_ancho;
+		i._h=_alto;
+		i.color=_color;
+		return i;
+	}
+
+
+
+	var sprite=new Image();
+	sprite.src="images/sprite.png";
+
+
+	render()
+	var pause=false;
+	
+	function render()
+	{
+		if(!pause)
+		{
+			dibujarPlayer()
+			dibujarEnemigo()
+			dibujarBullet()
+			destruirEnemigo()
+			// crearTest()
+
+			requestAnimationFrame(render)			
+		}		
+	}
+	// setInterval(function(){dibujarPlayer()},30)
+
+	function crearNave()
+	{
+
+	}
+
+
+	detectarTouch()
+	function detectarTouch()
+	{
+		
+		canvas.addEventListener('touchstart', function(e) {
+		    e.preventDefault();
+
+		}, false);
+		
+		canvas.addEventListener('touchend', function(e) {
+		    e.preventDefault();
+		
+		}, false);
+		
+
+	}
+
+
+
+}());
+
+
+</script>
+</body>
+</html>

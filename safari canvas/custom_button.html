@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+	
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-XXXXXXX-X']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script src="js/vendor/modernizr-2.6.1.min.js"></script>
+	<style>
+		#can{
+			border: 1px solid #cccccc;
+		}
+        .myButton {
+            position: relative;
+            top: -60px;
+            left: 10px;
+            border: 4px outset #c0c0c0;
+            background-color: #e0e0e0;
+            width: 100px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 18px;
+        }
+ 
+        .mybutton.pressed {
+            border: 4px outset black;
+            background-color: #808080;
+        }
+	</style>
+</head>
+
+<body onload="init()" onmouseup="release1()" ontouchcancel="release1()">
+    <canvas id="can" height="200" width="300">
+    </canvas>
+    <div id="but1" class="myButton"
+         onmousedown="press1()" onmouseup="release1()"
+         ontouchstart="press1()" ontouchend="release1()">
+        Click Me
+    </div>
+	
+
+	<script src="js/vendor/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript">
+        var can, ctx, but1, but1press;
+ 
+        function init() {
+            but1 = document.getElementById("but1");
+            can = document.getElementById("can");
+            ctx = can.getContext("2d");
+            but1press = 0;
+        }
+ 
+        function press1() {
+            // change state variable
+            but1press = 1;
+            // change button style
+            but1.className = "myButton pressed";
+            // do something on the canvas
+            ctx.fillStyle = "beige";
+            ctx.fillRect(0, 0, can.width, can.height);
+        }
+ 
+        function release1() {
+            // button 1 may or may not be pressed when mouse button comes up
+            // or touch ends.
+            // if button is pressed, release it and do something on the canvas
+            if (but1press) {
+                but1press = 0;
+                // revert button style
+                but1.className = "myButton";
+                // do something on the canvas
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, can.width, can.height);
+            }
+        }
+
+    </script>
+</body>
+</html>

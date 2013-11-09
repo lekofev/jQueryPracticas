@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets>
+<!--
+This file determines which code snippets appear in the Code Snippets panel.
+
+isBranch attribute - Set to "false" for snippets.
+title - The name of the snippet to display in the Code Snippets panel.
+description - The description of the snippet to display in the tooltip.
+requiresSymbol - Set to true if snippet requires an object to be selected on stage.
+code - The code to insert.  Actual code should be placed inside the CDATA block as in this example.
+minPlayerVersion - Require FLA file to meet a minimum Player version.
+maxPlayerVersion -  Require FLA file to be less than or equal to a maximum Player version.
+minASVersion - Require FLA file to meet a minimum ActionScript version.
+maxASVersion - Require FLA file to be less than or equal to a maximum ActionScript version.
+
+To create your own code snippets copy the following empty one and paste it into the category where you want it to appear.
+
+	<snippet isBranch="false">
+	  <title>Custom Snippet</title>
+	  <description>This is an example of a custom code snippet.</description>
+	  <requiresSymbol>true</requiresSymbol>
+	  <code><![CDATA[
+// Code goes here
+trace("A custom code snippet");
+	  ]]></code>
+	</snippet>
+-->
+<snippets>
+  <category title="Mobile Game" isBranch="true" expanded="true" description="Custom code snippets.">
+    <snippet isBranch="false">
+      <title>Animate with ActionScript</title>
+      <description>Use the Tween class to animate X position.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+import fl.transitions.Tween;
+import fl.transitions.easing.*;
+import fl.transitions.TweenEvent;
+
+var introTween = new Tween(instance_name_here,"x",Strong.easeInOut,0,1000,1,true);
+introTween.addEventListener(TweenEvent.MOTION_FINISH, tweenFinish);
+function tweenFinish(e:TweenEvent):void
+{
+	trace("tweenFinish");
+}
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Add from Library</title>
+      <description>Add instance from Library</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+var instance_name_here:MovieClip;
+//In the library set a movieclip linkage property to "Player"
+instance_name_here = new Player();
+instance_name_here.y = stage.stageHeight - instance_name_here.height;
+addChild(instance_name_here);
+	
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Move using Mouse</title>
+      <description>Move instance based on frame rate.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+addEventListener(Event.ENTER_FRAME, movePlayer);
+function movePlayer(e:Event):void
+{
+	instance_name_here.x = stage.mouseX;
+	if (instance_name_here.x < 0)
+	{
+		instance_name_here.x = 0;
+	}
+	else if (instance_name_here.x > (stage.stageWidth - instance_name_here.width) )
+	{
+		instance_name_here.x = stage.stageWidth - instance_name_here.width;
+	}
+}
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Create Many Enemies</title>
+      <description>Create enemies using an array</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Create an enemies array
+var enemies:Array;
+enemies = new Array();
+
+//Call this function for how many enemies you want to make...
+function makeEnemies():void
+{
+	var tempEnemy:MovieClip;
+	//Make sure a Library item linkage is set to Enemy...
+	tempEnemy = new Enemy();
+	tempEnemy.speed = 3;
+	tempEnemy.x = 400;
+	addChild(tempEnemy);
+	enemies.push(tempEnemy);
+}
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Move Enemies</title>
+      <description>Move enemies in an array</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+
+//Create an enemies array if you do not already have one...
+var enemies:Array;
+enemies = new Array();
+
+//Create tempEnemy from Enemy library item if you do not already have one...
+var tempEnemy:MovieClip;
+tempEnemy = new Enemy();
+
+function moveEnemies():void
+{
+	var tempEnemy:MovieClip;
+	for (var i:int =enemies.length-1; i>=0; i--)
+	{
+		tempEnemy = enemies[i];
+		tempEnemy.y +=  tempEnemy.speed;
+	}
+}
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Random Chance</title>
+      <description>Randomly pick a number 1-60.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+var level:Number;
+level = 1;
+var chance:Number = Math.floor(Math.random() * 60);
+if (chance <= 1 + level)
+{
+	trace(chance);
+}
+
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Random Rotation, X and Y Movement</title>
+      <description>Moves down randomly within stage.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+instance_name_here.rotation += (Math.round(Math.random()*10-5));
+//Find the rotation and move the x position that direction
+instance_name_here.x -=  (Math.sin((Math.PI/180)*instance_name_here.rotation))*instance_name_here.speed;
+instance_name_here.y +=  (Math.cos((Math.PI/180)*instance_name_here.rotation))*instance_name_here.speed;
+
+if (instance_name_here.x < 0)
+{
+	instance_name_here.x = 0;
+}
+if (instance_name_here.x > stage.stageWidth)
+{
+	instance_name_here.x = stage.stageWidth;
+}
+]]></code>
+    </snippet>
+
+    <snippet isBranch="false">
+      <title>Add Timer</title>
+      <description>Add Timer Class</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Create an array to hold all lasers
+var Lasers:Array;
+Lasers = new Array();
+
+//Create a timer that executes a function every 1/2 second
+var laserTimer:Timer = new Timer(500);
+laserTimer.addEventListener(TimerEvent.TIMER, timerListener);
+function timerListener(e:TimerEvent):void
+{
+	//In the Library linkage for a movieclip should be Laser
+	var tempLaser:MovieClip = new Laser();
+	tempLaser.x = player.x +(player.width/2);
+	tempLaser.y = player.y;
+	tempLaser.speed = 10;
+	Lasers.push(tempLaser);
+	addChild(tempLaser);
+}
+laserTimer.start();
+]]></code>
+    </snippet>
+    <snippet isBranch="false">
+      <title>Move Laser</title>
+      <description>Move Laser up</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Lasers array is required
+function moveLaser():void
+{
+	//Move Laser
+	var tempLaser:MovieClip;
+	for (var i=Lasers.length-1; i>=0; i--)
+	{
+		tempLaser = Lasers[i];
+		tempLaser.y -=  tempLaser.speed;
+		if (tempLaser.y < 0)
+		{
+			//Code goes here
+		}
+	}
+}
+]]></code>
+    </snippet>
+	
+    <snippet isBranch="false">
+      <title>Hit Test Object</title>
+      <description>Perform hit tests.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Check to see when the tempEnemy hits the player
+if (tempEnemy.hitTestObject(player))
+{
+	//Hit!
+}
+]]></code>
+    </snippet>
+
+
+    <snippet isBranch="false">
+      <title>Array Item Collisions</title>
+      <description>Test for collisions of items in an Array.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Check for collisions between an enemies array and a Lasers array
+function testCollisions():void
+{
+	var tempEnemy:MovieClip;
+	var tempLaser:MovieClip;
+
+	enemy:for (var i:int=enemies.length-1; i>=0; i--)
+	{
+		tempEnemy = enemies[i];
+		for (var j:int=Lasers.length-1; j>=0; j--)
+		{
+			tempLaser = Lasers[j];
+			if (tempEnemy.hitTestObject(tempLaser))
+			{
+				trace ("Laser hit tempEnemy");
+				break enemy;
+			}
+		}
+	}
+}
+
+]]></code>
+    </snippet>
+
+	
+    <snippet isBranch="false">
+      <title>Make Explosion</title>
+      <description>Add explosion from Library</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Create an array called explosions
+var explosions:Array;
+explosions = new Array();
+
+//Add an instance of Explosion (Library) to the stage at 400(x) and 300(Y).
+makeExplosion(400, 300);
+function makeExplosion(ex:Number, ey:Number):void
+{
+	var tempExplosion:MovieClip;
+	tempExplosion = new Explosion();
+	tempExplosion.x = ex;
+	tempExplosion.y = ey;
+	addChild(tempExplosion);
+	explosions.push(tempExplosion);
+}
+]]></code>
+    </snippet>
+
+
+    <snippet isBranch="false">
+      <title>Remove Elements from Array</title>
+      <description>Remove various elements from an array.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+
+//Remove enemy 1 from enemies array
+removeEnemy(1);
+function removeEnemy(idx:int)
+{
+	removeChild(enemies[idx]);
+	enemies.splice(idx,1);
+}
+
+//Remove laser 1 from Lasers array
+removeLaser(1);
+function removeLaser(idx:int)
+{
+	removeChild(Lasers[idx]);
+	Lasers.splice(idx,1);
+}
+
+//Remove explosion 1 from explosions array
+removeExplosion(1);
+function removeExplosion(idx:int)
+{
+	removeChild(explosions[idx]);
+	explosions.splice(idx,1);
+}
+
+//Remove any tempExplosion from the explosions array that has already played
+	var tempExplosion:MovieClip;
+	for (i=explosions.length-1; i>=0; i--)
+	{
+		tempExplosion = explosions[i];
+		if (tempExplosion.currentFrame >= tempExplosion.totalFrames)
+		{
+			removeExplosion(i);
+		}
+	}
+]]></code>
+
+    </snippet>
+	
+	
+    <snippet isBranch="false">
+      <title>Loop through Items in an Array</title>
+      <description>Loop through the contents of an array</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+//Loop through an enemies array
+for (var i:int = enemies.length-1; i >=0; i--)
+{
+	//do something to each item
+}
+	
+]]></code>
+    </snippet>
+	
+	
+	  <snippet isBranch="false">
+      <title>Show Results</title>
+      <description>Show score and levels.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[
+		//If the score is greater than zero
+	if (score > 0)
+	{
+		endScreen.highScore.text = "You made it to level " + level + " with a high score of " + score + ". \n Enter your name below.";
+		endScreen.enter_btn.visible = true;
+		endScreen.highScoreName.visible = true;
+	}
+	else
+	{
+		endScreen.highScore.text = "Your score of " + score + " does not beat 0.";
+	}
+	endScreen.enter_btn.addEventListener(MouseEvent.CLICK, clickEnter);
+	function clickEnter(event:MouseEvent):void
+	{
+		trace("clickEnter");
+		endScreen.highScore.text = "Great job, " + endScreen.highScoreName.text + "! \n You made it to " + level + " with a score of " + score + "!";
+		endScreen.enter_btn.visible = false;
+		endScreen.highScoreName.visible = false;
+	}
+	
+]]></code>
+   </snippet>
+	
+  <snippet isBranch="false">
+      <title>Move with Accelerometer</title>
+      <description>Move instance based on accelerometer.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+//Create an accelerometer
+var accel:Accelerometer;
+accel = new Accelerometer();
+if (Accelerometer.isSupported)
+{
+	accel.addEventListener(AccelerometerEvent.UPDATE, accelMove);
+}
+else
+{
+	//If there is no accelerometer support...
+}
+function accelMove(event:AccelerometerEvent):void
+{
+	instance_name_here.x -=  event.accelerationX * 80;
+	if (instance_name_here.x < 0)
+	{
+		instance_name_here.x = 0;
+	}
+	else if (instance_name_here.x > (stage.stageWidth - instance_name_here.width) )
+	{
+		instance_name_here.x = stage.stageWidth - instance_name_here.width;
+	}
+}
+	
+]]></code>
+   </snippet>	
+	
+  <snippet isBranch="false">
+      <title>Add Gesture Swipe</title>
+      <description>Move instance on gesture swipe.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+	
+//Gesture Swipe
+Multitouch.inputMode = MultitouchInputMode.GESTURE;
+instance_name_here.addEventListener(TransformGestureEvent.GESTURE_SWIPE, swipeAway);
+function swipeAway(event:TransformGestureEvent):void
+{
+	//Swipe Left
+	if (event.offsetX == -1)
+	{
+		//Do something
+	}
+}
+	
+]]></code>
+   </snippet>	
+	
+  <snippet isBranch="false">
+      <title>Mobile Menu Key</title>
+      <description>Show exit button when menu is pressed.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+
+var hiddenOptions:Boolean = true;
+stage.addEventListener(KeyboardEvent.KEY_UP, optionsKey);
+function optionsKey(event:KeyboardEvent):void
+{
+	if (event.keyCode == 95)
+	{
+		if (hiddenOptions)
+		{
+			setChildIndex(instance_name_here,numChildren-1);
+			instance_name_here.visible = true;
+			instance_name_here.addEventListener(MouseEvent.CLICK, exitApp);
+		}
+		else
+		{
+			instance_name_here.visible = false;
+			instance_name_here.removeEventListener(MouseEvent.CLICK, exitApp);
+		}
+		hiddenOptions = ! hiddenOptions;
+	}
+}
+
+function exitApp(event:MouseEvent):void
+{
+	//NativeApplication.nativeApplication.exit(0);
+}
+	
+]]></code>
+   </snippet>		
+	
+
+  <snippet isBranch="false">
+      <title>Keep Screen Awake</title>
+      <description>Keep the screen awake while using app.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+
+//Keep screen awake if you are using the Accelerometer etc.
+//NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
+	
+]]></code>
+   </snippet>	
+	
+	
+  <snippet isBranch="false">
+      <title>App Activate/Deativate</title>
+      <description>When app is deactivated and then activated.</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+
+stage.addEventListener(Event.DEACTIVATE, Deactivate);
+function Deactivate(event:Event):void
+{
+	pauseGame();
+}
+stage.addEventListener(Event.ACTIVATE, Activate);
+function Activate(event:Event):void
+{
+	resumeGame();
+}
+
+function pauseGame():void
+{
+	//Remove any listener events, timers etc.
+}
+
+function resumeGame():void
+{
+	//Activate any listener events, timers etc.
+}
+	
+]]></code>
+   </snippet>	
+	
+	
+  <snippet isBranch="false">
+      <title>Optimize Graphics</title>
+      <description>Using cacheAsBitmap and cacheAsBitmapMatrix</description>
+      <requiresSymbol>false</requiresSymbol>
+      <code><![CDATA[	
+//Great for graphics that move along x and y, or not at all
+instance_name_here.cacheAsBitmap = true;
+
+//Great for graphics that scale, rotate or change alpha
+instance_name_here.cacheAsBitmapMatrix = instance_name_here.transform.concatenatedMatrix;
+instance_name_here.cacheAsBitmap = true;
+
+]]></code>
+   </snippet>	
+	
+  </category>
+</snippets>
+</CodeSnippets>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="es" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Untitled</title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	
+	<!-- Opciones para compartir en Facebook -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:type" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:image:secure_url" content="">
+	<meta property="og:site_name" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<style>
+	body, html{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#canvas{
+		border: 1px solid orange;
+	}
+</style>
+<body onload="init();">
+	<canvas id="canvas">		
+	</canvas>
+
+<script>
+
+
+	var stageAncho=document.body.clientWidth-10;
+	var stageAlto=document.body.clientHeight-10;
+	var canvas;
+
+	var posicionFinalX=0, posicionFinalY=0;
+
+	canvas=document.getElementById('canvas')
+	canvas.setAttribute('width',stageAncho)
+	canvas.setAttribute('height',stageAlto)
+
+	var ctx=canvas.getContext('2d')
+
+
+	var sprite=new Image();
+	sprite.src="images/nave.png";
+
+	function init()
+	{
+		render()
+
+	}
+
+	function render()
+	{
+		crearRect()
+		// requestAnimationFrame(render)
+	}
+
+	function crearRect()
+	{
+		ctx.beginPath();
+		ctx.fillStyle="red"
+		ctx.rect(50,50,100,100)
+		ctx.fill();
+		ctx.arc(200,200,40,0,2*Math.PI);
+		ctx.stroke();
+		ctx.drawImage(sprite, 150, 50);
+	}
+	
+	detectarTouch()
+	function detectarTouch()
+	{
+		
+		canvas.addEventListener('touchstart', function(e) {
+		    e.preventDefault();
+
+		    // console.log(e)
+			posicionFinalX=e.targetTouches[0].pageX;
+			posicionFinalY=e.targetTouches[0].pageY;
+
+			console.log(ctx.isPointInPath(posicionFinalX,posicionFinalY))
+			
+
+			// if(ctx.isPointInPath(50,50))
+			// {
+			// 	console.log('choque')
+			// }
+			// else
+			// {
+			// 	console.log('no choque')	
+			// }
+
+
+
+		}, false);
+		
+		canvas.addEventListener('touchend', function(e) {
+		    e.preventDefault();
+
+		
+
+		
+		}, false);	
+
+	}
+
+
+
+</script>
+</body>
+</html>

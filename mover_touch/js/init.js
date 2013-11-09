@@ -60,7 +60,7 @@
 	var padding=10;
 
 	var posicionInicialX=parseInt(stageAncho/2);
-	var posicionInicialY=parseInt(stageAlto/2);
+	var posicionInicialY=parseInt(stageAlto-100);
 
 	var posicionFinalX;
 	var posicionFinalY;
@@ -86,12 +86,16 @@
 	var ctxBullet=canvas.getContext('2d');
 	var ctxEnemigo=canvas.getContext('2d');
 
+	var ctxTest=canvas.getContext('2d');
+
 	var arrProyectiles=[];
 	var arrEnemigos=[];
 
 	var temporalEnemigo=0;
-	var frecuenciaEnemigo=100;
+	var frecuenciaEnemigo=50;
 	var velocidadEnemigo=2;
+
+	var touchEnemigo=false;
 
 
 	function toDegres(r)
@@ -132,6 +136,8 @@
 			dibujarEnemigo()
 			dibujarBullet()
 			destruirEnemigo()
+			// crearTest()
+
 			requestAnimationFrame(render)			
 		}		
 	}
@@ -146,15 +152,39 @@
 		{
 			for(var k=0;k<=arrProyectiles.length-1; k++)
 			{
-				ctxBullet.save();
-				
+							
+				// var _radianes=getRadianes(jugador._x+jugador._w/2, arrEnemigos[k]._x, jugador._y+jugador._h/2 ,arrEnemigos[k]._y)
+
+				// rotacionEjeX=arrEnemigos[k]._x+(14)
+				// rotacionEjeY=arrEnemigos[k]._y+(14)
+
+				// arrEnemigos[k]._direccionX=getSin(_radianes)*velocidadEnemigo; 
+				// arrEnemigos[k]._direccionY=getCos(_radianes)*velocidadEnemigo;
+
+				// arrEnemigos[k]._x+=arrEnemigos[k]._direccionX;
+				// arrEnemigos[k]._y+=arrEnemigos[k]._direccionY;
+
+
+				// ctxEnemigo.save();
 				
 				
 				arrProyectiles[k]._x+=arrProyectiles[k]._direccionX;
 				arrProyectiles[k]._y+=arrProyectiles[k]._direccionY;
-				ctxBullet.drawImage(sprite, 100, 387, arrProyectiles[k]._w, arrProyectiles[k]._h, arrProyectiles[k]._x-arrProyectiles[k]._w/2, arrProyectiles[k]._y-arrProyectiles[k]._h/2, arrProyectiles[k]._w, arrProyectiles[k]._h);
-				
+
+				// var __radianes=getRadianes(jugador._x+jugador._w/2, arrEnemigos[k]._x, jugador._y+jugador._h/2 ,arrEnemigos[k]._y)
+
+				rotacionEjeX=arrProyectiles[k]._x+(20);
+				rotacionEjeY=arrProyectiles[k]._y+(20);
+
+				ctxBullet.save();
+				ctxBullet.translate(rotacionEjeX, rotacionEjeY)
+				ctxBullet.rotate(arrProyectiles[k]._angulo)
+				ctxBullet.translate(-rotacionEjeX,-rotacionEjeY)
+
+				ctxBullet.drawImage(sprite, 53, 365, arrProyectiles[k]._w, arrProyectiles[k]._h, arrProyectiles[k]._x-arrProyectiles[k]._w/2, arrProyectiles[k]._y-arrProyectiles[k]._h/2, arrProyectiles[k]._w, arrProyectiles[k]._h);
+				// ctxBullet.drawImage(sprite, 100, 387, arrProyectiles[k]._w, arrProyectiles[k]._h, arrProyectiles[k]._x-arrProyectiles[k]._w/2, arrProyectiles[k]._y-arrProyectiles[k]._h/2, arrProyectiles[k]._w, arrProyectiles[k]._h);
 				ctxBullet.restore();
+
 				if(arrProyectiles[k]._x>800 || arrProyectiles[k]._x<0 || arrProyectiles[k]._y>480 || arrProyectiles[k]._y<0 )
 				{
 					arrProyectiles.splice(k, 1)
@@ -174,8 +204,8 @@
 		i._direccionX=direccionX;
 		i._direccionY=direccionY;
 		i._angulo=angulo;
-		i._w=16;
-		i._h=16;
+		i._w=40;
+		i._h=40;
 		return i;
 	}
 
@@ -252,11 +282,14 @@
 				rotacionEjeX=arrEnemigos[k]._x+(14)
 				rotacionEjeY=arrEnemigos[k]._y+(14)
 
-				arrEnemigos[k]._direccionX=getSin(_radianes)*velocidadEnemigo; 
+				arrEnemigos[k]._direccionX=getSin( )*velocidadEnemigo; 
 				arrEnemigos[k]._direccionY=getCos(_radianes)*velocidadEnemigo;
 
 				arrEnemigos[k]._x+=arrEnemigos[k]._direccionX;
 				arrEnemigos[k]._y+=arrEnemigos[k]._direccionY;
+
+				// arrEnemigos[k]._x=arrEnemigos[k]._x;
+				// arrEnemigos[k]._y=arrEnemigos[k]._y;
 
 
 				ctxEnemigo.save();
@@ -312,13 +345,18 @@
 				{
 					if(detectarChoque(arrEnemigos[k]._x,arrEnemigos[k]._y, arrEnemigos[k]._w, arrEnemigos[k]._h,arrProyectiles[j]._x,arrProyectiles[j]._y,arrProyectiles[j]._w,arrProyectiles[j]._h))
 					{
-						console.log('choque')
+						// console.log('choque')
 						arrEnemigos.splice(k, 1);				
-						arrProyectiles.splice(j, 1);
-						
+						arrProyectiles.splice(j, 1);				
 
 					}
-				}			
+				}	
+
+				// if(detectarChoque(arrEnemigos[k]._x,arrEnemigos[k]._y, arrEnemigos[k]._w, arrEnemigos[k]._h,jugador._x,jugador._y,jugador._w,jugador._h))
+				// {
+				// 	arrEnemigos.splice(k, 1);
+				// }
+
 			}
 			// console.log(arrEnemigos, arrProyectiles)	
 		}
@@ -332,16 +370,6 @@
 
 	function detectarChoque(_x, _y, _w, _h, __x, __y, __w, __h )
 	{
-		// var ax=parseInt(a.css('left'))
-		// var ay=parseInt(a.css('top'))
-		// var aw=parseInt(a.css('width'))
-		// var ah=parseInt(a.css('height'))
-
-		// var bx=parseInt(b.css('left'))
-		// var by=parseInt(b.css('top'))
-		// var bw=parseInt(b.css('width'))
-		// var bh=parseInt(b.css('height'))
-
 		var ax=_x
 		var ay=_y
 		var aw=_w
@@ -386,13 +414,38 @@
 		// var velocidadY=Math.cos(anguloR)*velocidad;
 		// console.log(anguloR, velocidadX, velocidadY)
 
-		if(posicionFinalX && posicionFinalY)
+		if(posicionFinalX && posicionFinalY && arrEnemigos.length!=0)
 		{
-			jugador._x+=(posicionFinalX-(jugador._w/2)-jugador._x)/ease
-			jugador._y+=(posicionFinalY-(jugador._h/2)-jugador._y)/ease
-			// jugador._x=jugador._x;
-			// jugador._y=jugador._y;
 
+			// for (var i = 0; i <= arrEnemigos.length-1; i++) {
+			// 	if(detectarChoque(posicionFinalX-7, posicionFinalY-7, 15, 15,arrEnemigos[i]._x, arrEnemigos[i]._y,arrEnemigos[i]._w, arrEnemigos[i]._h))
+			// 	{
+			// 		// console.log('cjgg')
+			// 		jugador._x=jugador._x;
+			// 		jugador._y=jugador._y;
+
+			// 	}
+			// 	else
+			// 	{					
+			// 	}
+
+			// };
+			// console.log(touchEnemigo)
+			// if(touchEnemigo)
+			// {
+			// 	jugador._x=jugador._x;
+			// 	jugador._y=jugador._y;
+
+			// }
+			// else
+			// {
+
+			// 	jugador._x+=(posicionFinalX-(jugador._w/2)-jugador._x)/ease
+			// 	jugador._y+=(posicionFinalY-(jugador._h/2)-jugador._y)/ease
+			// }
+
+				jugador._x=jugador._x;
+				jugador._y=jugador._y;
 
 
 		}
@@ -422,6 +475,50 @@
 	}
 
 
+	function crearTest()
+	{
+		ctxTest.fillStyle='#db0c0c';
+		ctxTest.fillRect(100,100,100,100)
+	}
+
+	function detectarTouchEnemigo()
+	{
+		// console.log('detectarTouchEnemigo')
+		console.log(detectarChoque(posicionFinalX, posicionFinalY, 100, 100,100, 100,100, 100))		
+		if(arrEnemigos.length!=0)
+		{
+
+
+				if(detectarChoque(posicionFinalX, posicionFinalY, 100, 100,100, 100,100, 100))
+				{
+					// jugador._x=jugador._x;
+					// jugador._y=jugador._y;
+					touchEnemigo=true;
+					console.log(touchEnemigo)
+
+				}
+				else
+				{	
+					touchEnemigo=false;
+				}
+
+			// for (var i = 0; i <= arrEnemigos.length-1; i++) {
+			// 	// if(detectarChoque(posicionFinalX-7, posicionFinalY-7, 15, 15,arrEnemigos[i]._x, arrEnemigos[i]._y,arrEnemigos[i]._w, arrEnemigos[i]._h))
+			// 	if(detectarChoque(posicionFinalX, posicionFinalY, 100, 100,100, 100,100, 100))
+			// 	{
+			// 		// jugador._x=jugador._x;
+			// 		// jugador._y=jugador._y;
+			// 		touchEnemigo=true;
+			// 		console.log(touchEnemigo)
+
+			// 	}
+
+			// };
+		}
+			
+	}
+
+
 
 	detectarTouch()
 	function detectarTouch()
@@ -429,6 +526,10 @@
 		
 		canvas.addEventListener('touchstart', function(e) {
 		    e.preventDefault();
+
+
+
+		    detectarTouchEnemigo()
 
 			posicionFinalX=e.targetTouches[0].pageX;
 			posicionFinalY=e.targetTouches[0].pageY;
@@ -454,6 +555,7 @@
 		canvas.addEventListener('touchend', function(e) {
 		    e.preventDefault();
 
+		
 		}, false);
 		
 
