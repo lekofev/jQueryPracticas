@@ -365,3 +365,26 @@ thin start -e development -s3 -S /tmp/microondas.sock
 
 thin stop -e production -s3 -S /tmp/microondas.sock
 thin start -e production -s3 -S /tmp/microondas.sock
+
+
+
+sudo apt-get install nginx
+sudo service nginx start
+ifconfig eth0 | grep inet | awk '{ print $2 }'
+update-rc.d nginx defaults
+
+You may see a message like:
+System start/stop links for /etc/init.d/nginx already exist.
+
+
+gem install mysql2 -v0.3.13 -- '--with-mysql-lib="/var/www/hacha/mysql/lib" --with-mysql-include="/var/www/hacha/mysql/include"'
+sudo apt-get install libmysql-ruby libmysqlclient-dev
+gem install rails -v 3.2.10
+
+
+
+To install forever type npm install forever -g
+To start Ghost using forever from the Ghost installation directory type 
+    NODE_ENV=production forever start index.js
+To stop Ghost type forever stop index.js
+To check if Ghost is currently running type forever list

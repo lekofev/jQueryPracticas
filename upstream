@@ -1,0 +1,106 @@
+upstream socket_io {
+    server localhost:8080;
+}
+
+upstream cusquena_web_movil {
+    server unix:/tmp/cusquena_web_movil.0.sock;
+    server unix:/tmp/cusquena_web_movil.1.sock;
+    server unix:/tmp/cusquena_web_movil.2.sock;
+}
+
+upstream appdate {
+    server unix:/tmp/appdate.0.sock;
+    server unix:/tmp/appdate.1.sock;
+    server unix:/tmp/appdate.2.sock;
+}
+
+upstream samsung_microondas_landing {
+    server unix:/tmp/microondas.0.sock;
+    server unix:/tmp/microondas.1.sock;
+    server unix:/tmp/microondas.2.sock;
+}
+
+upstream trujillo_etiqueta_2013 {
+    server unix:/tmp/trujillo_etiqueta_2013.0.sock;
+    server unix:/tmp/trujillo_etiqueta_2013.1.sock;
+    server unix:/tmp/trujillo_etiqueta_2013.2.sock;
+}
+
+upstream samsung_soccerpe {
+    server unix:/tmp/soccer.0.sock;
+    server unix:/tmp/soccer.1.sock;
+    server unix:/tmp/soccer.2.sock;
+}
+
+upstream samsung_soccer {
+    server unix:/tmp/socceravanzado.0.sock;
+    server unix:/tmp/socceravanzado.1.sock;
+    server unix:/tmp/socceravanzado.2.sock;
+}
+
+upstream samsung_s4 {
+    server unix:/tmp/s4.0.sock;
+    server unix:/tmp/s4.1.sock;
+    server unix:/tmp/s4.2.sock;
+}
+
+upstream pilsencallao_web {
+    server unix:/tmp/pilsencallao_web.0.sock;
+    server unix:/tmp/pilsencallao_web.1.sock;
+    server unix:/tmp/pilsencallao_web.2.sock;
+}
+upstream pilsencallao_chapter {
+    server unix:/tmp/chapter.0.sock;
+    server unix:/tmp/chapter.1.sock;
+    server unix:/tmp/chapter.2.sock;
+}
+upstream movistar_libro_nuevo {
+server 127.0.0.1:11000;
+}
+
+upstream wiki_phantasia_ghost{
+server 127.0.0.1:9900;
+}
+
+
+upstream movistar_movil_nuevo {
+server 127.0.0.1:11003;
+}
+upstream movistar_fijo_nuevo {
+server 127.0.0.1:11004;
+}
+
+upstream peru_uruguay {
+    server unix:/tmp/peru_uruguay.0.sock;
+    server unix:/tmp/peru_uruguay.1.sock;
+    server unix:/tmp/peru_uruguay.2.sock;
+}
+
+upstream movistar_encuesta_soporte {
+   server unix:/tmp/movistar_encuesta_soporte.0.sock;
+   server unix:/tmp/movistar_encuesta_soporte.1.sock;
+   server unix:/tmp/movistar_encuesta_soporte.2.sock;
+}
+
+upstream pilsen_web_site_externo {
+   server unix:/tmp/pilsen_web_site_externo.0.sock;
+   server unix:/tmp/pilsen_web_site_externo.1.sock;
+   server unix:/tmp/pilsen_web_site_externo.2.sock;
+}
+
+upstream arequipena_server {
+   server unix:/tmp/arequipena.0.sock;
+   server unix:/tmp/arequipena.1.sock;
+   server unix:/tmp/arequipena.2.sock;
+}
+upstream samsung_mini {
+   server unix:/tmp/mini.0.sock;
+   server unix:/tmp/mini.1.sock;
+   server unix:/tmp/mini.2.sock;
+}
+
+upstream mama_en_todas {
+  server unix:/tmp/mama_en_todas.0.sock;
+  server unix:/tmp/mama_en_todas.1.sock;
+  server unix:/tmp/mama_en_todas.2.sock;
+}

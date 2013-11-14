@@ -1,0 +1,38 @@
+# DOMAIN: samsung-microondas-landing.phantasia.pe
+server {
+  listen 80;
+  listen 443 ssl;
+
+  root /var/www/nginx;
+  server_name samsung-microondas-landing.development.phantasia.pe;
+  index index.html index.htm index.php;
+
+  error_log /var/log/nginx.dev.error.log;
+  access_log /var/log/nginx.dev.log;
+
+  client_max_body_size 6M;
+
+  ssl_certificate /home/certificado_ssl/star_phantasia_pe.pem;
+  ssl_certificate_key /home/certificado_ssl/star_phantasia_pe.key;
+
+  ssl_session_timeout 5m;
+
+  ssl_protocols SSLv3 TLSv1;
+  ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+  ssl_prefer_server_ciphers on;
+
+  tcp_nodelay on;
+
+  error_page 404 /404.html;
+  error_page 500 502 503 504 /50x.html;
+
+  location = /50x.html {
+    root /usr/share/nginx/www;
+  }
+
+  location / {
+    proxy_pass http://samsung_microondas_landing;
+    proxy_set_header Host $host;
+  }
+}
+
