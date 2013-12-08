@@ -388,3 +388,23 @@ To start Ghost using forever from the Ghost installation directory type
     NODE_ENV=production forever start index.js
 To stop Ghost type forever stop index.js
 To check if Ghost is currently running type forever list
+
+
+
+// android
+
+;%JAVA_HOME%\bin;%ANT_HOME%\bin;C:\adt-bundle\sdk\platform-tools;C:\adt-bundle\sdk\tools
+
+cordova platform add android
+phonegap build android
+
+
+
+;C:\adt-bundle\sdk\platform-tools;C:\adt-bundle\sdk\tools
+
+
+C:\wamp\RailsInstaller\Ruby1.9.3\bin;C:\Users\Rrodriguez\AppData\Roaming\np;C:\wamp\bin\mysql\mysql5.5.24\bin;C:\Users\Rrodriguez\AppData\Roaming\npm;C:\adt-bundle\sdk\platform-tools;C:\adt-bundle\sdk\tools;%JAVA_HOME%\bin;%ANT_HOME%\bin
+
+
+
+;%JAVA_HOME%;%ANT_HOME%\bin

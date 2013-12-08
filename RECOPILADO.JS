@@ -257,7 +257,7 @@ $('#foto1').on('click', function(e){
 		
 	
 
-	var solotexto='\'\\@+-*/°!"#$%&/()=?¡¨*[];:_^`~¬\\,.-{}+1234567890¡¢£¤¥¦§¨©ª«¬®¯°±²³µ¶·¸¹º»¼½¾¿ÀÂÃÄÅÆÇÈÊËÌÎÏÐÒÔÕÖ×ØÙÛÜÝÞßàâãäåæçèêëìîïðòôõö÷øùûüýþÿŒœŠšŸƒ–—‘’‚“”„†‡•…‰€™´¨¨';
+	var solotexto='\'\\¿¡@+-*/°!"#$%&/()=?¡¨*[];:_^`~¬\\,.-{}+1234567890¡¢£¤¥¦§¨©ª«¬®¯°±²³µ¶·¸¹º»¼½¾¿ÀÂÃÄÅÆÇÈÊËÌÎÏÐÒÔÕÖ×ØÙÛÜÝÞßàâãäåæçèêëìîïðòôõö÷øùûüýþÿŒœŠšŸƒ–—‘’‚“”„†‡•…‰€™´¨¨';
 	var solonumero=' \'\\@ñÑ+-*/°!"#$%&/()=?¡¨*[];:_^`~¬\\,.-{}´+abcdefghijklmnopqrstuvwxyz¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿŒœŠšŸƒ–—‘’‚“”„†‡•…‰€™¿¡';
 	var soloemail='\'\\¿¡ñÑ+*/°!"#$%&/()=?¡¨*[];:^`~¬\\,{}´+¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿŒœŠšŸƒ‘’‚“”„†‡•…‰€™';
 	
@@ -310,100 +310,100 @@ $('#foto1').on('click', function(e){
 			}, "");
 
 
-	$(".formulario").validate({
-				rules:{
-					nombre: {
-						required: true,
-						rangelength: [2,40],
-						nombre_valido:true			
-					},
-					apellido_paterno: {
-						required: true,
-						rangelength: [2,40],
-						nombre_valido:true
-					},
-					apellido_materno: {
-						required: true,
-						rangelength: [2,40],
-						nombre_valido:true	
-					},
-					email: {
-						required: true,
-						email: true,
-						rangelength: [2,200]
-					},
-					celular: {
-						required: true,
-						digits: true,
-						rangelength: [9,9],
-						nombre_valido:true	
-					},
-					direccion: {
-						required: true,
-						rangelength: [2,200]
-					},
-					departamento: {
-						required: true,
-						nombre_valido:true	
-					},
-					provincia: {
-						required: true,
-						nombre_valido:true	
-					},
-					distrito: {
-						required: true,
-						nombre_valido:true	
-					},
-					day: {
-						required: true,
-						nombre_valido:true
-					},
-					month: {
-						required: true,
-						nombre_valido:true
-					},
-					year: {
-						required: true,
-						nombre_valido:true
-					},
-					operador: {
-						required: true,
-						nombre_valido:true
-					},
-					modelo: {
-						required: true,
-						nombre_valido:true
-					},
-					telefono: {
-						required: true,
-						digits: true,
-						rangelength: [7,9]
-					},
-					otros: {
-						required: true,
-						nombre_valido:true
-					}
-		
-				},//End rules 
-				messages: {
-					nombre:'Ingrese un nombre válido',
-					apellido_paterno:'Ingrese un apellido paterno',
-					apellido_materno:'Ingrese un apellido materno',
-					email: 'Ingrese un apellido materno',
-					celular: 'Ingrese un apellido materno',
-					direccion: 'Ingrese un apellido materno',
-					departamento: 'Ingrese un apellido materno',
-					provincia: 'Ingrese un apellido materno',
-					distrito: 'Ingrese un apellido materno',
-					day: 'Ingrese un apellido materno',
-					month: 'Ingrese un apellido materno',
-					year: 'Ingrese un apellido materno',
-					operador: 'Ingrese un apellido materno',
-					modelo: 'Ingrese un apellido materno',
-					telefono:'Ingrese un apellido materno',
-					otros: 'Ingrese un apellido materno'
-    			}
-			});	// End Validate
+$(".formulario").validate({
+			rules:{
+				nombre: {
+					required: true,
+					rangelength: [2,40],
+					nombre_valido:true			
+				},
+				apellido_paterno: {
+					required: true,
+					rangelength: [2,40],
+					nombre_valido:true
+				},
+				apellido_materno: {
+					required: true,
+					rangelength: [2,40],
+					nombre_valido:true	
+				},
+				email: {
+					required: true,
+					email: true,
+					rangelength: [2,200]
+				},
+				celular: {
+					required: true,
+					digits: true,
+					rangelength: [9,9],
+					nombre_valido:true	
+				},
+				direccion: {
+					required: true,
+					rangelength: [2,200]
+				},
+				departamento: {
+					required: true,
+					nombre_valido:true	
+				},
+				provincia: {
+					required: true,
+					nombre_valido:true	
+				},
+				distrito: {
+					required: true,
+					nombre_valido:true	
+				},
+				day: {
+					required: true,
+					nombre_valido:true
+				},
+				month: {
+					required: true,
+					nombre_valido:true
+				},
+				year: {
+					required: true,
+					nombre_valido:true
+				},
+				operador: {
+					required: true,
+					nombre_valido:true
+				},
+				modelo: {
+					required: true,
+					nombre_valido:true
+				},
+				telefono: {
+					required: true,
+					digits: true,
+					rangelength: [7,9]
+				},
+				otros: {
+					required: true,
+					nombre_valido:true
+				}
+	
+			},//End rules 
+			messages: {
+				nombre:'Ingrese un nombre válido',
+				apellido_paterno:'Ingrese un apellido paterno',
+				apellido_materno:'Ingrese un apellido materno',
+				email: 'Ingrese un apellido materno',
+				celular: 'Ingrese un apellido materno',
+				direccion: 'Ingrese un apellido materno',
+				departamento: 'Ingrese un apellido materno',
+				provincia: 'Ingrese un apellido materno',
+				distrito: 'Ingrese un apellido materno',
+				day: 'Ingrese un apellido materno',
+				month: 'Ingrese un apellido materno',
+				year: 'Ingrese un apellido materno',
+				operador: 'Ingrese un apellido materno',
+				modelo: 'Ingrese un apellido materno',
+				telefono:'Ingrese un apellido materno',
+				otros: 'Ingrese un apellido materno'
+			}
+		});	// End Validate
 
 	
 	    $("#checkbox_comprobar").click(function() {  
@@ -412,6 +412,8 @@ $('#foto1').on('click', function(e){
         } else {  
             alert("No está activado");  
         }  
+
+        
     });  
 	
 
@@ -495,10 +497,10 @@ $('#numeroContacto').focusout(function(){
 
 
 
-  var videoID = "KhAdokkgkNc"
-  var params = { allowScriptAccess: "always", wmode: "transparent" };
-  var atts = { id: "ytPlayer" };
-  swfobject.embedSWF("//www.youtube.com/v/" + videoID + "?version=3&enablejsapi=1&playerapiid=player1&wmode=transparent", "bbVideo", "560", "340", "9", null, null, params, atts);
+var videoID = "KhAdokkgkNc"
+var params = { allowScriptAccess: "always", wmode: "transparent" };
+var atts = { id: "ytPlayer" };
+swfobject.embedSWF("//www.youtube.com/v/" + videoID + "?version=3&enablejsapi=1&playerapiid=player1&wmode=transparent", "bbVideo", "560", "340", "9", null, null, params, atts);
 
 function onYouTubePlayerReady(playerId) {
   ytplayer = document.getElementById("ytPlayer");
