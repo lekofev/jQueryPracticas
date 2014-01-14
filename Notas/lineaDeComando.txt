@@ -265,6 +265,7 @@ rails destroy model <model_name>
   <%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete') %>
 
 gem install mysql2 -- '--with-mysql-lib="c:\mysql\lib" --with-mysql-include="c:\mysql\include"'
+gem install mysql2 -v 0.3.13 -- '--with-mysql-lib="c:\mysql\lib" --with-mysql-include="c:\mysql\include"'
 
 gem install mysql2 -- '--with-mysql-lib="/home/pruebas/descarga/mysql/lib" --with-mysql-include="/home/pruebas/descarga/mysql/include"'
 
@@ -363,13 +364,134 @@ ln -nfs /etc/nginx/sites-available/whh /etc/nginx/sites-enabled/whh
 sudo ln -nfs /usr/local/nginx/sites-enabled/wiki-ghost-development.phantasial.pe /usr/local/nginx/sites-available/wiki-ghost-development.phantasial.pe
 
 sudo ln -s /etc/nginx/sites-enabled/example.com example.com
+sudo ln -nfs /etc/nginx/sites-available/ol.hachastudio.com /etc/nginx/sites-enabled/ol.hachastudio.com 
+
+sudo ln -nfs /etc/nginx/sites-available/hachastudio.com /etc/nginx/sites-enabled/hachastudio.com 
+
+sudo ln -nfs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo ln -nfs /usr/local/nginx/sites-enabled/wiki-ghost-development.phantasial.pe /usr/local/nginx/sites-available/wiki-ghost-development.phantasial.pe
+
 
 sudo nginx -s reload
+sudo nginx -s stop
+sudo service nginx start
 thin stop -e development -s3 -S /tmp/microondas.sock
 thin start -e development -s3 -S /tmp/microondas.sock
 
 thin stop -e production -s3 -S /tmp/microondas.sock
-thin start -e production -s3 -S /tmp/microondas.sock
+thin start -e production -s3 -S /tmp/olivatomato.sock
+
+thin start -e development -s3 -S /tmp/hacha.sock
+
+
+thin stop -e development -s3 -S unix:/tmp/olivatomato.sock
+thin start -e development -s3 -S unix:/tmp/olivatomato.sock
+
+thin stop -e development -s3 -S unix:/tmp/thin.sock
+
+thin start -s3 --socket /tmp/olivatomato.sock
+
+ps aux  | grep rails
+
+thin start -e development -p3000 -s5
+
+4.- For the Quick & Dirty:
+thin start -e development -p 3000 -s 5 -d
+Where:
+-e == Environment in this case development
+-p == TCP/IP Port in this case 3000
+-s == Instances of the webserver in this case 5
+-d == Daemonize to run in background
+[me@fedora phonebook]$ thin start -e development -p 3000 -s 5 -d
+Starting server on 0.0.0.0:3000 ... 
+Starting server on 0.0.0.0:3001 ... 
+Starting server on 0.0.0.0:3002 ... 
+Starting server on 0.0.0.0:3003 ... 
+Starting server on 0.0.0.0:3004 ... 
+[me@fedora phonebook]$
+We just start 5 instances of the Thin Web Server on ports [3000..3004]
+Open your browser on:
+http://127.0.0.1:3000
+http://127.0.0.1:3001
+http://127.0.0.1:3002
+http://127.0.0.1:3003
+http://127.0.0.1:3004
+
+
+
+
+## Instalar en development
+  - El site esta actualmente en esta ruta  <`http://samsung-microondas-landing.development.phantasia.pe`>.
+  - En caso de actualizaciones hacer un `git pull, git push`
+  - La ubicación en development es `/var/www/nginx/2013/samsung/samsung_microondas_landing`
+  - Para levantar proyecto ejecutar en consola: `thin start -e development -s3 -S /tmp/microondas.sock`
+  - Para detener proyecto ejecutar en consola: `thin stop -e development -s3 -S /tmp/microondas.sock`
+
+### Configuración nginx en development
+  - El arhivo esta en `/usr/local/nginx/sites-enabled`
+  
+      `
+      server {
+        listen 80;
+        listen 443 ssl;
+
+        root /var/www/nginx;
+        server_name samsung-microondas-landing.development.phantasia.pe;
+        index index.html index.htm index.php;
+
+        error_log /var/log/nginx.dev.error.log;
+        access_log /var/log/nginx.dev.log;
+
+        client_max_body_size 6M;
+
+        ssl_certificate /home/certificado_ssl/star_phantasia_pe.pem;
+        ssl_certificate_key /home/certificado_ssl/star_phantasia_pe.key;
+
+        ssl_session_timeout 5m;
+
+        ssl_protocols SSLv3 TLSv1;
+        ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+        ssl_prefer_server_ciphers on;
+
+        tcp_nodelay on;
+
+        error_page 404 /404.html;
+        error_page 500 502 503 504 /50x.html;
+
+        location = /50x.html {
+          root /usr/share/nginx/www;
+        }
+
+        location / {
+          proxy_pass http://olivaytomato;
+          proxy_set_header Host $host;
+        }
+      }
+      `
+    
+  - El arhivo upstream esta en `/usr/local/nginx`
+    `
+upstream olivaytomato {
+    server unix:/tmp/olivatomato.0.sock;
+    server unix:/tmp/olivatomato.1.sock;
+    server unix:/tmp/olivatomato.2.sock;
+}
+    `
+
+
+thin start -s3 --socket /tmp/thin.sock
+upstream  backend {
+   server   unix:/tmp/thin.0.sock;
+   server   unix:/tmp/thin.1.sock;
+   server   unix:/tmp/thin.2.sock;
+}
+
+
+
+
+
+
 
 
 bundle exec thin start -e production -S /tmp/ol.sock -s3
@@ -425,7 +547,11 @@ C:\wamp\RailsInstaller\Ruby1.9.3\bin;C:\Users\Rrodriguez\AppData\Roaming\np;C:\w
 ;%JAVA_HOME%;%ANT_HOME%\bin
 
 
+<<<<<<< HEAD
+"C:\Program Files (x86)\Git\bin\sh.exe" --login -i
+=======
 
 function randomInteger(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
+>>>>>>> d70d0ff3c1ef1087bfebb3379df823d783b89b85
