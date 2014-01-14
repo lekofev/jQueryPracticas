@@ -284,6 +284,9 @@ $ cat /tmp/id_rsa.john.pub >> ~/.ssh/authorized_keys
 
 ssh root@192.241.202.118 'ls -l /home'
 
+sudo apt-get install mysql-server mysql-common mysql-client
+
+
 Your Droplet's password has been reset to: gjlexarrojrj
 
 
@@ -532,4 +535,11 @@ C:\wamp\RailsInstaller\Ruby1.9.3\bin;C:\Users\Rrodriguez\AppData\Roaming\np;C:\w
 ;%JAVA_HOME%;%ANT_HOME%\bin
 
 
+<<<<<<< HEAD
 "C:\Program Files (x86)\Git\bin\sh.exe" --login -i
+=======
+
+function randomInteger(min, max){
+    return Math.floor(Math.random() * (1 + max - min) + min);
+}
+>>>>>>> d70d0ff3c1ef1087bfebb3379df823d783b89b85
