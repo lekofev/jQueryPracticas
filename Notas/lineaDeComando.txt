@@ -315,6 +315,8 @@ thin config -C /etc/thin/whh -c /var/www/whh --servers 3 -e development # or: -e
 
 ln -nfs /etc/nginx/sites-available/whh /etc/nginx/sites-enabled/whh
 
+ln -nfs /etc/nginx/sites-available/hachastudio.com /etc/nginx/sites-enabled/hachastudio.com
+
 /etc/init.d/thin restart
 /etc/init.d/nginx reload
 /etc/init.d/nginx restart
@@ -349,9 +351,9 @@ layout "pagina"
 
 C:\Users\Rrodriguez\AppData\Roaming\npm
 
-mysql -uroot -pae45d876e27a2bb406607423b9045853 wiki_ghost_db < /var/www/nginx/2013/wiki_phantasia_ghost/ghost_db.sql
+mysql -u root -p ae45d876e27a2bb406607423b9045853 wiki_ghost_db < /var/www/nginx/2013/wiki_phantasia_ghost/ghost_db.sql
 
-mysql -uroot -pae45d876e27a2bb406607423b9045853
+mysql -u root -p ae45d876e27a2bb406607423b9045853
 
 whereis nginx
 /usr/local/nginx/
@@ -370,9 +372,19 @@ thin stop -e production -s3 -S /tmp/microondas.sock
 thin start -e production -s3 -S /tmp/microondas.sock
 
 
+bundle exec thin start -e production -S /tmp/ol.sock -s3
+
+
+thin start -e development -s3 -S uni:/tmp/ol.sock
+
+
+lsof -wni tcp:3000
+kill -9 # fueza el cierre
+
 
 sudo apt-get install nginx
 sudo service nginx start
+sudo service nginx restart
 ifconfig eth0 | grep inet | awk '{ print $2 }'
 update-rc.d nginx defaults
 
