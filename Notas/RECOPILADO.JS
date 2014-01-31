@@ -1333,3 +1333,14 @@ tl.staggerTo(allWords, 0.3, {autoAlpha:0, scale:0, ease:Back.easeIn.config(5)}, 
 function randomInteger(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
+
+
+
+
+
+
+To flip the sprites, reverse the sign of the scale property:
+sprite.scale.x *= -1; //flip horizontally
+sprite.scale.y *= -1; //flip vertically
+Remember to set the anchor properly, generally:
+sprite.anchor.setTo(0.5, 0.5); //so the texture of the sprite is centered
