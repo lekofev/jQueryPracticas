@@ -373,6 +373,11 @@ sudo ln -nfs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo ln -nfs /usr/local/nginx/sites-enabled/wiki-ghost-development.phantasial.pe /usr/local/nginx/sites-available/wiki-ghost-development.phantasial.pe
 
 
+sudo ln -nfs /etc/nginx/sites-available/bot-ga.com /etc/nginx/sites-enabled/bot-ga.com
+sudo ln -nfs /etc/nginx/sites-available/whh.bot-ga.com /etc/nginx/sites-enabled/whh.bot-ga.com
+
+sudo ln -nfs /etc/nginx/sites-available/whh.bot-ga.com /etc/nginx/sites-enabled/whh.bot-ga.com
+
 sudo nginx -s reload
 sudo nginx -s stop
 sudo service nginx start
@@ -490,7 +495,28 @@ upstream  backend {
 
 
 
+upstream bot-ga.com {
+    server unix:/tmp/bot.0.sock;
+    server unix:/tmp/bot.1.sock;
+    server unix:/tmp/bot.2.sock;
+}
 
+server {
+  listen 80;
+
+  root /var/www/botga;
+  server_name bot-ga.com;
+  index index.html index.htm index.php;
+
+  client_max_body_size 6M;
+
+  tcp_nodelay on;
+
+  location / {
+    proxy_pass http://bot-ga;
+    proxy_set_header Host $host;
+  }
+}
 
 
 
@@ -499,6 +525,7 @@ bundle exec thin start -e production -S /tmp/ol.sock -s3
 
 thin start -e development -s3 -S uni:/tmp/ol.sock
 
+sudo apt-get install libmysql-ruby libmysqlclient-dev
 
 lsof -wni tcp:3000
 kill -9 # fueza el cierre
