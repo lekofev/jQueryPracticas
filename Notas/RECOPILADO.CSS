@@ -290,3 +290,12 @@ label.error{
 	}
 
 /* ----------  End Globales -------------- */
+
+.clear_block:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}

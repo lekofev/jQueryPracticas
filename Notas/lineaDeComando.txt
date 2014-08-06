@@ -318,6 +318,9 @@ ln -nfs /etc/nginx/sites-available/whh /etc/nginx/sites-enabled/whh
 
 ln -nfs /etc/nginx/sites-available/hachastudio.com /etc/nginx/sites-enabled/hachastudio.com
 
+ln -nfs /etc/nginx/sites-available/olivaytomato.com /etc/nginx/sites-enabled/olivaytomato.com
+
+
 /etc/init.d/thin restart
 /etc/init.d/nginx reload
 /etc/init.d/nginx restart
@@ -346,9 +349,17 @@ thin restart -e development -S /tmp/microondas.sock -s3
 mysql -uroot -p123456 whh_development < /var/www/whh/whh_development.sql;
 
 
+mysql -uroot -prrodriguez olivdaytomato_development < /var/www/olivaytomato/olivdaytomato_development.sql;
+mysql -uroot -prrodriguez olivdaytomato_development < olivdaytomato_development.sql
 
+mysql -uroot -prrodriguez olivdaytomato_production < olivdaytomato_development.sql
+mysql -uroot -prrodriguez olivdaytomato_development < olivdaytomato_development.sql
 layout "pagina"
 
+mysqldump -uroot -prrodriguez olivdaytomato_development > olivdaytomato_development.sql
+mysqldump -uroot -prrodriguez olivdaytomato_production > olivdaytomato_production0508-522.sql
+netstat -tln
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' identified by 'rrodriguez'; 
 
 C:\Users\Rrodriguez\AppData\Roaming\npm
 
@@ -377,6 +388,9 @@ sudo ln -nfs /etc/nginx/sites-available/bot-ga.com /etc/nginx/sites-enabled/bot-
 sudo ln -nfs /etc/nginx/sites-available/whh.bot-ga.com /etc/nginx/sites-enabled/whh.bot-ga.com
 
 sudo ln -nfs /etc/nginx/sites-available/whh.bot-ga.com /etc/nginx/sites-enabled/whh.bot-ga.com
+
+
+sudo ln -nfs /etc/nginx/sites-available/ol.bot-ga.com /etc/nginx/sites-enabled/ol.bot-ga.com
 
 sudo nginx -s reload
 sudo nginx -s stop
@@ -518,9 +532,13 @@ server {
   }
 }
 
-
-
+// Este 
 bundle exec thin start -e production -S /tmp/ol.sock -s3
+bundle exec thin stop -e production -S /tmp/ol.sock -s3
+
+bundle exec thin start -e development -S /tmp/ol.sock -s3
+bundle exec thin stop -e development -S /tmp/ol.sock -s3
+
 
 
 thin start -e development -s3 -S uni:/tmp/ol.sock
@@ -582,3 +600,89 @@ function randomInteger(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
 >>>>>>> d70d0ff3c1ef1087bfebb3379df823d783b89b85
+
+
+rails generate active_admin:resource [MyModelName]
+rails generate uploader Avatar
+
+rails g migration AddIndexToListaEnsalada ensalada_id 
+
+
+NADA PUEDE TERMINAR EN LOS MODELOS "ia"
+
+
+netstat -plut
+netstat -tln
+
+
+
+root@server1:~# useradd -m -s /sbin/nologin carlos
+
+
+
+
+
+eventmachine.rb:526:in `start_tcp_server': no acceptor (port is in use or requires root privileges) (RuntimeError)
+
+
+
+/etc/postfix/main.cf
+be sure to run '/etc/init.d/postfix reload'
+
+etc/alieses
+postmaster: root
+
+infool
+infoolivaytomato2014
+infoolivaytomato2014
+
+ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+
+sudo service vsftpd restart
+sudo netstat -plutn | grep 21
+
+useradd -m user
+passwd user
+
+userdel user
+
+mysqldump -u root -p rrodriguez olivdaytomato_production > dumb.sql
+
+sudo ln -nfs /etc/nginx/sites-available/bot-ga.com /etc/nginx/sites-enabled/bot-ga.com
+
+sudo ln -nfs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo ln -nfs /etc/nginx/sites-available/correo.bot-ga.com /etc/nginx/sites-enabled/correo.bot-ga.com
+sudo ln -nfs /etc/nginx/sites-available/llanganuco.bot-ga.com /etc/nginx/sites-enabled/llanganuco.bot-ga.com
+
+sudo ln -nfs /etc/nginx/sites-available/botga.bot-ga.com /etc/nginx/sites-enabled/botga.bot-ga.com
+
+sudo ln -nfs /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+
+dig MX bot-ga.com +short @ns1.digitalocean.com
+
+useradd -m -s /sbin/nologin carlos
+
+RAILS_ENV=production bundle exec rake assets:precompile
+rails s -e production
+
+usermod -a -G groupName userName
+usermod -G groupName userName
+
+
+bundle exec thin start -e production -S /tmp/ol.sock -s3
+bundle exec thin stop -e production -S /tmp/ol.sock -s3
+
+
+git rm --cached -r <dir>
+
+
+
+Laravel
+
+
+ifconfig eth0 | grep inet | awk '{ print $2 }'
+
+
+

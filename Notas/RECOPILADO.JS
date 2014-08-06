@@ -10,6 +10,11 @@ $(document).ready(function(e) {
 	var urlHash;
 	var urlLimpia;
 
+
+		var ww = $( window ).width();
+	var wh = $( window ).height();
+
+
 	// urlHash=url.replace(location.protocol+'//'+location.host+location.pathname,'')
 	urlHash=location.hash;
 	urlHash=urlHash.substring(1,urlHash.length)
@@ -144,7 +149,7 @@ $('#foto1').on('click', function(e){
 					}
 			
 		}); 
-	})
+})
 
 	
 	
@@ -1146,6 +1151,91 @@ function prealoder()
 			)
 
 
+	//Funcion obtiene la url, de acuerdo a la url devuelve un balor en bloque
+	function pullHistory(url)
+	{
+		var bloque;
+		var slideFamilia;
+		switch(url)
+		{
+			case '':
+				bloque=0;
+			break
+			case 'inicio':
+				bloque=0;
+			break
+			case 'beneficio':
+				bloque=1;
+			break
+			case 'cello':
+				bloque=2;
+			break
+			case 'familia':
+				bloque=3;
+			break
+			case 'videos':
+				bloque=4;
+			break
+			case 'familia-MG402MADXBB':
+				bloque=3;
+				slideFamilia=0;
+			break
+			case 'familia-AGE1103TST':
+				bloque=3;
+				slideFamilia=1;
+			break
+			case 'familia-AGE1103TW':
+				bloque=3;
+				slideFamilia=1;
+
+				$('.slide_item_1 .btns_colores_contenedor .btns_color').removeClass('activo')
+				$('.slide_item_1 .btns_colores_contenedor .btns_color.btn_blanco').addClass('activo')
+
+
+				$('.slide_item_1 .color_contenedor_slide').removeClass('activo')
+				$('.slide_item_1 .color_contenedor_slide.color_blanco').addClass('activo')
+
+			break
+			case 'familia-MS402MADXBB':
+				bloque=3;
+				slideFamilia=2;
+			break
+			case 'familia-AME1113TST':
+				bloque=3;
+				slideFamilia=3;
+			break
+			case 'familia-AME1113TW':
+				bloque=3;
+				slideFamilia=3;
+
+				$('.slide_item_3 .btns_colores_contenedor .btns_color').removeClass('activo')
+				$('.slide_item_3 .btns_colores_contenedor .btns_color.btn_blanco').addClass('activo')
+
+
+				$('.slide_item_3 .color_contenedor_slide').removeClass('activo')
+				$('.slide_item_3 .color_contenedor_slide.color_blanco').addClass('activo')
+			break
+			case 'familia-AME83M':
+				bloque=3;
+				slideFamilia=4;
+			break
+			case 'familia-AMW831K':
+				bloque=3;
+				slideFamilia=5;
+			break
+			default:			
+				bloque=0;
+				slideFamilia=0;
+
+			break
+		}
+		return {
+				bloque:bloque,
+				slideFamilia:slideFamilia
+			}
+		
+	}
+
 function pushHistory(n)
 		{
 			if(msie)
@@ -1344,3 +1434,35 @@ sprite.scale.x *= -1; //flip horizontally
 sprite.scale.y *= -1; //flip vertically
 Remember to set the anchor properly, generally:
 sprite.anchor.setTo(0.5, 0.5); //so the texture of the sprite is centered
+
+
+
+
+
+
+
+
+	function detectarChoque(_x, _y, _w, _h, __x, __y, __w, __h )
+	{
+		// var ax=parseInt(a.css('left'))
+		// var ay=parseInt(a.css('top'))
+		// var aw=parseInt(a.css('width'))
+		// var ah=parseInt(a.css('height'))
+
+		// var bx=parseInt(b.css('left'))
+		// var by=parseInt(b.css('top'))
+		// var bw=parseInt(b.css('width'))
+		// var bh=parseInt(b.css('height'))
+
+		var ax=_x
+		var ay=_y
+		var aw=_w
+		var ah=_h
+
+		var bx=__x
+		var by=__y
+		var bw=__w
+		var bh=__h
+
+		return ( (ax<bx+bw) && (ax+aw>bx) && (ay<by+bh) && (ay+ah>by))
+	}
